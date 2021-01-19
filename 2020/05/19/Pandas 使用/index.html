@@ -23,12 +23,12 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"wangyuynao.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":false,"sidebar":{"position":"left","Muse | Mist":320,"Pisces | Gemini":240,"width":300,"display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
   </script>
-<meta name="description" content="Pandas 使用123456789101112import numpy as npimport pandas as pd csv_file &#x3D; &amp;#x27;data.csv&amp;#x27;csv_data &#x3D; pd.read_csv(csv_file,low_memory &#x3D; False) #防止弹出警告df &#x3D; pd.DataFrame()print(df.shape) # 查看数据维度print">
+<meta name="description" content="Pandas 使用 123456789101112import numpy as npimport pandas as pd csv_file &#x3D; &amp;#x27;data.csv&amp;#x27;csv_data &#x3D; pd.read_csv(csv_file,low_memory &#x3D; False) #防止弹出警告df &#x3D; pd.DataFrame()print(df.shape) # 查看数据维度pri">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Pandas 使用">
 <meta property="og:url" content="https://wangyuynao.github.io/2020/05/19/Pandas%20%E4%BD%BF%E7%94%A8/index.html">
 <meta property="og:site_name" content="W.Yu&#39;s BLOG">
-<meta property="og:description" content="Pandas 使用123456789101112import numpy as npimport pandas as pd csv_file &#x3D; &amp;#x27;data.csv&amp;#x27;csv_data &#x3D; pd.read_csv(csv_file,low_memory &#x3D; False) #防止弹出警告df &#x3D; pd.DataFrame()print(df.shape) # 查看数据维度print">
+<meta property="og:description" content="Pandas 使用 123456789101112import numpy as npimport pandas as pd csv_file &#x3D; &amp;#x27;data.csv&amp;#x27;csv_data &#x3D; pd.read_csv(csv_file,low_memory &#x3D; False) #防止弹出警告df &#x3D; pd.DataFrame()print(df.shape) # 查看数据维度pri">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-05-19T14:41:00.000Z">
 <meta property="article:modified_time" content="2020-05-20T09:17:34.000Z">
@@ -161,7 +161,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Pandas-%E4%BD%BF%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">Pandas 使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#pandas%E7%BB%98%E5%9B%BE"><span class="nav-number">1.1.</span> <span class="nav-text">pandas绘图</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#pandas-%E4%BD%BF%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">Pandas 使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#pandas%E7%BB%98%E5%9B%BE"><span class="nav-number">1.1.</span> <span class="nav-text">pandas绘图</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -289,13 +289,12 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="Pandas-使用"><a href="#Pandas-使用" class="headerlink" title="Pandas 使用"></a>Pandas 使用</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd </span><br><span class="line"></span><br><span class="line">csv_file = <span class="string">&#x27;data.csv&#x27;</span></span><br><span class="line">csv_data = pd.read_csv(csv_file,low_memory = <span class="literal">False</span>) <span class="comment">#防止弹出警告</span></span><br><span class="line"></span><br><span class="line">df = pd.DataFrame()</span><br><span class="line">print(df.shape) <span class="comment"># 查看数据维度</span></span><br><span class="line">print(df.duplicated()) <span class="comment">#查看重复值</span></span><br><span class="line">print(pd.isnull(df)) <span class="comment">#查看缺失值</span></span><br><span class="line"><span class="comment">#将NAN值替换为0 pd.fillna 填补缺失值 df.where()</span></span><br><span class="line">df.where(df.notnull(),<span class="number">0</span>) </span><br></pre></td></tr></table></figure>
+        <h1 id="pandas-使用">Pandas 使用</h1>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd </span><br><span class="line"></span><br><span class="line">csv_file = <span class="string">&#x27;data.csv&#x27;</span></span><br><span class="line">csv_data = pd.read_csv(csv_file,low_memory = <span class="literal">False</span>) <span class="comment">#防止弹出警告</span></span><br><span class="line"></span><br><span class="line">df = pd.DataFrame()</span><br><span class="line">print(df.shape) <span class="comment"># 查看数据维度</span></span><br><span class="line">print(df.duplicated()) <span class="comment">#查看重复值</span></span><br><span class="line">print(pd.isnull(df)) <span class="comment">#查看缺失值</span></span><br><span class="line"><span class="comment">#将NAN值替换为0 pd.fillna 填补缺失值 df.where()</span></span><br><span class="line">df.where(df.notnull(),<span class="number">0</span>) </span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-
-<h2 id="pandas绘图"><a href="#pandas绘图" class="headerlink" title="pandas绘图"></a>pandas绘图</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> pandas <span class="keyword">import</span> Series,DataFrame</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> matplotlib</span><br><span class="line">matplotlib.style.use(<span class="string">&#x27;gplot&#x27;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="pandas绘图">pandas绘图</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> pandas <span class="keyword">import</span> Series,DataFrame</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> matplotlib</span><br><span class="line">matplotlib.style.use(<span class="string">&#x27;gplot&#x27;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">rng = pd.period_range(<span class="string">&#x27;2016-03&#x27;</span>,<span class="string">&#x27;2016-12&#x27;</span>,freq=<span class="string">&#x27;M&#x27;</span>)</span><br><span class="line">print(rng)</span><br><span class="line"></span><br><span class="line">PeriodIndex([<span class="string">&#x27;2016-03&#x27;</span>, <span class="string">&#x27;2016-04&#x27;</span>, <span class="string">&#x27;2016-05&#x27;</span>, <span class="string">&#x27;2016-06&#x27;</span>, <span class="string">&#x27;2016-07&#x27;</span>, <span class="string">&#x27;2016-08&#x27;</span>,</span><br><span class="line">             <span class="string">&#x27;2016-09&#x27;</span>, <span class="string">&#x27;2016-10&#x27;</span>, <span class="string">&#x27;2016-11&#x27;</span>, <span class="string">&#x27;2016-12&#x27;</span>],</span><br><span class="line">            dtype=<span class="string">&#x27;period[M]&#x27;</span>, freq=<span class="string">&#x27;M&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-
 
     </div>
 
@@ -313,13 +312,10 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2020/05/19/Matplotlib/" rel="prev" title="Matplotlib">
-                  <i class="fa fa-chevron-left"></i> Matplotlib
-                </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2020/05/20/%E6%9C%9B%E8%BF%9C%E9%95%9C%E7%9A%84%E6%80%A7%E8%83%BD%E6%8F%8F%E8%BF%B0/" rel="next" title="望远镜的性能描述">
-                  望远镜的性能描述 <i class="fa fa-chevron-right"></i>
+                <a href="/2020/05/19/Matplotlib/" rel="next" title="Matplotlib">
+                  Matplotlib <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -391,7 +387,38 @@
 
 
 
-  
+  <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'none'
+      },
+      options: {
+        renderActions: {
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = '//cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
 
 
 </body>

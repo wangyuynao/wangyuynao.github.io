@@ -293,8 +293,8 @@
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/2020/05/19/Pandas%20%E4%BD%BF%E7%94%A8/" itemprop="url">
-            <span itemprop="name">Pandas 使用</span>
+          <a class="post-title-link" href="/2020/05/19/Matplotlib/" itemprop="url">
+            <span itemprop="name">Matplotlib</span>
           </a>
       </div>
 
@@ -313,8 +313,8 @@
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/2020/05/19/Matplotlib/" itemprop="url">
-            <span itemprop="name">Matplotlib</span>
+          <a class="post-title-link" href="/2020/05/19/Pandas%20%E4%BD%BF%E7%94%A8/" itemprop="url">
+            <span itemprop="name">Pandas 使用</span>
           </a>
       </div>
 
@@ -387,7 +387,38 @@
 
 
 
-  
+  <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'none'
+      },
+      options: {
+        renderActions: {
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = '//cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
 
 
 </body>

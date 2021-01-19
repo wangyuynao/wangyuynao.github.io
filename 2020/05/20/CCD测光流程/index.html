@@ -23,12 +23,12 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"wangyuynao.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.2.0","exturl":false,"sidebar":{"position":"left","Muse | Mist":320,"Pisces | Gemini":240,"width":300,"display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
   </script>
-<meta name="description" content="$CCD$测光流程1、观测方案 根据题目条件，采用较差测光，选取标准星$R$ 由于被测星$A$与标准星$R$的天光背景是不一样的，在后续的数据处理中要扣除 在观测中$CCD$的视场会足够大，所以一次曝光就可以得到星像及其附近的天光。为提高测量精度，对其多帧采集。在观测过程中需要拍平场和暗场。">
+<meta name="description" content="\(CCD\)测光流程 1、观测方案  根据题目条件，采用较差测光，选取标准星\(R\) 由于被测星\(A\)与标准星\(R\)的天光背景是不一样的，在后续的数据处理中要扣除 在观测中\(CCD\)的视场会足够大，所以一次曝光就可以得到星像及其附近的天光。为提高测量精度，对其多帧采集。在观测过程中需要拍平场和暗场。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CCD测光流程">
 <meta property="og:url" content="https://wangyuynao.github.io/2020/05/20/CCD%E6%B5%8B%E5%85%89%E6%B5%81%E7%A8%8B/index.html">
 <meta property="og:site_name" content="W.Yu&#39;s BLOG">
-<meta property="og:description" content="$CCD$测光流程1、观测方案 根据题目条件，采用较差测光，选取标准星$R$ 由于被测星$A$与标准星$R$的天光背景是不一样的，在后续的数据处理中要扣除 在观测中$CCD$的视场会足够大，所以一次曝光就可以得到星像及其附近的天光。为提高测量精度，对其多帧采集。在观测过程中需要拍平场和暗场。">
+<meta property="og:description" content="\(CCD\)测光流程 1、观测方案  根据题目条件，采用较差测光，选取标准星\(R\) 由于被测星\(A\)与标准星\(R\)的天光背景是不一样的，在后续的数据处理中要扣除 在观测中\(CCD\)的视场会足够大，所以一次曝光就可以得到星像及其附近的天光。为提高测量精度，对其多帧采集。在观测过程中需要拍平场和暗场。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-05-19T17:49:09.000Z">
 <meta property="article:modified_time" content="2020-05-20T09:16:44.000Z">
@@ -162,7 +162,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CCD-%E6%B5%8B%E5%85%89%E6%B5%81%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">$CCD$测光流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81%E8%A7%82%E6%B5%8B%E6%96%B9%E6%A1%88"><span class="nav-number">1.1.</span> <span class="nav-text">1、观测方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81-CCD-%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86"><span class="nav-number">1.2.</span> <span class="nav-text">2、$CCD$数据预处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3%E3%80%81%E8%BE%83%E5%B7%AE%E6%B5%8B%E5%85%89%E5%8E%9F%E7%90%86"><span class="nav-number">1.3.</span> <span class="nav-text">3、较差测光原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4%E3%80%81%E5%A4%A9%E5%85%89%E7%9A%84%E8%AE%A1%E7%AE%97"><span class="nav-number">1.4.</span> <span class="nav-text">4、天光的计算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5%E3%80%81%E6%98%9F%E5%83%8F%E7%9A%84%E8%A7%86%E4%BA%AE%E5%BA%A6%E8%AE%A1%E7%AE%97"><span class="nav-number">1.5.</span> <span class="nav-text">5、星像的视亮度计算</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ccd%E6%B5%8B%E5%85%89%E6%B5%81%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">\(CCD\)测光流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%82%E6%B5%8B%E6%96%B9%E6%A1%88"><span class="nav-number">1.1.</span> <span class="nav-text">1、观测方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ccd%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86"><span class="nav-number">1.2.</span> <span class="nav-text">2、\(CCD\)数据预处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%83%E5%B7%AE%E6%B5%8B%E5%85%89%E5%8E%9F%E7%90%86"><span class="nav-number">1.3.</span> <span class="nav-text">3、较差测光原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%A9%E5%85%89%E7%9A%84%E8%AE%A1%E7%AE%97"><span class="nav-number">1.4.</span> <span class="nav-text">4、天光的计算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%9F%E5%83%8F%E7%9A%84%E8%A7%86%E4%BA%AE%E5%BA%A6%E8%AE%A1%E7%AE%97"><span class="nav-number">1.5.</span> <span class="nav-text">5、星像的视亮度计算</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -284,27 +284,30 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="CCD-测光流程"><a href="#CCD-测光流程" class="headerlink" title="$CCD$测光流程"></a>$CCD$测光流程</h1><h2 id="1、观测方案"><a href="#1、观测方案" class="headerlink" title="1、观测方案"></a>1、观测方案</h2><ul>
-<li>根据题目条件，采用较差测光，选取标准星$R$</li>
-<li>由于被测星$A$与标准星$R$的天光背景是不一样的，在后续的数据处理中要扣除</li>
-<li>在观测中$CCD$的视场会足够大，所以一次曝光就可以得到星像及其附近的天光。为提高测量精度，对其多帧采集。在观测过程中需要拍平场和暗场。</li>
+        <h1 id="ccd测光流程"><span class="math inline">\(CCD\)</span>测光流程</h1>
+<h2 id="观测方案">1、观测方案</h2>
+<ul>
+<li>根据题目条件，采用较差测光，选取标准星<span class="math inline">\(R\)</span></li>
+<li>由于被测星<span class="math inline">\(A\)</span>与标准星<span class="math inline">\(R\)</span>的天光背景是不一样的，在后续的数据处理中要扣除</li>
+<li>在观测中<span class="math inline">\(CCD\)</span>的视场会足够大，所以一次曝光就可以得到星像及其附近的天光。为提高测量精度，对其多帧采集。在观测过程中需要拍平场和暗场。</li>
 </ul>
 <a id="more"></a>
-
-<h2 id="2、-CCD-数据预处理"><a href="#2、-CCD-数据预处理" class="headerlink" title="2、$CCD$数据预处理"></a>2、$CCD$数据预处理</h2><ol>
-<li><p>去掉热点、死点和宇宙线的影响</p>
-</li>
+<h2 id="ccd数据预处理">2、<span class="math inline">\(CCD\)</span>数据预处理</h2>
+<ol type="1">
+<li><p>去掉热点、死点和宇宙线的影响</p></li>
 <li><p>平场、暗场的处理：</p>
-<p>$$有效数据 = \frac{观测数据 - 暗场}{平场数据 - 暗场}$$</p>
+<p><span class="math display">\[有效数据 = \frac{观测数据 - 暗场}{平场数据 - 暗场}\]</span></p>
 <ul>
-<li>有效数据中已经包含了待测星和对应的天光亮度信息，记待测星为$E_A$，标准星为$E_R$.</li>
-</ul>
-</li>
+<li>有效数据中已经包含了待测星和对应的天光亮度信息，记待测星为<span class="math inline">\(E_A\)</span>，标准星为<span class="math inline">\(E_R\)</span>.</li>
+</ul></li>
 </ol>
-<h2 id="3、较差测光原理"><a href="#3、较差测光原理" class="headerlink" title="3、较差测光原理"></a>3、较差测光原理</h2><p>$$\triangle m = m_{V_A}-m_{v_R}= -2.5\lg(\frac{待测星-天光}{标准星-天光}) $$</p>
-<h2 id="4、天光的计算"><a href="#4、天光的计算" class="headerlink" title="4、天光的计算"></a>4、天光的计算</h2><p>​    $A$星像处的天光与其附近的相同，从$A$星的有效数据中选取一块没有星像的方形区域$S$。计算该区域的亮度和面积，可以得到每像元的天光亮度。再乘以星斑所占的像元个数，最终得到$A$星像斑中所含的天光亮度，记为$E_{A_S}$，同理标准星像斑中的天光亮度为$E_{R_S}$。</p>
-<h2 id="5、星像的视亮度计算"><a href="#5、星像的视亮度计算" class="headerlink" title="5、星像的视亮度计算"></a>5、星像的视亮度计算</h2><p>$$m_{V_A} = m_{V_R} - 2.5\lg(\frac{E_A-E_{A_S}}{E_R-R_{R_S}})$$</p>
-<p>归算到大气外：采用公式$\triangle m_0 = \triangle m -k’\triangle X_Z - k’’\overline X_Z\triangle C$</p>
+<h2 id="较差测光原理">3、较差测光原理</h2>
+<p><span class="math display">\[\triangle m = m_{V_A}-m_{v_R}= -2.5\lg(\frac{待测星-天光}{标准星-天光}) \]</span></p>
+<h2 id="天光的计算">4、天光的计算</h2>
+<p>​ <span class="math inline">\(A\)</span>星像处的天光与其附近的相同，从<span class="math inline">\(A\)</span>星的有效数据中选取一块没有星像的方形区域<span class="math inline">\(S\)</span>。计算该区域的亮度和面积，可以得到每像元的天光亮度。再乘以星斑所占的像元个数，最终得到<span class="math inline">\(A\)</span>星像斑中所含的天光亮度，记为<span class="math inline">\(E_{A_S}\)</span>，同理标准星像斑中的天光亮度为<span class="math inline">\(E_{R_S}\)</span>。</p>
+<h2 id="星像的视亮度计算">5、星像的视亮度计算</h2>
+<p><span class="math display">\[m_{V_A} = m_{V_R} - 2.5\lg(\frac{E_A-E_{A_S}}{E_R-R_{R_S}})\]</span></p>
+<p>归算到大气外：采用公式<span class="math inline">\(\triangle m_0 = \triangle m -k&#39;\triangle X_Z - k&#39;&#39;\overline X_Z\triangle C\)</span></p>
 
     </div>
 
