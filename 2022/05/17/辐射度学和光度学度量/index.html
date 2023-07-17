@@ -206,7 +206,7 @@
       
         <h1 id="辐射度学和光度学度量"><a href="#辐射度学和光度学度量" class="headerlink" title="辐射度学和光度学度量"></a>辐射度学和光度学度量</h1><p>和辐射度学相比，光度学的研究对象只限于可见光范围内，并且要以人眼的视觉特性为基础。辐射度学中的所有概念，如光通量、光照强度等，都和视觉函数有关。光度量和辐射度量的定义是一一对应，下标列出了基本的辐射度量和光度量的名称、符号、方程和单位名称。有时为了避免混淆，在辐射度量符号上加上下标$e$，在光度学符号上加上下标$v$，如辐射度量$\Phi_e$、$I_e$、$M_e$等，光度量$\Phi_v$、$I_v$、$M_v$等。</p>
 <span id="more"></span>
-
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -218,7 +218,8 @@
 <th>光度量单位名称和符号</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>辐射量</td>
 <td>光量</td>
 <td>$Q$</td>
@@ -230,43 +231,45 @@
 <td>辐射通量</td>
 <td>光通量</td>
 <td>$\Phi$</td>
-<td>$\Phi &#x3D; \frac{dQ}{dt}$</td>
-<td>瓦 (焦每秒), $W(j&#x2F;s)$</td>
+<td>$\Phi = \frac{dQ}{dt}$</td>
+<td>瓦 (焦每秒), $W(j/s)$</td>
 <td>流，$lm$</td>
 </tr>
 <tr>
 <td>辐射强度</td>
 <td>发光强度</td>
 <td>$I$</td>
-<td>$I &#x3D; \frac{d \Phi}{d \Omega}$</td>
-<td>瓦每球面度，$W&#x2F;sr$</td>
+<td>$I = \frac{d \Phi}{d \Omega}$</td>
+<td>瓦每球面度，$W/sr$</td>
 <td>坎，$cd$</td>
 </tr>
 <tr>
 <td>辐射亮度</td>
 <td>光亮度</td>
 <td>$L$</td>
-<td>$L &#x3D; \frac{d^2 \Phi}{d \Omega dA \cos \theta} $</td>
-<td>瓦每球面度平方米，$W&#x2F;(sr\cdot m^2)$</td>
-<td>坎每平方米，$cd&#x2F;m^2$</td>
+<td>$L = \frac{d^2 \Phi}{d \Omega dA \cos \theta} $</td>
+<td>瓦每球面度平方米，$W/(sr\cdot m^2)$</td>
+<td>坎每平方米，$cd/m^2$</td>
 </tr>
 <tr>
 <td>辐射出射度</td>
 <td>光出射度</td>
 <td>$M$</td>
-<td>$M &#x3D; \frac{d \Phi}{d A}$</td>
-<td>瓦每平方米，$W&#x2F;m^2$</td>
-<td>流每平方，$lm&#x2F;m^2$</td>
+<td>$M = \frac{d \Phi}{d A}$</td>
+<td>瓦每平方米，$W/m^2$</td>
+<td>流每平方，$lm/m^2$</td>
 </tr>
 <tr>
 <td>辐射入射度</td>
 <td>光照度</td>
 <td>$E$</td>
-<td>$E &#x3D; \frac{d \Phi}{d A}$</td>
-<td>瓦每平方米，$W&#x2F;m^2$</td>
-<td>勒（流每平方米），$lx(lm&#x2F;m^2)$</td>
+<td>$E = \frac{d \Phi}{d A}$</td>
+<td>瓦每平方米，$W/m^2$</td>
+<td>勒（流每平方米），$lx(lm/m^2)$</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 
     </div>
 
@@ -459,6 +462,61 @@
 
 
   
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

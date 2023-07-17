@@ -205,15 +205,9 @@
 
       
         <h1 id="Pandas-使用"><a href="#Pandas-使用" class="headerlink" title="Pandas 使用"></a>Pandas 使用</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd </span><br><span class="line"></span><br><span class="line">csv_file = <span class="string">&#x27;data.csv&#x27;</span></span><br><span class="line">csv_data = pd.read_csv(csv_file,low_memory = <span class="literal">False</span>) <span class="comment">#防止弹出警告</span></span><br><span class="line"></span><br><span class="line">df = pd.DataFrame()</span><br><span class="line"><span class="built_in">print</span>(df.shape) <span class="comment"># 查看数据维度</span></span><br><span class="line"><span class="built_in">print</span>(df.duplicated()) <span class="comment">#查看重复值</span></span><br><span class="line"><span class="built_in">print</span>(pd.isnull(df)) <span class="comment">#查看缺失值</span></span><br><span class="line"><span class="comment">#将NAN值替换为0 pd.fillna 填补缺失值 df.where()</span></span><br><span class="line">df.where(df.notnull(),<span class="number">0</span>) </span><br></pre></td></tr></table></figure>
-
 <span id="more"></span>
-
 <h2 id="pandas绘图"><a href="#pandas绘图" class="headerlink" title="pandas绘图"></a>pandas绘图</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> pandas <span class="keyword">import</span> Series,DataFrame</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> matplotlib</span><br><span class="line">matplotlib.style.use(<span class="string">&#x27;gplot&#x27;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">rng = pd.period_range(<span class="string">&#x27;2016-03&#x27;</span>,<span class="string">&#x27;2016-12&#x27;</span>,freq=<span class="string">&#x27;M&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(rng)</span><br><span class="line"></span><br><span class="line">PeriodIndex([<span class="string">&#x27;2016-03&#x27;</span>, <span class="string">&#x27;2016-04&#x27;</span>, <span class="string">&#x27;2016-05&#x27;</span>, <span class="string">&#x27;2016-06&#x27;</span>, <span class="string">&#x27;2016-07&#x27;</span>, <span class="string">&#x27;2016-08&#x27;</span>,</span><br><span class="line">             <span class="string">&#x27;2016-09&#x27;</span>, <span class="string">&#x27;2016-10&#x27;</span>, <span class="string">&#x27;2016-11&#x27;</span>, <span class="string">&#x27;2016-12&#x27;</span>],</span><br><span class="line">            dtype=<span class="string">&#x27;period[M]&#x27;</span>, freq=<span class="string">&#x27;M&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-
-
 
     </div>
 
@@ -231,10 +225,13 @@
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2020/05/19/2021-Matplotlib/" rel="next" title="Matplotlib">
-      Matplotlib <i class="fa fa-chevron-right"></i>
+    <a href="/2020/05/19/2021-Matplotlib/" rel="prev" title="Matplotlib">
+      <i class="fa fa-chevron-left"></i> Matplotlib
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/05/20/2021-%E6%9C%9B%E8%BF%9C%E9%95%9C%E7%9A%84%E6%80%A7%E8%83%BD%E6%8F%8F%E8%BF%B0/" rel="next" title="望远镜的性能描述">
+      望远镜的性能描述 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -401,6 +398,8 @@
 
 
 
+
+  
 
   
 

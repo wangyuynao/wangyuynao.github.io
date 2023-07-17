@@ -207,15 +207,13 @@
 
       
         <h1 id="Java学习笔记一"><a href="#Java学习笔记一" class="headerlink" title="Java学习笔记一"></a>Java学习笔记一</h1><span id="more"></span>
-
 <h2 id="Java主类结构"><a href="#Java主类结构" class="headerlink" title="Java主类结构"></a>Java主类结构</h2><p>Java语言是面向对象的程序设计语言，Java程序的基本组成单元是类，类体中又包括属性与方法两部分。每个应用程序都必须包含一个main()方法，含有main()方法的类称为主类。</p>
 <h3 id="包声明"><a href="#包声明" class="headerlink" title="包声明"></a>包声明</h3><p>一个Java应用程序是由若干个类组成的，package为包的关键字。</p>
 <h3 id="声明成员变量和局部变量"><a href="#声明成员变量和局部变量" class="headerlink" title="声明成员变量和局部变量"></a>声明成员变量和局部变量</h3><p>通常将类的属性称为类的全局变量（成员变量），将方法中的属性称为局部变量。全局变量声明在类体中，局部变量声明在方法体中。</p>
 <h3 id="编写主方法"><a href="#编写主方法" class="headerlink" title="编写主方法"></a>编写主方法</h3><p>main()方法为类体中的主方法，该方法从“{”开始，至”}”结束。public、static和void分别是main()方法的权限修饰符、静态修饰符、和返回值修饰符，Java程序中的main()方法必须声明为public static void。main()方法是程序开始执行的位置。</p>
 <h3 id="导入API类库"><a href="#导入API类库" class="headerlink" title="导入API类库"></a>导入API类库</h3><p>在Java语言中可以通过import关键字导入相关的类。</p>
 <h2 id="Java基本数据类型"><a href="#Java基本数据类型" class="headerlink" title="Java基本数据类型"></a>Java基本数据类型</h2><p>在Java中有8种基本数据类型来存储数值、字符和布尔值，</p>
-<img src="https://cdn.jsdelivr.net/gh/wangyuynao/Img_Picgo@main/img/%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.png" alt="基本数据类型" style="zoom: 80%;" />
-
+<p><img src="https://cdn.jsdelivr.net/gh/wangyuynao/Img_Picgo@main/img/%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.png" alt="基本数据类型" style="zoom: 80%;" /></p>
 <ul>
 <li>布尔类型又称逻辑类型，通过关键字boolean来定义布尔类型变量，只有true和false两个值，分别代表布尔逻辑中的“真”和“假”。布尔值不能与整数类型进行转换。布尔类型通常被用在流程控制中作为判断条件。</li>
 </ul>
@@ -227,74 +225,77 @@
 <li>标识符：标识符可以简单地理解为一个名字，用来标识类名、变量名、方法名、数组名、文件名的有效字符序列。Java语言规定标识符由任意顺序的字母、下划线(_)、美元符号($)和数字组成，并且第一个字符不能是数字。<strong>标识符不能是Java中的保留关键字、标识符区分大小写。</strong></li>
 <li>关键字：关键字是Java语言中已经被赋予特定意义的一些单词，不可以把这些字作为标识符来使用。</li>
 </ul>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="center">int</th>
-<th align="center">public</th>
-<th align="center">this</th>
-<th align="center">finally</th>
-<th align="center">boolean</th>
-<th align="center">abstract</th>
+<th style="text-align:center">int</th>
+<th style="text-align:center">public</th>
+<th style="text-align:center">this</th>
+<th style="text-align:center">finally</th>
+<th style="text-align:center">boolean</th>
+<th style="text-align:center">abstract</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">continue</td>
-<td align="center">float</td>
-<td align="center">long</td>
-<td align="center">short</td>
-<td align="center">throw</td>
-<td align="center">throws</td>
+<tbody>
+<tr>
+<td style="text-align:center">continue</td>
+<td style="text-align:center">float</td>
+<td style="text-align:center">long</td>
+<td style="text-align:center">short</td>
+<td style="text-align:center">throw</td>
+<td style="text-align:center">throws</td>
 </tr>
 <tr>
-<td align="center">return</td>
-<td align="center">break</td>
-<td align="center">for</td>
-<td align="center">static</td>
-<td align="center">new</td>
-<td align="center">interface</td>
+<td style="text-align:center">return</td>
+<td style="text-align:center">break</td>
+<td style="text-align:center">for</td>
+<td style="text-align:center">static</td>
+<td style="text-align:center">new</td>
+<td style="text-align:center">interface</td>
 </tr>
 <tr>
-<td align="center">if</td>
-<td align="center">goto</td>
-<td align="center">default</td>
-<td align="center">byte</td>
-<td align="center">do</td>
-<td align="center">case</td>
+<td style="text-align:center">if</td>
+<td style="text-align:center">goto</td>
+<td style="text-align:center">default</td>
+<td style="text-align:center">byte</td>
+<td style="text-align:center">do</td>
+<td style="text-align:center">case</td>
 </tr>
 <tr>
-<td align="center">strictfp</td>
-<td align="center">package</td>
-<td align="center">super</td>
-<td align="center">void</td>
-<td align="center">try</td>
-<td align="center">switch</td>
+<td style="text-align:center">strictfp</td>
+<td style="text-align:center">package</td>
+<td style="text-align:center">super</td>
+<td style="text-align:center">void</td>
+<td style="text-align:center">try</td>
+<td style="text-align:center">switch</td>
 </tr>
 <tr>
-<td align="center">else</td>
-<td align="center">catch</td>
-<td align="center">implements</td>
-<td align="center">private</td>
-<td align="center">final</td>
-<td align="center">class</td>
+<td style="text-align:center">else</td>
+<td style="text-align:center">catch</td>
+<td style="text-align:center">implements</td>
+<td style="text-align:center">private</td>
+<td style="text-align:center">final</td>
+<td style="text-align:center">class</td>
 </tr>
 <tr>
-<td align="center">extends</td>
-<td align="center">volatile</td>
-<td align="center">while</td>
-<td align="center">synchronized</td>
-<td align="center">instanceof</td>
-<td align="center">char</td>
+<td style="text-align:center">extends</td>
+<td style="text-align:center">volatile</td>
+<td style="text-align:center">while</td>
+<td style="text-align:center">synchronized</td>
+<td style="text-align:center">instanceof</td>
+<td style="text-align:center">char</td>
 </tr>
 <tr>
-<td align="center">protected</td>
-<td align="center">import</td>
-<td align="center">transient</td>
-<td align="center">dafault</td>
-<td align="center">double</td>
-<td align="center"></td>
+<td style="text-align:center">protected</td>
+<td style="text-align:center">import</td>
+<td style="text-align:center">transient</td>
+<td style="text-align:center">dafault</td>
+<td style="text-align:center">double</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 
     </div>
 
@@ -487,6 +488,61 @@
 
 
   
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

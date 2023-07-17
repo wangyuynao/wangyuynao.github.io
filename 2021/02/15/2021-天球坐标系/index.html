@@ -205,23 +205,27 @@
 
       
         <h1 id="坐标转换"><a href="#坐标转换" class="headerlink" title="坐标转换"></a>坐标转换</h1><span id="more"></span>
-
 <h2 id="地平坐标系转换为赤道坐标系"><a href="#地平坐标系转换为赤道坐标系" class="headerlink" title="地平坐标系转换为赤道坐标系"></a>地平坐标系转换为赤道坐标系</h2><h3 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h3><ul>
 <li><p>方位角Azimuth(deg):<code>A</code></p>
 </li>
-<li><p>高度角Altitude&#x2F;Elevation(deg):<code>E</code></p>
+<li><p>高度角Altitude/Elevation(deg):<code>E</code></p>
 </li>
-<li><p>纬度(latitude):$\phi$</p>
-</li>
+<li>纬度(latitude):$\phi$</li>
 </ul>
 <h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><ul>
 <li>时角:<code>HA</code></li>
 <li>赤纬:<code>Dec</code></li>
 </ul>
-<h3 id="转换矩阵"><a href="#转换矩阵" class="headerlink" title="转换矩阵"></a>转换矩阵</h3><p>$$<br>\begin{align}<br>x &amp;&#x3D; - \cos A * \cos E* \sin \phi + \sin E * \cos \phi \<br>y &amp;&#x3D; - \sin A * \cos E \<br>z &amp;&#x3D; \cos A * \cos E * \cos \phi + \sin E * \sin \Phi<br>\end{align}<br>$$</p>
-<h3 id="赤道坐标"><a href="#赤道坐标" class="headerlink" title="赤道坐标"></a>赤道坐标</h3><p>$$<br>\begin{align}<br>HA &amp;&#x3D; \arctan \frac{y}{x}  \<br>Dec &amp;&#x3D; \arctan \frac{z}{\sqrt{x^2+y^2}}<br>\end{align}<br>$$</p>
-<h2 id="本地恒星时-local-Sidereal-Time"><a href="#本地恒星时-local-Sidereal-Time" class="headerlink" title="本地恒星时( local Sidereal Time)"></a>本地恒星时( <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Sidereal_time">local Sidereal Time</a>)</h2><h3 id="ephem计算LST"><a href="#ephem计算LST" class="headerlink" title="ephem计算LST"></a>ephem计算LST</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import ephem</span><br><span class="line">gatech = ephem.Observer()</span><br><span class="line">gatech.lon, gatech.lat = &#x27;-84.39733&#x27;, &#x27;33.775867&#x27;</span><br><span class="line">gatech.date = &#x27;1978/10/3 11:32&#x27;</span><br><span class="line">print(gatech.sidereal_time())</span><br></pre></td></tr></table></figure>
-
+<h3 id="转换矩阵"><a href="#转换矩阵" class="headerlink" title="转换矩阵"></a>转换矩阵</h3><script type="math/tex; mode=display">
+\begin{align}
+x &= - \cos A * \cos E* \sin \phi + \sin E * \cos \phi \\
+y &= - \sin A * \cos E \\
+z &= \cos A * \cos E * \cos \phi + \sin E * \sin \Phi
+\end{align}</script><h3 id="赤道坐标"><a href="#赤道坐标" class="headerlink" title="赤道坐标"></a>赤道坐标</h3><script type="math/tex; mode=display">
+\begin{align}
+HA &= \arctan \frac{y}{x}  \\
+Dec &= \arctan \frac{z}{\sqrt{x^2+y^2}}
+\end{align}</script><h2 id="本地恒星时-local-Sidereal-Time"><a href="#本地恒星时-local-Sidereal-Time" class="headerlink" title="本地恒星时( local Sidereal Time)"></a>本地恒星时( <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Sidereal_time">local Sidereal Time</a>)</h2><h3 id="ephem计算LST"><a href="#ephem计算LST" class="headerlink" title="ephem计算LST"></a>ephem计算LST</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import ephem</span><br><span class="line">gatech = ephem.Observer()</span><br><span class="line">gatech.lon, gatech.lat = &#x27;-84.39733&#x27;, &#x27;33.775867&#x27;</span><br><span class="line">gatech.date = &#x27;1978/10/3 11:32&#x27;</span><br><span class="line">print(gatech.sidereal_time())</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -414,6 +418,61 @@
 
 
   
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

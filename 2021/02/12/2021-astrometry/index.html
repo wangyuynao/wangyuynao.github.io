@@ -206,7 +206,6 @@
       
         <h1 id="安装Astrometry-net"><a href="#安装Astrometry-net" class="headerlink" title="安装Astrometry.net"></a>安装Astrometry.net</h1><p><a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/Anaconda3-2019.10-Linux-x86_64.sh">官方教程</a></p>
 <span id="more"></span>
-
 <h2 id="系统准备"><a href="#系统准备" class="headerlink" title="系统准备"></a>系统准备</h2><blockquote>
 <p>yum install出现Loaded plugins: fastestmirror, langpacks</p>
 <p>1、修改插件配置文件</p>
@@ -218,34 +217,26 @@
 <p>然后<code>yum clean all</code> <code>yum makecache</code></p>
 </blockquote>
 <ul>
-<li>GNU build tools</li>
+<li>GNU build tools </li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install cairo-1.15.12-4 cairo-devel-1.15.12-4 libpng-1.5.13-7 libpng-devel-1.5.13-7 libjpeg-turbo-1.2.90-8 libjpeg-turbo-devel-1.2.90-8 zlib-1.2.7-18 zlib-devel-1.2.7-18 bzip2-libs-1.0.6-13 bzip2-devel-1.0.6-13 python-2.7.5-86 numpy-1.7.1-13</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>Python 3</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo yum -y install python3 python3-devel python3-pip</span><br><span class="line">sudo pip3 install numpy</span><br><span class="line">sudo pip3 install astropy</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>NetPBM</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum -y install netpbm netpbm-devel netpbm-progs</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>pyfits and cfitsio</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo yum -y install epel-release</span><br><span class="line">sudo yum -y install pyfits pyfits-tools cfitsio cfitsio-devel</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>安装g++ gcc</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum -y install gcc gcc-c++ kernel-devel</span><br></pre></td></tr></table></figure>
-
-
-
 <h2 id="Building-astrometry-net"><a href="#Building-astrometry-net" class="headerlink" title="Building astrometry.net"></a>Building astrometry.net</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">wget http://astrometry.net/downloads/astrometry.net-0.80.tar.gz</span><br><span class="line">tar zxvf astrometry.net-0.80.tar.gz</span><br><span class="line">cd astrometry.net-0.80/util/</span><br><span class="line"># Edit &#x27;makefile.netpbm&#x27;</span><br><span class="line"># NETPBM_INC ?= -I/usr/include/netpbm</span><br><span class="line"># NETPBM_LIB ?= -L/usr/lib64 -lnetpbm</span><br><span class="line"></span><br><span class="line">cd ..</span><br><span class="line">make</span><br><span class="line">make py</span><br><span class="line">make extra</span><br><span class="line">sudo make install</span><br><span class="line"></span><br><span class="line">#配置环境变量</span><br><span class="line">export PATH=$&#123;PATH&#125;:/usr/local/astrometry/bin</span><br></pre></td></tr></table></figure>
-
 
     </div>
 
@@ -438,6 +429,61 @@
 
 
   
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

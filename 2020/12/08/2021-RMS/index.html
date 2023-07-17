@@ -208,14 +208,11 @@
 <li>方差(variance)：是在概率论和统计方差衡量随机变量或一组数据离散程度的度量。概率论中方差用来度量随机变量和其数学期望(及均值)之间的偏离程度。统计中的方差(样本方差)是各个数据分别与其平均是之差的平方的和的平均数。</li>
 <li>公式表示：对于一组随机变量或者统计数据，其期望值我们由$E(X)$表示，即随机变量或统计数据的均值，然后对各个数据与均值的差的平方求和：$\sum[X-E(X)]^2$，最后对它们再求期望值就得到了方差公式。</li>
 </ul>
-<p>​        $$D(X) &#x3D; E\left{\sum[X-E(X)]^2\right}$$ </p>
+<p>​        <script type="math/tex">D(X) = E\left\{\sum[X-E(X)]^2\right\}</script> </p>
 <p>这个公式描述了随机变量或统计数据与均值的偏离程度。</p>
 <span id="more"></span>
-
-<h2 id="二、方差与标准差"><a href="#二、方差与标准差" class="headerlink" title="二、方差与标准差"></a>二、方差与标准差</h2><p>$$\sigma &#x3D; \sqrt{\frac{1}{N}\sum\limits_{i-1}^{N}(x_i-\mu)^2}$$</p>
-<p>根号里的内容就是我们刚提到的方差：</p>
-<p> $$D(X) &#x3D; E\left{\sum[X-E(X)]^2\right}$$ </p>
-<ul>
+<h2 id="二、方差与标准差"><a href="#二、方差与标准差" class="headerlink" title="二、方差与标准差"></a>二、方差与标准差</h2><script type="math/tex; mode=display">\sigma = \sqrt{\frac{1}{N}\sum\limits_{i-1}^{N}(x_i-\mu)^2}</script><p>根号里的内容就是我们刚提到的方差：</p>
+<script type="math/tex; mode=display">D(X) = E\left\{\sum[X-E(X)]^2\right\}</script><ul>
 <li>那么问题来了，既然有了方差来描述变量与均值的偏离程度，那又搞出来个标准差干什么呢？原因是：方差与我们要处理的数据的量纲是不一致的，虽然能很好的描述数据与均值的偏离程度，但是处理结果是不符合我们的直观思维的。</li>
 </ul>
 <h2 id="三、均方差、均方根误差"><a href="#三、均方差、均方根误差" class="headerlink" title="三、均方差、均方根误差"></a>三、均方差、均方根误差</h2><ul>
@@ -234,8 +231,7 @@
 均方根误差的公式一般为：
 
 总的来说，均方差（标准差）是数据序列与均值的关系，而均方根误差是数据序列与真实值之间的关系。因此，标准差是用来衡量一组数自身的离散程度，而均方根误差是用来衡量观测值同真值之间的偏差，它们的研究对象和研究目的不同，但是计算过程类似。
-</code></pre>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zengxiantao1994/article/details/77855644">https://blog.csdn.net/zengxiantao1994/article/details/77855644</a></p>
+</code></pre><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zengxiantao1994/article/details/77855644">https://blog.csdn.net/zengxiantao1994/article/details/77855644</a></p>
 </li>
 </ul>
 
@@ -430,6 +426,61 @@
 
 
   
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

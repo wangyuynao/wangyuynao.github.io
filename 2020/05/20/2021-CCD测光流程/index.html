@@ -210,21 +210,17 @@
 <li>在观测中$CCD$的视场会足够大，所以一次曝光就可以得到星像及其附近的天光。为提高测量精度，对其多帧采集。在观测过程中需要拍平场和暗场。</li>
 </ul>
 <span id="more"></span>
-
 <h2 id="2、-CCD-数据预处理"><a href="#2、-CCD-数据预处理" class="headerlink" title="2、$CCD$数据预处理"></a>2、$CCD$数据预处理</h2><ol>
 <li><p>去掉热点、死点和宇宙线的影响</p>
 </li>
 <li><p>平场、暗场的处理：</p>
-<p>$$有效数据 &#x3D; \frac{观测数据 - 暗场}{平场数据 - 暗场}$$</p>
-<ul>
+<script type="math/tex; mode=display">有效数据 = \frac{观测数据 - 暗场}{平场数据 - 暗场}</script><ul>
 <li>有效数据中已经包含了待测星和对应的天光亮度信息，记待测星为$E_A$，标准星为$E_R$.</li>
 </ul>
 </li>
 </ol>
-<h2 id="3、较差测光原理"><a href="#3、较差测光原理" class="headerlink" title="3、较差测光原理"></a>3、较差测光原理</h2><p>$$\triangle m &#x3D; m_{V_A}-m_{v_R}&#x3D; -2.5\lg(\frac{待测星-天光}{标准星-天光}) $$</p>
-<h2 id="4、天光的计算"><a href="#4、天光的计算" class="headerlink" title="4、天光的计算"></a>4、天光的计算</h2><p>​    $A$星像处的天光与其附近的相同，从$A$星的有效数据中选取一块没有星像的方形区域$S$。计算该区域的亮度和面积，可以得到每像元的天光亮度。再乘以星斑所占的像元个数，最终得到$A$星像斑中所含的天光亮度，记为$E_{A_S}$，同理标准星像斑中的天光亮度为$E_{R_S}$。</p>
-<h2 id="5、星像的视亮度计算"><a href="#5、星像的视亮度计算" class="headerlink" title="5、星像的视亮度计算"></a>5、星像的视亮度计算</h2><p>$$m_{V_A} &#x3D; m_{V_R} - 2.5\lg(\frac{E_A-E_{A_S}}{E_R-R_{R_S}})$$</p>
-<p>归算到大气外：采用公式$\triangle m_0 &#x3D; \triangle m -k’\triangle X_Z - k’’\overline X_Z\triangle C$</p>
+<h2 id="3、较差测光原理"><a href="#3、较差测光原理" class="headerlink" title="3、较差测光原理"></a>3、较差测光原理</h2><script type="math/tex; mode=display">\triangle m = m_{V_A}-m_{v_R}= -2.5\lg(\frac{待测星-天光}{标准星-天光})</script><h2 id="4、天光的计算"><a href="#4、天光的计算" class="headerlink" title="4、天光的计算"></a>4、天光的计算</h2><p>​    $A$星像处的天光与其附近的相同，从$A$星的有效数据中选取一块没有星像的方形区域$S$。计算该区域的亮度和面积，可以得到每像元的天光亮度。再乘以星斑所占的像元个数，最终得到$A$星像斑中所含的天光亮度，记为$E_{A_S}$，同理标准星像斑中的天光亮度为$E_{R_S}$。</p>
+<h2 id="5、星像的视亮度计算"><a href="#5、星像的视亮度计算" class="headerlink" title="5、星像的视亮度计算"></a>5、星像的视亮度计算</h2><script type="math/tex; mode=display">m_{V_A} = m_{V_R} - 2.5\lg(\frac{E_A-E_{A_S}}{E_R-R_{R_S}})</script><p>归算到大气外：采用公式$\triangle m_0 = \triangle m -k’\triangle X_Z - k’’\overline X_Z\triangle C$</p>
 
     </div>
 
@@ -417,6 +413,61 @@
 
 
   
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
