@@ -254,11 +254,11 @@
 <p><strong><em>另一部分光线发生折射</em></strong>，折射光线何去何从取决于物质的组成成分。</p>
 <p>对于玻璃等透明物质，光线穿透玻璃，在另一边再次发生反射折射，图形学用双向透射分布函数BTDF来模拟这种现象，以后有机会再写。下面我们看看不透明和半透明物质。</p>
 <p>对于金属，折射进表面的光线的能量会立即被金属中的自由电子吸收，转换成电子的能量，不再可见（下图左边）。对于非金属（电介质或绝缘体），它们往往不是由单一成分构成，而可以认为其中包含了很多折射率不同的微粒，光线遇到这些粒子后发生反射折射，在物质内部不断传播，散射到不同方向，其中一部分会再次穿过表面被观察到，这种现象称为次表面散射（Subsurface Scattering，下图右边穿出表面的蓝色光线），也有一部分在传输过程中被吸收。</p>
-<p><img src="https://wangyu-typora.oss-cn-nanjing.aliyuncs.com/img/41b6e086c47de7dc6b35e14e717487e8_b-165275459425124.jpg" alt="img" style="zoom:80%;" /></p>
+<p><img src="https://wangyu-typora.oss-cn-nanjing.aliyuncs.com/img/41b6e086c47de7dc6b35e14e717487e8_b-165275459425124.jpg" alt="img" style="zoom:80%;"></p>
 <p>根据物质属性和观察尺度的不同，次表面散射会表现出不同的效果。</p>
 <p>如下面的左上图，如果光线在物质中传播距离小于观察尺度（绿色区域，可以认为是一个像素区域），我们看到情况如下面的右上图，入射点、反射点、次表面散射的出射点看起来是同一个点。其中反射部分（图中浅棕色出射光）就是我们常说的高光（Specular Light），常聚集在一个方向周围，向这个方向观察该点会看到明显的高光，从其他方向观察该点时高光则比较微弱；次表面散射部分（图中蓝色出射光）是漫射光（Diffuse Light），光线被散射到各个方向。双向反射分布函数BRDF就是用来模拟这种现象的，这也是本文关注的重点。</p>
 <p>如果光线在物质中的传播距离大于观察尺度，如下面的下图，就需要使用次表面散射算法来建模，<a target="_blank" rel="noopener" href="https://www.zhihu.com/people/59827f0a435d7b054c8339422dde6773">@文刀秋二</a> 写了一篇很好的<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/21247702?refer=graphics">关于次表面散射的文章</a>。</p>
-<p><img src="https://wangyu-typora.oss-cn-nanjing.aliyuncs.com/img/74f9aeff347dc1ec6f943a61f7d5ddee_b-165275460222328.jpg" alt="img" style="zoom:80%;" /></p>
+<p><img src="https://wangyu-typora.oss-cn-nanjing.aliyuncs.com/img/74f9aeff347dc1ec6f943a61f7d5ddee_b-165275460222328.jpg" alt="img" style="zoom:80%;"></p>
 <h2 id="光照模型"><a href="#光照模型" class="headerlink" title="光照模型"></a>光照模型</h2><p>为了模拟非光学平面的散射，人们建立了各种模型，大致可以分为以下几类：</p>
 <h3 id="1-测量模型"><a href="#1-测量模型" class="headerlink" title="1.测量模型"></a>1.测量模型</h3><p>MERL等实验室使用仪器测量了上百种真实材质表面在不同光照角度和观察角度下的反射数据，并记录在<a href="https://link.zhihu.com/?target=http%3A//www.merl.com/brdf/">MERL BRDF Database</a>等数据库中。这些数据由于采集自真实材质，所以使用它渲染出来的结果很真实，但缺点是没有可供调整效果的参数，无法基于这些数据修改成想要的效果，另外部分极端角度由于仪器限制，无法获取到数据，而且采样点密集，数据量非常庞大，所以并不适合游戏等实时领域，一般可用在电影等离线渲染领域，也可以用来做图形学研究，衡量其他模型的真实程度。</p>
 <h3 id="2-经验模型"><a href="#2-经验模型" class="headerlink" title="2. 经验模型"></a>2. 经验模型</h3><p>经验模型并不是基于物理原理，而是提出经验公式，通过调整参数来模拟光照。</p>
@@ -282,10 +282,10 @@
 <h3 id="3-辐照度和幅出度"><a href="#3-辐照度和幅出度" class="headerlink" title="3.辐照度和幅出度"></a>3.辐照度和幅出度</h3><p>辐照度（Irradiance），指单位时间内到达单位面积的辐射能量，或到达单位面积的辐射通量，也就是通量对于面积的密度。用符号$E$表示，单位$W/m^2$。定义为$E = \frac{d\Phi}{dA}$。</p>
 <p>辐出度（Radiant Existance），也称为辐射出射度、辐射度（Radiosity），用符号M表示。辐出度与辐照度类似，唯一的区别在辐出度衡量的是离开表面的通量密度，辐照度衡量的是到达表面的通量密度。辐照度和辐出度都可以称为辐射通量密度（Radiant Flux Density）。</p>
 <p>处理通量密度时，我们需要注意表面朝向和光线方向的角度。如下图所示，当光线垂直表面照射时，照射到表面上时的间距为$d$；而当光线倾斜照射表面时（光照向量$l$和表面法线$n$的夹角为$\theta_i$，间距为$d/\cos\theta_i$，光线间距相对垂直照射时变大了，也就是说倾斜照射时通量密度降低了。光照角度影响通量密度在我们日常生活中有很多实际例子，地球的季节变化就是因为光照角度变化，导致通量密度发生了变化。</p>
-<p><img src="https://wangyu-typora.oss-cn-nanjing.aliyuncs.com/img/749a01b706ea4b07f0d3dbaaccf84401_b-165275462811632.jpg" alt="img" style="zoom:80%;" /></p>
+<p><img src="https://wangyu-typora.oss-cn-nanjing.aliyuncs.com/img/749a01b706ea4b07f0d3dbaaccf84401_b-165275462811632.jpg" alt="img" style="zoom:80%;"></p>
 <p>假定不垂直于光线传输方向的表面面积为$A$，将它投影到垂直于光线方向得到一个虚拟表面，这个虚拟表面的面积为$A^{\perp} = A\cos\theta_i$，通过这两个面积的通量是相同的，均为$\Phi$，则表面接收到的辐照度$E = \frac{\Phi}{A}$，虚拟表面上的辐照度$E_L = \frac{\Phi}{A^{\perp}} = \frac{\Phi}{A\cos\theta_i}$，于是$E = E_L \cos\theta_i$。</p>
 <p>点光源向四周辐射能量，假想以点光源为中心不同半径的球包围着点光源，穿过这些球的辐射通量是相同的，均为$\Phi$，而球的表面积为$4\pi r^2$ ，可得通量密度$E = \frac{\Phi}{4\pi r^2}$，也就是说通量密度与距离的平方成反比，离光源越远，通量密度越低，这也是为什么光的衰减与距离的平方成正比。</p>
-<p><img src="https://wangyu-typora.oss-cn-nanjing.aliyuncs.com/img/2c10911640bba08d13fbbb7e64674d7f_b-165275463806936.jpg" alt="img" style="zoom:80%;" /></p>
+<p><img src="https://wangyu-typora.oss-cn-nanjing.aliyuncs.com/img/2c10911640bba08d13fbbb7e64674d7f_b-165275463806936.jpg" alt="img" style="zoom:80%;"></p>
 <h4 id="4-辐射强度"><a href="#4-辐射强度" class="headerlink" title="4.辐射强度"></a>4.辐射强度</h4><p>​        讲辐射强度前，我们需要先知道立体角（Solid Angle）的概念，立体角可以看成是弧度的三维扩展。我们知道弧度是度量二维角度的量，等于角度在单位圆上对应的弧长，单位圆的周长是$2\pi$，所以整个圆对应的弧度也是$2\pi$ 。立体角则是度量三维角度的量，用符号$\omega$表示，单位为立体弧度（也叫球面度，Steradian，简写为sr），等于立体角在单位球上对应的区域的面积（实际上也就是在任意半径的球上的面积除以半径的平方$\omega = \frac{s}{r^2}$），单位球的表面积是$4\pi$，所以整个球面的立体角也是$4\pi$。</p>
 <p>​        我们可以用一个向量和一个立体角来表示一束光线，向量表示这束光线的指向，立体角表示这束光线投射在单位球上的面积，也就是光束的粗细。如下图左边，向量l表示光源方向，微分立体角$d\omega_i$表示光束的粗细是无穷小。右边则表示面积光照到平面上的一点，立体角$\omega_L$不再是无穷小。</p>
 <p><img src="https://wangyu-typora.oss-cn-nanjing.aliyuncs.com/img/a56ff2378935ab912ccc60594fb427cf_b-165275465029540.jpg" alt="img"></p>
