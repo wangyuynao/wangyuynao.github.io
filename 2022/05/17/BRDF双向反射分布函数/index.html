@@ -27,25 +27,25 @@
 <meta property="og:site_name" content="W.Yu&#39;s BLOG">
 <meta property="og:description" content="BRDF（双向反射分布函数）在计算机图形学领域，着色（Shading）是指根据表面或者多边形相对光源和相机的角度和距离来计算它的颜色的过程。不同的用途可以使用不同的着色算法，CAD等追求响应速度的交互式图形领域可以使用简单快速的着色算法，卡通油画等艺术效果可以使用非真实感（Nonphotorealistic）着色算法，而追求真实感的CG电影或游戏则可以使用基于物理建模的着色算法。 本文关注基于物理">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://wangyu-typora.oss-cn-nanjing.aliyuncs.com/img/fce81f9d4ba4619ef44ee1dfd4915eab_b-16527545278573.jpg">
-<meta property="og:image" content="https://wangyu-typora.oss-cn-nanjing.aliyuncs.com/img/cc25239f2cbd0188e36ccb68b40e9bf1_b-165275457310816.jpg">
-<meta property="og:image" content="https://wangyu-typora.oss-cn-nanjing.aliyuncs.com/img/f16716fe323556869d153a175550e30f_b-165275458641820.jpg">
-<meta property="og:image" content="https://wangyu-typora.oss-cn-nanjing.aliyuncs.com/img/41b6e086c47de7dc6b35e14e717487e8_b-165275459425124.jpg">
-<meta property="og:image" content="https://wangyu-typora.oss-cn-nanjing.aliyuncs.com/img/74f9aeff347dc1ec6f943a61f7d5ddee_b-165275460222328.jpg">
-<meta property="og:image" content="https://wangyu-typora.oss-cn-nanjing.aliyuncs.com/img/749a01b706ea4b07f0d3dbaaccf84401_b-165275462811632.jpg">
-<meta property="og:image" content="https://wangyu-typora.oss-cn-nanjing.aliyuncs.com/img/2c10911640bba08d13fbbb7e64674d7f_b-165275463806936.jpg">
-<meta property="og:image" content="https://wangyu-typora.oss-cn-nanjing.aliyuncs.com/img/a56ff2378935ab912ccc60594fb427cf_b-165275465029540.jpg">
-<meta property="og:image" content="https://wangyu-typora.oss-cn-nanjing.aliyuncs.com/img/5ff8f88c297c3311a167a536b04e33c4_b-165275482229244.jpg">
-<meta property="og:image" content="https://wangyu-typora.oss-cn-nanjing.aliyuncs.com/img/a65ae4967cfab6e5a8fff7ba3e9824ed_b-165275483653748.jpg">
-<meta property="og:image" content="https://wangyu-typora.oss-cn-nanjing.aliyuncs.com/img/77aa9a3b3302d240ed5093bbf4d46625_b-165275484532052.jpg">
-<meta property="og:image" content="https://wangyu-typora.oss-cn-nanjing.aliyuncs.com/img/85e93632f88e18f46cc9b73729c31a93_b.jpg">
-<meta property="og:image" content="https://wangyu-typora.oss-cn-nanjing.aliyuncs.com/img/bf148ad85915e647cdb50762999da037_b.jpg">
+<meta property="og:image" content="https://wangyuynao.github.io/2022/05/17/BRDF%E5%8F%8C%E5%90%91%E5%8F%8D%E5%B0%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0/fce81f9d4ba4619ef44ee1dfd4915eab_b-16527545278573.jpg">
+<meta property="og:image" content="https://wangyuynao.github.io/2022/05/17/BRDF%E5%8F%8C%E5%90%91%E5%8F%8D%E5%B0%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0/cc25239f2cbd0188e36ccb68b40e9bf1_b-165275457310816.jpg">
+<meta property="og:image" content="https://wangyuynao.github.io/2022/05/17/BRDF%E5%8F%8C%E5%90%91%E5%8F%8D%E5%B0%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0/f16716fe323556869d153a175550e30f_b-165275458641820.jpg">
+<meta property="og:image" content="https://wangyuynao.github.io/2022/05/17/BRDF%E5%8F%8C%E5%90%91%E5%8F%8D%E5%B0%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0/41b6e086c47de7dc6b35e14e717487e8_b-165275459425124.jpg">
+<meta property="og:image" content="https://wangyuynao.github.io/2022/05/17/BRDF%E5%8F%8C%E5%90%91%E5%8F%8D%E5%B0%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0/74f9aeff347dc1ec6f943a61f7d5ddee_b-165275460222328.jpg">
+<meta property="og:image" content="https://wangyuynao.github.io/2022/05/17/BRDF%E5%8F%8C%E5%90%91%E5%8F%8D%E5%B0%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0/749a01b706ea4b07f0d3dbaaccf84401_b-165275462811632.jpg">
+<meta property="og:image" content="https://wangyuynao.github.io/2022/05/17/BRDF%E5%8F%8C%E5%90%91%E5%8F%8D%E5%B0%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0/2c10911640bba08d13fbbb7e64674d7f_b-165275463806936.jpg">
+<meta property="og:image" content="https://wangyuynao.github.io/2022/05/17/BRDF%E5%8F%8C%E5%90%91%E5%8F%8D%E5%B0%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0/a56ff2378935ab912ccc60594fb427cf_b-165275465029540.jpg">
+<meta property="og:image" content="https://wangyuynao.github.io/2022/05/17/BRDF%E5%8F%8C%E5%90%91%E5%8F%8D%E5%B0%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0/5ff8f88c297c3311a167a536b04e33c4_b-165275482229244.jpg">
+<meta property="og:image" content="https://wangyuynao.github.io/2022/05/17/BRDF%E5%8F%8C%E5%90%91%E5%8F%8D%E5%B0%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0/a65ae4967cfab6e5a8fff7ba3e9824ed_b-165275483653748.jpg">
+<meta property="og:image" content="https://wangyuynao.github.io/2022/05/17/BRDF%E5%8F%8C%E5%90%91%E5%8F%8D%E5%B0%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0/77aa9a3b3302d240ed5093bbf4d46625_b-165275484532052.jpg">
+<meta property="og:image" content="https://wangyuynao.github.io/2022/05/17/BRDF%E5%8F%8C%E5%90%91%E5%8F%8D%E5%B0%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0/85e93632f88e18f46cc9b73729c31a93_b.jpg">
+<meta property="og:image" content="https://wangyuynao.github.io/2022/05/17/BRDF%E5%8F%8C%E5%90%91%E5%8F%8D%E5%B0%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0/bf148ad85915e647cdb50762999da037_b.jpg">
 <meta property="article:published_time" content="2022-05-17T03:50:16.000Z">
-<meta property="article:modified_time" content="2022-05-21T12:39:33.203Z">
+<meta property="article:modified_time" content="2023-07-20T02:00:54.697Z">
 <meta property="article:author" content="Wang Yu">
 <meta property="article:tag" content="BRDF">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://wangyu-typora.oss-cn-nanjing.aliyuncs.com/img/fce81f9d4ba4619ef44ee1dfd4915eab_b-16527545278573.jpg">
+<meta name="twitter:image" content="https://wangyuynao.github.io/2022/05/17/BRDF%E5%8F%8C%E5%90%91%E5%8F%8D%E5%B0%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0/fce81f9d4ba4619ef44ee1dfd4915eab_b-16527545278573.jpg">
 
 <link rel="canonical" href="https://wangyuynao.github.io/2022/05/17/BRDF%E5%8F%8C%E5%90%91%E5%8F%8D%E5%B0%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0/">
 
@@ -205,7 +205,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-05-21 20:39:33" itemprop="dateModified" datetime="2022-05-21T20:39:33+08:00">2022-05-21</time>
+                <time title="修改时间：2023-07-20 10:00:54" itemprop="dateModified" datetime="2023-07-20T10:00:54+08:00">2023-07-20</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -233,10 +233,10 @@
 <p>要模拟真实光照，我们先要弄清光照的现象。</p>
 <span id="more"></span>
 <h2 id="光照现象"><a href="#光照现象" class="headerlink" title="光照现象"></a>光照现象</h2><p>光由光子组成，光子既具有粒子的特性，又表现出波的特性。从波的角度看，光是电磁波的一种，不同频率（波长）的光波能量不同，频率越高（波长越短），能量越高，频率越低（波长越长），能量越低，其中波长在380nm－780nm范围内的光波能被人类的视网膜感知到，这个范围的光波称为可见光，不同频率的可见光被人感知为不同的颜色，频率越高的光偏蓝，频率较低的光则偏红。</p>
-<p><img src="https://wangyu-typora.oss-cn-nanjing.aliyuncs.com/img/fce81f9d4ba4619ef44ee1dfd4915eab_b-16527545278573.jpg" alt="img"></p>
+<p><img src="/2022/05/17/BRDF%E5%8F%8C%E5%90%91%E5%8F%8D%E5%B0%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0/fce81f9d4ba4619ef44ee1dfd4915eab_b-16527545278573.jpg" alt="fce81f9d4ba4619ef44ee1dfd4915eab_b-16527545278573"></p>
 <p>光学根据研究的尺度可以分为波动光学（Wave Optics）和几何光学（Geometric Optics），波动光学比几何光学复杂，而由于图形学领域关注的尺度远大于可见光的波长（380nm－780nm），也很少涉及光的偏振、干涉和衍射等波动光学才能解释的现象，所以我们一般用几何光学来建立光照模型。</p>
 <h3 id="光学平面边界上的散射"><a href="#光学平面边界上的散射" class="headerlink" title="光学平面边界上的散射"></a>光学平面边界上的散射</h3><p>我们在中学物理课上学过光学平面边界的散射。</p>
-<p><img src="https://wangyu-typora.oss-cn-nanjing.aliyuncs.com/img/cc25239f2cbd0188e36ccb68b40e9bf1_b-165275457310816.jpg" alt="img"></p>
+<p><img src="/2022/05/17/BRDF%E5%8F%8C%E5%90%91%E5%8F%8D%E5%B0%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0/cc25239f2cbd0188e36ccb68b40e9bf1_b-165275457310816.jpg" alt="cc25239f2cbd0188e36ccb68b40e9bf1_b-165275457310816"></p>
 <p>平面边界两边物质的折射率（Refractive Index）不同，当一束光线从一种物质照射到平面边界上时，其中一部分在平面边界被反射回这种物质，反射方向为入射方向关于平面法线的对称向量：</p>
 <script type="math/tex; mode=display">r_i = 2(n \cdot l) n - l</script><blockquote>
 <p>其中$r_i$是反射向量，$l$是光线入射向量，$n$是平面法线</p>
@@ -249,16 +249,16 @@
 <p>反射和折射的比例由菲涅尔方程(Fresnel Equations)给出，菲涅尔方程比较复杂，图形学里一般使用近似公式计算。</p>
 <h2 id="非光学平面上的散射"><a href="#非光学平面上的散射" class="headerlink" title="非光学平面上的散射"></a>非光学平面上的散射</h2><p>现实世界中的表面绝大多数都是凹凸不平的，尽管这种凹凸不平小于肉眼可见的尺度，但远大于光线的波长。在这种情况下，可以把表面看成是大量朝向各异的微小光学平面的集合，我们肉眼可见的每个点都包含了很多个这样的微小光学平面。</p>
 <p>光线照射到这些微小表面上时，同样<strong><em>一部分在表面发生反射</em></strong>。这些朝向不同的微表面把入射光线反射到不同的方向。</p>
-<p><img src="https://wangyu-typora.oss-cn-nanjing.aliyuncs.com/img/f16716fe323556869d153a175550e30f_b-165275458641820.jpg" alt="img"></p>
+<p><img src="/2022/05/17/BRDF%E5%8F%8C%E5%90%91%E5%8F%8D%E5%B0%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0/f16716fe323556869d153a175550e30f_b-165275458641820.jpg" alt="f16716fe323556869d153a175550e30f_b-165275458641820"></p>
 <p>从上图可以看出表面粗糙程度对光线反射方向的影响。上面的物体表面相对光滑，微表面朝向差别较小，反射光线的方向差别也比较小，表面反射环境的图像比较锐利。下面的物体表面比较粗糙，微表面朝向差别大，反射光线的方向差别也比较大，表面反射环境的图像比较模糊。</p>
 <p><strong><em>另一部分光线发生折射</em></strong>，折射光线何去何从取决于物质的组成成分。</p>
 <p>对于玻璃等透明物质，光线穿透玻璃，在另一边再次发生反射折射，图形学用双向透射分布函数BTDF来模拟这种现象，以后有机会再写。下面我们看看不透明和半透明物质。</p>
 <p>对于金属，折射进表面的光线的能量会立即被金属中的自由电子吸收，转换成电子的能量，不再可见（下图左边）。对于非金属（电介质或绝缘体），它们往往不是由单一成分构成，而可以认为其中包含了很多折射率不同的微粒，光线遇到这些粒子后发生反射折射，在物质内部不断传播，散射到不同方向，其中一部分会再次穿过表面被观察到，这种现象称为次表面散射（Subsurface Scattering，下图右边穿出表面的蓝色光线），也有一部分在传输过程中被吸收。</p>
-<p><img src="https://wangyu-typora.oss-cn-nanjing.aliyuncs.com/img/41b6e086c47de7dc6b35e14e717487e8_b-165275459425124.jpg" alt="img" style="zoom:80%;"></p>
+<p><img src="/2022/05/17/BRDF%E5%8F%8C%E5%90%91%E5%8F%8D%E5%B0%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0/41b6e086c47de7dc6b35e14e717487e8_b-165275459425124.jpg" alt="41b6e086c47de7dc6b35e14e717487e8_b-165275459425124"></p>
 <p>根据物质属性和观察尺度的不同，次表面散射会表现出不同的效果。</p>
 <p>如下面的左上图，如果光线在物质中传播距离小于观察尺度（绿色区域，可以认为是一个像素区域），我们看到情况如下面的右上图，入射点、反射点、次表面散射的出射点看起来是同一个点。其中反射部分（图中浅棕色出射光）就是我们常说的高光（Specular Light），常聚集在一个方向周围，向这个方向观察该点会看到明显的高光，从其他方向观察该点时高光则比较微弱；次表面散射部分（图中蓝色出射光）是漫射光（Diffuse Light），光线被散射到各个方向。双向反射分布函数BRDF就是用来模拟这种现象的，这也是本文关注的重点。</p>
 <p>如果光线在物质中的传播距离大于观察尺度，如下面的下图，就需要使用次表面散射算法来建模，<a target="_blank" rel="noopener" href="https://www.zhihu.com/people/59827f0a435d7b054c8339422dde6773">@文刀秋二</a> 写了一篇很好的<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/21247702?refer=graphics">关于次表面散射的文章</a>。</p>
-<p><img src="https://wangyu-typora.oss-cn-nanjing.aliyuncs.com/img/74f9aeff347dc1ec6f943a61f7d5ddee_b-165275460222328.jpg" alt="img" style="zoom:80%;"></p>
+<p><img src="/2022/05/17/BRDF%E5%8F%8C%E5%90%91%E5%8F%8D%E5%B0%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0/74f9aeff347dc1ec6f943a61f7d5ddee_b-165275460222328.jpg" alt="74f9aeff347dc1ec6f943a61f7d5ddee_b-165275460222328"></p>
 <h2 id="光照模型"><a href="#光照模型" class="headerlink" title="光照模型"></a>光照模型</h2><p>为了模拟非光学平面的散射，人们建立了各种模型，大致可以分为以下几类：</p>
 <h3 id="1-测量模型"><a href="#1-测量模型" class="headerlink" title="1.测量模型"></a>1.测量模型</h3><p>MERL等实验室使用仪器测量了上百种真实材质表面在不同光照角度和观察角度下的反射数据，并记录在<a href="https://link.zhihu.com/?target=http%3A//www.merl.com/brdf/">MERL BRDF Database</a>等数据库中。这些数据由于采集自真实材质，所以使用它渲染出来的结果很真实，但缺点是没有可供调整效果的参数，无法基于这些数据修改成想要的效果，另外部分极端角度由于仪器限制，无法获取到数据，而且采样点密集，数据量非常庞大，所以并不适合游戏等实时领域，一般可用在电影等离线渲染领域，也可以用来做图形学研究，衡量其他模型的真实程度。</p>
 <h3 id="2-经验模型"><a href="#2-经验模型" class="headerlink" title="2. 经验模型"></a>2. 经验模型</h3><p>经验模型并不是基于物理原理，而是提出经验公式，通过调整参数来模拟光照。</p>
@@ -282,18 +282,18 @@
 <h3 id="3-辐照度和幅出度"><a href="#3-辐照度和幅出度" class="headerlink" title="3.辐照度和幅出度"></a>3.辐照度和幅出度</h3><p>辐照度（Irradiance），指单位时间内到达单位面积的辐射能量，或到达单位面积的辐射通量，也就是通量对于面积的密度。用符号$E$表示，单位$W/m^2$。定义为$E = \frac{d\Phi}{dA}$。</p>
 <p>辐出度（Radiant Existance），也称为辐射出射度、辐射度（Radiosity），用符号M表示。辐出度与辐照度类似，唯一的区别在辐出度衡量的是离开表面的通量密度，辐照度衡量的是到达表面的通量密度。辐照度和辐出度都可以称为辐射通量密度（Radiant Flux Density）。</p>
 <p>处理通量密度时，我们需要注意表面朝向和光线方向的角度。如下图所示，当光线垂直表面照射时，照射到表面上时的间距为$d$；而当光线倾斜照射表面时（光照向量$l$和表面法线$n$的夹角为$\theta_i$，间距为$d/\cos\theta_i$，光线间距相对垂直照射时变大了，也就是说倾斜照射时通量密度降低了。光照角度影响通量密度在我们日常生活中有很多实际例子，地球的季节变化就是因为光照角度变化，导致通量密度发生了变化。</p>
-<p><img src="https://wangyu-typora.oss-cn-nanjing.aliyuncs.com/img/749a01b706ea4b07f0d3dbaaccf84401_b-165275462811632.jpg" alt="img" style="zoom:80%;"></p>
+<p><img src="/2022/05/17/BRDF%E5%8F%8C%E5%90%91%E5%8F%8D%E5%B0%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0/749a01b706ea4b07f0d3dbaaccf84401_b-165275462811632.jpg" alt="749a01b706ea4b07f0d3dbaaccf84401_b-165275462811632"></p>
 <p>假定不垂直于光线传输方向的表面面积为$A$，将它投影到垂直于光线方向得到一个虚拟表面，这个虚拟表面的面积为$A^{\perp} = A\cos\theta_i$，通过这两个面积的通量是相同的，均为$\Phi$，则表面接收到的辐照度$E = \frac{\Phi}{A}$，虚拟表面上的辐照度$E_L = \frac{\Phi}{A^{\perp}} = \frac{\Phi}{A\cos\theta_i}$，于是$E = E_L \cos\theta_i$。</p>
 <p>点光源向四周辐射能量，假想以点光源为中心不同半径的球包围着点光源，穿过这些球的辐射通量是相同的，均为$\Phi$，而球的表面积为$4\pi r^2$ ，可得通量密度$E = \frac{\Phi}{4\pi r^2}$，也就是说通量密度与距离的平方成反比，离光源越远，通量密度越低，这也是为什么光的衰减与距离的平方成正比。</p>
-<p><img src="https://wangyu-typora.oss-cn-nanjing.aliyuncs.com/img/2c10911640bba08d13fbbb7e64674d7f_b-165275463806936.jpg" alt="img" style="zoom:80%;"></p>
+<p><img src="/2022/05/17/BRDF%E5%8F%8C%E5%90%91%E5%8F%8D%E5%B0%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0/2c10911640bba08d13fbbb7e64674d7f_b-165275463806936.jpg" alt="2c10911640bba08d13fbbb7e64674d7f_b-165275463806936"></p>
 <h4 id="4-辐射强度"><a href="#4-辐射强度" class="headerlink" title="4.辐射强度"></a>4.辐射强度</h4><p>​        讲辐射强度前，我们需要先知道立体角（Solid Angle）的概念，立体角可以看成是弧度的三维扩展。我们知道弧度是度量二维角度的量，等于角度在单位圆上对应的弧长，单位圆的周长是$2\pi$，所以整个圆对应的弧度也是$2\pi$ 。立体角则是度量三维角度的量，用符号$\omega$表示，单位为立体弧度（也叫球面度，Steradian，简写为sr），等于立体角在单位球上对应的区域的面积（实际上也就是在任意半径的球上的面积除以半径的平方$\omega = \frac{s}{r^2}$），单位球的表面积是$4\pi$，所以整个球面的立体角也是$4\pi$。</p>
 <p>​        我们可以用一个向量和一个立体角来表示一束光线，向量表示这束光线的指向，立体角表示这束光线投射在单位球上的面积，也就是光束的粗细。如下图左边，向量l表示光源方向，微分立体角$d\omega_i$表示光束的粗细是无穷小。右边则表示面积光照到平面上的一点，立体角$\omega_L$不再是无穷小。</p>
-<p><img src="https://wangyu-typora.oss-cn-nanjing.aliyuncs.com/img/a56ff2378935ab912ccc60594fb427cf_b-165275465029540.jpg" alt="img"></p>
+<p><img src="/2022/05/17/BRDF%E5%8F%8C%E5%90%91%E5%8F%8D%E5%B0%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0/a56ff2378935ab912ccc60594fb427cf_b-165275465029540.jpg" alt="a56ff2378935ab912ccc60594fb427cf_b-165275465029540"></p>
 <p>辐射强度（Radiant Intensity），指通过单位立体角的辐射通量。用符号$I$表示，单位$W/sr$，定义为$I = \frac{d\Phi}{d\omega}$。</p>
 <p>之所以引入辐射强度，是因为有时候要度量通过一个点的通量的密度，但因为点的面积是0，无法使用辐照度，所以引入辐射强度。辐射强度不会随距离变化而变化，不像点光源的辐照度会随距离增大而衰减，这是因为立体角不会随距离变化而变化。</p>
 <h3 id="5-辐射率"><a href="#5-辐射率" class="headerlink" title="5.辐射率"></a>5.辐射率</h3><p>我们常需要度量从一个微小面积表面出发，射向某个微小方向的通量（或者来自某个微小方向，照射到微小面积表面的通量），辐射率就是度量这种情况的量。</p>
 <p>辐射率（Radiance），指每单位面积每单位立体角的辐射通量密度。用符号$L$表示，单位$W/m^2 sr$。定义为$L = \frac{d\Phi}{d\omega dA^{\perp}}$。其中$dA^{\perp}$是微分面积$dA$在垂直于光线方向的投影，如下图所示。</p>
-<p><img src="https://wangyu-typora.oss-cn-nanjing.aliyuncs.com/img/5ff8f88c297c3311a167a536b04e33c4_b-165275482229244.jpg" alt="img"></p>
+<p><img src="/2022/05/17/BRDF%E5%8F%8C%E5%90%91%E5%8F%8D%E5%B0%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0/5ff8f88c297c3311a167a536b04e33c4_b-165275482229244.jpg" alt="5ff8f88c297c3311a167a536b04e33c4_b-165275482229244"></p>
 <p>辐射率实际上可以看成是我们眼睛看到（或相机拍到）的物体上一点的颜色。在基于物理着色时，计算表面一点的颜色就是计算它的辐射率。</p>
 <p>辐射率不会随距离变化而衰减，这和我们日常感受一致，在没有雾霾的干扰时，我们看到的物体表面上一点的颜色并不会随距离变化而变化。为什么辐照度会随距离增大而衰减，但是我们看到的颜色却不会衰减呢？这是因为随着距离变大，我们看到的物体上的一块区域到达视网膜的通量密度会变小，同时这块区域在视网膜表面上的立体角也会变小，正好抵消了通量密度的变化。</p>
 <h2 id="BRDF"><a href="#BRDF" class="headerlink" title="BRDF"></a>BRDF</h2><p>我们看到一个表面，实际上是周围环境的光照射到表面上，然后表面将一部分光反射到我们眼睛里。双向反射分布函数BRDF（Bidirectional Reflectance Distribution Function）就是描述表面入射光和反射光关系的。</p>
@@ -310,12 +310,12 @@
 <li>方向在平面上的投影相对于平面上一个坐标轴的角度$\phi$，称为方位角（Azimuthal Angle）。</li>
 </ol>
 <p>所以BRDF也可以表示成$f(\theta_i,\phi_i,\theta_o,\phi_o)$。对于各向同性材质，当$l$和$v$同时绕法线$n$旋转时，$f$值保持不变，此时可以用$l$和$v$在平面投影的夹角$\phi$来代替$\phi_i$和$\phi_o$ : $f(\theta_i,\theta_o,\phi)$。</p>
-<p><img src="https://wangyu-typora.oss-cn-nanjing.aliyuncs.com/img/a65ae4967cfab6e5a8fff7ba3e9824ed_b-165275483653748.jpg" alt="img"></p>
+<p><img src="/2022/05/17/BRDF%E5%8F%8C%E5%90%91%E5%8F%8D%E5%B0%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0/a65ae4967cfab6e5a8fff7ba3e9824ed_b-165275483653748.jpg" alt="a65ae4967cfab6e5a8fff7ba3e9824ed_b-165275483653748"></p>
 <p>至于<strong>为什么BRDF要定义成辐射率和辐照度的比值，而不是直接定义为辐射率和辐射率比值</strong>，有两种解释。</p>
 <p><strong><em>第一种解释</em></strong>可以参看<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/28476602/answer/41003204">brdf为什么要定义为一个单位是sr-1的量？</a></p>
 <p>我们结合下面辐照度（A）和辐射率（B）测量仪的示意图来看看。辐照度测量仪（A）接受平面上半球的所有光线，可以测量一个较小面积来自于四面八方的所有光通量，光通量$\Phi$除以传感器面积$A$就可以得到辐照度$E$。辐射度测量仪（B）则有一个长筒控制光线只能从一个很小的立体角进入测量仪，光通量$\Phi$除以传感器面积$A$和立体角$\omega$就可以得到辐射率$L$。</p>
 <p>测平面上一点在某一个方向的出射辐射率很简单，只需要用仪器（B）从该方向对准该点就可以了。而测平面一点入射的辐射率则没有那么简单，必须保证光源正好覆盖测量仪开口立体角，大了该点会接受到比测量值更多的光照，导致测量值比实际值小，小了则与仪器的设计立体角不一致，可在实际中是基本做不到光源大小正好覆盖测量仪开口立体角的。而测表面的辐照度则简单得多，只要保证光源很小，而且没有来自其他方向的光干扰，这时候测到的辐照度就是平面上来自光源方向的微分辐照度$\mathrm{d}E$。</p>
-<p><img src="https://wangyu-typora.oss-cn-nanjing.aliyuncs.com/img/77aa9a3b3302d240ed5093bbf4d46625_b-165275484532052.jpg" alt="img"></p>
+<p><img src="/2022/05/17/BRDF%E5%8F%8C%E5%90%91%E5%8F%8D%E5%B0%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0/77aa9a3b3302d240ed5093bbf4d46625_b-165275484532052.jpg" alt="77aa9a3b3302d240ed5093bbf4d46625_b-165275484532052"></p>
 <p><strong>第二种解释</strong>从数学的角度触发，对于现实世界中的非光学平面，一束光线射到表面上后，被表面反射到各个方向，其中一个出射方向的光通量只是整个反射光通量极小的一部分，当出射方向立体角趋于0时，$\lim _{\omega_o \to 0} \frac{dL_o}{L_i} = 0$</p>
 <p>，所以在实际计算中使用辐射率和辐射率比值是没有意义的。而如果分母改成表面上接收到的来自光源方向的微分辐照度，我们知道$dE = L_i(i)d\omega_i \cos \theta_i$，由于给入射辐射率乘了一个趋于零的微分立体角，$dE$的值会小很多，比值$\frac{dL_o}{L_i} = 0$是有意义的，而不是0.</p>
 <p>下面我们来看看<strong>怎么用BRDF计算表面辐照率</strong>：</p>
@@ -335,10 +335,10 @@
 <p>上面给出了BRDF的定义和使用BRDF计算表面反射辐射率的公式。但这个定义实际上是无法直接用于计算表面反射辐射率的，我们还要建立一个能模拟真实光照的模型，使得输入入射方向和出射方向，$f(l,v)$能输出表面反射微分辐射率和入射微分辐照度的比率。</p>
 <p>1967年Torrance-Sparrow在Theory for Off-Specular Reflection From Roughened Surfaces中使用辐射度学和微表面理论建立了模拟真实光照的BRDF模型，1981年Cook-Torrance在A Reflectance Model for Computer Graphics中把这个模型引入到计算机图形学领域，现在这个模型已经成为基于物理着色的标准，被称为Cook-Torrance模型。下面我们来看看微表面理论和Cook-Torrance模型的推导过程。</p>
 <h2 id="微表面理论"><a href="#微表面理论" class="headerlink" title="微表面理论"></a>微表面理论</h2><p>微表面理论（Microfacet Theory）认为我们看到的表面上的一点是由很多朝向各异且光学平的微小表面组成。当光线从$l$方向照射到这点，而我们在$v$方向观察时，由于光学平面只会将光线$l$反射到关于法线对称的$v$方向，而$l$和$v$已经确定，所以只有法线朝向正好是$l$和$v$的半角向量$h$的微表面才会将光线发射到$v$方向（如下图，从而被我们看见）。</p>
-<p><img src="https://wangyu-typora.oss-cn-nanjing.aliyuncs.com/img/85e93632f88e18f46cc9b73729c31a93_b.jpg" alt="img"></p>
+<p><img src="/2022/05/17/BRDF%E5%8F%8C%E5%90%91%E5%8F%8D%E5%B0%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0/85e93632f88e18f46cc9b73729c31a93_b.jpg" alt="85e93632f88e18f46cc9b73729c31a93_b"></p>
 <p>我们用<strong>法线分布函数（Normal Distribution Function，简写为NDF）</strong>$D(h)$来描述组成表面一点的所有微表面的法线分布概率，现在可以这样理解：向NDF输入一个朝向$h$,NDF会返回朝向$h$的微表面数占微表面总数的比例（虽然实际并不是这样，这点我们在讲推导过程的时候再讲），比如有1%的微表面朝向是$h$，那么就有1%的微表面可能将光线反射到$v$方向。</p>
 <p>但实际上并不是所有微表面都能收到接受到光线，如下面左边的图有一部分入射光线被遮挡住，这种现象称为Shadowing。也不是所有反射光线都能到达眼睛，下面中间的图，一部分反射光线被遮挡住了，这种现象称为Masking。光线在微表面之间还会互相反射，如下面右边的图，这可能也是一部分漫射光的来源，在建模高光时忽略掉这部分光线。</p>
-<p><img src="https://wangyu-typora.oss-cn-nanjing.aliyuncs.com/img/bf148ad85915e647cdb50762999da037_b.jpg" alt="img"></p>
+<p><img src="/2022/05/17/BRDF%E5%8F%8C%E5%90%91%E5%8F%8D%E5%B0%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0/bf148ad85915e647cdb50762999da037_b.jpg" alt="bf148ad85915e647cdb50762999da037_b"></p>
 <p>Shadowing和Masking用<strong>几何衰减因子（Geometrical Attenuation Factor）</strong>$G(l,v)$来建模，输入入射和出射光线方向，输出值表示光线未被遮蔽而能从$l$反射到$v$方向的比例。</p>
 <p>光学平面并不会将所有光线都反射掉，而是一部分被反射，一部分被折射，反射比例符合<strong>菲涅尔方程（Fresnel Equations）</strong>$F(l,h)$</p>
 <p>Torrance-Sparrow基于微表面理论，用上述三个函数建立了高光BRDF模型：</p>
