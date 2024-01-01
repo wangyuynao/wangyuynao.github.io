@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"wangyuynao.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","Muse | Mist":320,"Pisces | Gemini":240,"width":300,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="主动光学与自适应光学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="主动光学与自适应光学">
+<meta property="og:url" content="https://wangyuynao.github.io/2024/01/01/%E4%B8%BB%E5%8A%A8%E5%85%89%E5%AD%A6%E4%B8%8E%E8%87%AA%E9%80%82%E5%BA%94%E5%85%89%E5%AD%A6/index.html">
+<meta property="og:site_name" content="W.Yu&#39;s BLOG">
+<meta property="og:description" content="主动光学与自适应光学">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wangyuynao.github.io/2024/01/01/%E4%B8%BB%E5%8A%A8%E5%85%89%E5%AD%A6%E4%B8%8E%E8%87%AA%E9%80%82%E5%BA%94%E5%85%89%E5%AD%A6/AO_1.gif">
+<meta property="og:image" content="https://wangyuynao.github.io/2024/01/01/%E4%B8%BB%E5%8A%A8%E5%85%89%E5%AD%A6%E4%B8%8E%E8%87%AA%E9%80%82%E5%BA%94%E5%85%89%E5%AD%A6/AO_2.jpg">
+<meta property="og:image" content="https://wangyuynao.github.io/2024/01/01/%E4%B8%BB%E5%8A%A8%E5%85%89%E5%AD%A6%E4%B8%8E%E8%87%AA%E9%80%82%E5%BA%94%E5%85%89%E5%AD%A6/AO_3.jpg">
+<meta property="og:image" content="https://wangyuynao.github.io/2024/01/01/%E4%B8%BB%E5%8A%A8%E5%85%89%E5%AD%A6%E4%B8%8E%E8%87%AA%E9%80%82%E5%BA%94%E5%85%89%E5%AD%A6/AO_4.gif">
+<meta property="og:image" content="https://wangyuynao.github.io/2024/01/01/%E4%B8%BB%E5%8A%A8%E5%85%89%E5%AD%A6%E4%B8%8E%E8%87%AA%E9%80%82%E5%BA%94%E5%85%89%E5%AD%A6/AO_5.jpg">
+<meta property="og:image" content="https://wangyuynao.github.io/2024/01/01/%E4%B8%BB%E5%8A%A8%E5%85%89%E5%AD%A6%E4%B8%8E%E8%87%AA%E9%80%82%E5%BA%94%E5%85%89%E5%AD%A6/AO_6.jpg">
+<meta property="article:published_time" content="2024-01-01T02:15:05.000Z">
+<meta property="article:modified_time" content="2024-01-01T02:38:47.887Z">
+<meta property="article:author" content="Wang Yu">
+<meta property="article:tag" content="主动光学">
+<meta property="article:tag" content="自适应光学">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wangyuynao.github.io/2024/01/01/%E4%B8%BB%E5%8A%A8%E5%85%89%E5%AD%A6%E4%B8%8E%E8%87%AA%E9%80%82%E5%BA%94%E5%85%89%E5%AD%A6/AO_1.gif">
+
+<link rel="canonical" href="https://wangyuynao.github.io/2024/01/01/%E4%B8%BB%E5%8A%A8%E5%85%89%E5%AD%A6%E4%B8%8E%E8%87%AA%E9%80%82%E5%BA%94%E5%85%89%E5%AD%A6/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>主动光学与自适应光学 | W.Yu's BLOG</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">W.Yu's BLOG</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wangyuynao.github.io/2024/01/01/%E4%B8%BB%E5%8A%A8%E5%85%89%E5%AD%A6%E4%B8%8E%E8%87%AA%E9%80%82%E5%BA%94%E5%85%89%E5%AD%A6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Wang Yu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="W.Yu's BLOG">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          主动光学与自适应光学
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-01-01 10:15:05 / 修改时间：10:38:47" itemprop="dateCreated datePublished" datetime="2024-01-01T10:15:05+08:00">2024-01-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Astrophysical-Techniques/" itemprop="url" rel="index"><span itemprop="name">Astrophysical Techniques</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="主动光学与自适应光学"><a href="#主动光学与自适应光学" class="headerlink" title="主动光学与自适应光学"></a>主动光学与自适应光学</h1><span id="more"></span>
+<p>前番的<a target="_blank" rel="noopener" href="http://bzhang.lamost.org/website/index.php?p=364">《关于望远镜镜坯》</a>一文提到了目前望高面型精度反射镜的制造，但质量再好的望远镜也不可避免地受到重力、温度、大气湍动等因素的影响。对时下流行的弯月形薄镜面来说，自身的厚度不足以抵抗重力变形；而地球上最好的台址也不能完全克服大气的干扰：仅仅是对于4米望远镜，大气扰动就可以使其极限星等比衍射极限亮一等了。如此情况下，想要提高分辨率，增大望远镜口径和保证磨制精度固然重要，上述几个不利因素也必须要设法克服。</p>
+<p>主动光学（Active Optics）和自适应光学（Adaptive Optics）就是以上问题的解决途径，二者在原理上有相似之处，干脆放在一起写好了。</p>
+<p>不过首先要解释的是这两种技术的区别。早先本人一直是把二者混为一谈的，直到看到课本上将这两个名词并列印在一起，才意识到自己是犯了很多年的错误。主动光学是在1980年代发展起来的，它是在薄型主镜后方设有上百个计算机控制的促动器，随时监测并抵消重力变形、风力干扰和温度波动对成像的影响，调整频率约0.01至1赫兹。自适应光学主要补偿的则是大气湍动，调整频率可达每秒上百次，调整的对象也非主镜，而是光路中专门设置的一块变形辅助镜（大口径主镜难以承受高频调整）。</p>
+<p>不论是主动光学还是自适应光学，工作时都需要实时检测星象。检测装置常采用沙克-哈特曼（Shack-Hartmann）光栏，这是一组小透镜组成的阵列，根据成像可以计算出各点上波前的扭曲程度并求得相应的改正量。此装置的一大优点是，待测天体不一定是点源，就算是太阳这样变化迅速的天体也照样可用（因此目前有一些太阳望远镜也采用了自适应光学系统）。沙克-哈特曼光栏的具体工作原理可参考实测天体物理学的相关书籍，在此不赘述。</p>
+<p>以下分别说说主动光学和自适应光学技术。</p>
+<p>　</p>
+<h2 id="主动光学"><a href="#主动光学" class="headerlink" title="主动光学"></a>主动光学</h2><p><img src="/2024/01/01/%E4%B8%BB%E5%8A%A8%E5%85%89%E5%AD%A6%E4%B8%8E%E8%87%AA%E9%80%82%E5%BA%94%E5%85%89%E5%AD%A6/AO_1.gif" alt="Active Optics"></p>
+<p>主动光学系统工作原理图。（图片提供：Ed Janssen, ESO）</p>
+<p>最初运用主动光学系统的望远镜包括北欧光学望远镜、欧洲南方天文台新技术望远镜等中等口径设备，其中后者于1989年投入使用，是第一架全面采用主动光学技术的望远镜。所谓主动是相对传统的刚性厚反射镜而言的，后者并没有装配改善成像的设备，只是通过提高机械强度被动克服重力等不利影响。主动光学系统可以让望远镜主镜时刻保持最佳状态，克服影响成像的因素中与面形有关的一部分，故有“主动”之名。</p>
+<p>使用主动光学的望远镜需要在光路中分出一束光线，将其引入沙克-哈特曼光栏检测装置。计算机检测出像差，计算准泽尼克多项式的系数，利用其与预先校正值之差来调整各促动器施力大小，并实时反馈。有的望远镜也备有开环改正机制，需要了解望远镜的受力和位置，适用于引导星亮度不足或是检测装置失灵等情况下的使用。</p>
+<p><img src="/2024/01/01/%E4%B8%BB%E5%8A%A8%E5%85%89%E5%AD%A6%E4%B8%8E%E8%87%AA%E9%80%82%E5%BA%94%E5%85%89%E5%AD%A6/AO_2.jpg" alt="Actuators of Subaru"></p>
+<p>昴星团望远镜背面的促动器阵列。（图片提供：NAOJ）</p>
+<p>而对于凯克望远镜这样的拼接镜面，主动光学系统更是保持面型的必需装置。由于单块子镜直径不大，受环境影响较小，故调节的重点不是子镜的面形，而是相对位置。凯克望远镜在这一点上是使用电容式的传感器来进行监测的。中国在建的LAMOST望远镜由于在观测不同的天体时需要不同的面形，也配备有主动光学系统来将改正板调整到所需要的形状上，这比单纯校正面型的传统主动光学又进了一步。实际上主动光学已用在了几乎所有新建的大中型望远镜上，可以将镜面精度保持在100埃或更高的量级上。</p>
+<p><img src="/2024/01/01/%E4%B8%BB%E5%8A%A8%E5%85%89%E5%AD%A6%E4%B8%8E%E8%87%AA%E9%80%82%E5%BA%94%E5%85%89%E5%AD%A6/AO_3.jpg" alt="Actuators of Keck"></p>
+<p>凯克望远镜的促动器分布，图中可见各子镜的接缝处是重点调整对象，子镜上的促动器则用于调节彼此的相对高度。</p>
+<p>除用于望远镜系统外，主动光学还可以在法布里—珀罗干涉仪上使用。</p>
+<p>　</p>
+<h2 id="自适应光学"><a href="#自适应光学" class="headerlink" title="自适应光学"></a>自适应光学</h2><p><img src="/2024/01/01/%E4%B8%BB%E5%8A%A8%E5%85%89%E5%AD%A6%E4%B8%8E%E8%87%AA%E9%80%82%E5%BA%94%E5%85%89%E5%AD%A6/AO_4.gif" alt="Adaptive Optics"></p>
+<p>自适应光学系统工作原理图。（图片来源：<a target="_blank" rel="noopener" href="http://www.answers.com/">Answers.com</a>）</p>
+<p>自适应光学是Horace Babcock于1953年提出的，其原理并不复杂，小型试验也早在1960年代末就在威尔逊天文台进行过，观测对象为木星和土星。不过该技术的大范围运用要等到计算机和光学设计技术发达后的1990年代，其中SDI计划的解密对其起了很大的推动作用。与主动光学不同，自适应光学是依照大气湍动情况调整反射镜面形，以改正出射波前，而非将面形保持在最佳状态上。使用自适应光学后，望远镜的分辨率可以提高10倍以上。</p>
+<p><img src="/2024/01/01/%E4%B8%BB%E5%8A%A8%E5%85%89%E5%AD%A6%E4%B8%8E%E8%87%AA%E9%80%82%E5%BA%94%E5%85%89%E5%AD%A6/AO_5.jpg" alt="Actuators of Keck"></p>
+<p>自适应光学使用前（左）与使用后（右）拍摄的同一星团对比，左图分辨率约0.6角秒，右图为0.09角秒。（图片提供：Gemini Observatory, National Science Foundation, and the University of Hawai’i Adaptive Optics Group）</p>
+<p>不过自适应光学的工作原理与主动光学还是比较类似的，也是从主光路中分束检测，通常是选择待测天体附近的一颗亮星作校准用引导星。计算机控制促动器调整的则是变形辅助镜。变形镜一般安置在望远镜焦点后方，口径8至20厘米，设有数百个促动器。促动器的具体数目取决于要求的调整精度和引导星的亮度，当然还有预算。</p>
+<p><img src="/2024/01/01/%E4%B8%BB%E5%8A%A8%E5%85%89%E5%AD%A6%E4%B8%8E%E8%87%AA%E9%80%82%E5%BA%94%E5%85%89%E5%AD%A6/AO_6.jpg" alt="Deformable Mirror of Subaru"></p>
+<p>昴星团望远镜的自适应光学变形镜系统，安装在卡塞格林焦点处。（图片提供：NAOJ）</p>
+<p>显然，对引导星的要求大大限制了自适应光学系统的观测范围，因为并非所有待测天体附近都有符合要求的亮星（亮度不低于12-15等），而且引导星与目标距离过大也会由于彼此大气湍动情况不同而使像质严重恶化。而小口径的变形镜也使自适应光学难以一次观测很大的天区，轻易加大变形镜又会带来一系列机械和材料方面的问题，如镜面碎裂的克服（大型双筒望远镜的变形镜就曾由于承受不住高频变化而破碎）。</p>
+<p>这两个缺陷的解决方案分别是激光引导星和多共轭点（Multi-Conjugate）自适应光学系统。前者是向大气中间层发射激光，激发钠原子辐射出黄光，产生人工引导星。目前凯克、双子、昴星团、加拿大-法国-夏威夷望远镜、欧洲南方天文台等处均配备了激光引导星系统。不过这固然解决了引导星数量不足的问题，却也引来不少新麻烦：精确控制激光投射方位的难度、路过的飞机和卫星、较大的功率（意味着开支的大大增加）、每晚的军方批准，外加彼此的冲撞。至于后者，是在光路中设置数个变形镜来增大视场。另外大口径变形镜也正在开发中。</p>
+<p>但由于调整频率过高、计算量过大以及对促动器需求量过多，目前自适应光学系统一般仅用于红外观测。举例来说，根据欧洲南方天文台的估计，如要使用自适应光学进行可见光观测，每架8米望远镜需要6000余个促动器，成本高不算，如何安置也是个不小的问题。但可见光的自适应光学系统已经为侦察卫星搭载的小口径望远镜所采用。</p>
+<p>　</p>
+<p>主动光学和自适应光学是现代大型地面望远镜的制胜法宝。凭借这两项技术，衍射极限不再是空想，而地面望远镜的表现也足以胜过空间望远镜。当然，技术目前并不成熟，特别是自适应光学，需要解决的问题仍旧很多，激光引导星与多共轭点自适应光学也仍处在发展初期，但凭借主动光学和自适应光学已经取得了许多新发现，而对于未来计划中的数十米乃至上百米的巨型望远镜，这二者更是必备的。</p>
+<p>　</p>
+<p>参考资料：</p>
+<p>[1] <a target="_blank" rel="noopener" href="http://www.eso.org/aot/introduction.html">An introduction to Active &amp; Adaptive Optics</a><br>[2] <a target="_blank" rel="noopener" href="http://www.eso.org/projects/vlt/unit-tel/actopt.html">The VLT Active Optics System</a><br>[3] <a target="_blank" rel="noopener" href="http://bzhang.lamost.org/website/index.php?p=349">Mauna Kea不再闪烁的星光</a><br>[4] <a target="_blank" rel="noopener" href="http://www.gemini.edu/public/adaptive.html">Adaptive Optics - Straightening Out Bent Starlight</a><br>[5] <a target="_blank" rel="noopener" href="http://www.cfht.hawaii.edu/Instruments/Imaging/AOB/local_tutorial.html">Dr. Olivier Lai’s View Graphs on Adaptive Optics</a><br>[6] 《实测天体物理学》，郑兴武 编</p>
+<blockquote>
+<p>原文链接：<a target="_blank" rel="noopener" href="http://bzhang.lamost.org/website/archives/modern_instr_ao/">http://bzhang.lamost.org/website/archives/modern_instr_ao/</a></p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E4%B8%BB%E5%8A%A8%E5%85%89%E5%AD%A6/" rel="tag"># 主动光学</a>
+              <a href="/tags/%E8%87%AA%E9%80%82%E5%BA%94%E5%85%89%E5%AD%A6/" rel="tag"># 自适应光学</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/07/23/C++%E5%AD%98%E5%82%A8%E7%B1%BB/" rel="prev" title="C++存储类">
+      <i class="fa fa-chevron-left"></i> C++存储类
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%BB%E5%8A%A8%E5%85%89%E5%AD%A6%E4%B8%8E%E8%87%AA%E9%80%82%E5%BA%94%E5%85%89%E5%AD%A6"><span class="nav-number">1.</span> <span class="nav-text">主动光学与自适应光学</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E5%8A%A8%E5%85%89%E5%AD%A6"><span class="nav-number">1.1.</span> <span class="nav-text">主动光学</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E9%80%82%E5%BA%94%E5%85%89%E5%AD%A6"><span class="nav-number">1.2.</span> <span class="nav-text">自适应光学</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Wang Yu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">35</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wangyuynao" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wangyuynao" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yuwang@ynu.edu.cn" title="E-Mail → mailto:yuwang@ynu.edu.cn" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wang Yu</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>
