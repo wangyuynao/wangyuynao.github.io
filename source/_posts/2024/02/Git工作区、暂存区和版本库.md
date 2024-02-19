@@ -6,9 +6,9 @@ toc: true
 mathjax: true
 date: 2024-02-19 00:35:09
 categories:
-- git
+- Git
 tags:
-- git
+- Git
 ---
 
 # Git工作区、暂存区和版本库
