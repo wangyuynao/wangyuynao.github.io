@@ -1,234 +1,275 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 6.3.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Python,Astronomy">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="YuWang">
+    
+    <title>
+        
+            BRDF双向反射分布函数 |
+        
+        Yu&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
 
-<link rel="stylesheet" href="/css/main.css">
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
 
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
 
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"wangyuynao.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","Muse | Mist":320,"Pisces | Gemini":240,"width":300,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"wangyuynao.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Yu's Blog","author":"YuWang","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":"https://github.com/wangyuynao || fab fa-github","weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":true,"percent":true,"hide_header":true},"home":{"announcement":null,"category":true,"tag":true,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true,"layout":"left"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":true,"preload":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"icp":{"enable":false,"record_code":null,"url":"https://beian.miit.gov.cn"},"site_deploy":{"enable":false,"provider":"github","url":null},"shields_style":{"enable":false,"custom":[{"link_url":null,"img_url":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.0"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
   </script>
-
-  <meta name="description" content="BRDF（双向反射分布函数）在计算机图形学领域，着色（Shading）是指根据表面或者多边形相对光源和相机的角度和距离来计算它的颜色的过程。不同的用途可以使用不同的着色算法，CAD等追求响应速度的交互式图形领域可以使用简单快速的着色算法，卡通油画等艺术效果可以使用非真实感（Nonphotorealistic）着色算法，而追求真实感的CG电影或游戏则可以使用基于物理建模的着色算法。 本文关注基于物理">
-<meta property="og:type" content="article">
-<meta property="og:title" content="BRDF双向反射分布函数">
-<meta property="og:url" content="https://wangyuynao.github.io/2022/05/17/BRDF%E5%8F%8C%E5%90%91%E5%8F%8D%E5%B0%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0/index.html">
-<meta property="og:site_name" content="W.Yu&#39;s BLOG">
-<meta property="og:description" content="BRDF（双向反射分布函数）在计算机图形学领域，着色（Shading）是指根据表面或者多边形相对光源和相机的角度和距离来计算它的颜色的过程。不同的用途可以使用不同的着色算法，CAD等追求响应速度的交互式图形领域可以使用简单快速的着色算法，卡通油画等艺术效果可以使用非真实感（Nonphotorealistic）着色算法，而追求真实感的CG电影或游戏则可以使用基于物理建模的着色算法。 本文关注基于物理">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://wangyuynao.github.io/2022/05/17/BRDF%E5%8F%8C%E5%90%91%E5%8F%8D%E5%B0%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0/fce81f9d4ba4619ef44ee1dfd4915eab_b-16527545278573.jpg">
-<meta property="og:image" content="https://wangyuynao.github.io/2022/05/17/BRDF%E5%8F%8C%E5%90%91%E5%8F%8D%E5%B0%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0/cc25239f2cbd0188e36ccb68b40e9bf1_b-165275457310816.jpg">
-<meta property="og:image" content="https://wangyuynao.github.io/2022/05/17/BRDF%E5%8F%8C%E5%90%91%E5%8F%8D%E5%B0%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0/f16716fe323556869d153a175550e30f_b-165275458641820.jpg">
-<meta property="og:image" content="https://wangyuynao.github.io/2022/05/17/BRDF%E5%8F%8C%E5%90%91%E5%8F%8D%E5%B0%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0/41b6e086c47de7dc6b35e14e717487e8_b-165275459425124.jpg">
-<meta property="og:image" content="https://wangyuynao.github.io/2022/05/17/BRDF%E5%8F%8C%E5%90%91%E5%8F%8D%E5%B0%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0/74f9aeff347dc1ec6f943a61f7d5ddee_b-165275460222328.jpg">
-<meta property="og:image" content="https://wangyuynao.github.io/2022/05/17/BRDF%E5%8F%8C%E5%90%91%E5%8F%8D%E5%B0%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0/749a01b706ea4b07f0d3dbaaccf84401_b-165275462811632.jpg">
-<meta property="og:image" content="https://wangyuynao.github.io/2022/05/17/BRDF%E5%8F%8C%E5%90%91%E5%8F%8D%E5%B0%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0/2c10911640bba08d13fbbb7e64674d7f_b-165275463806936.jpg">
-<meta property="og:image" content="https://wangyuynao.github.io/2022/05/17/BRDF%E5%8F%8C%E5%90%91%E5%8F%8D%E5%B0%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0/a56ff2378935ab912ccc60594fb427cf_b-165275465029540.jpg">
-<meta property="og:image" content="https://wangyuynao.github.io/2022/05/17/BRDF%E5%8F%8C%E5%90%91%E5%8F%8D%E5%B0%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0/5ff8f88c297c3311a167a536b04e33c4_b-165275482229244.jpg">
-<meta property="og:image" content="https://wangyuynao.github.io/2022/05/17/BRDF%E5%8F%8C%E5%90%91%E5%8F%8D%E5%B0%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0/a65ae4967cfab6e5a8fff7ba3e9824ed_b-165275483653748.jpg">
-<meta property="og:image" content="https://wangyuynao.github.io/2022/05/17/BRDF%E5%8F%8C%E5%90%91%E5%8F%8D%E5%B0%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0/77aa9a3b3302d240ed5093bbf4d46625_b-165275484532052.jpg">
-<meta property="og:image" content="https://wangyuynao.github.io/2022/05/17/BRDF%E5%8F%8C%E5%90%91%E5%8F%8D%E5%B0%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0/85e93632f88e18f46cc9b73729c31a93_b.jpg">
-<meta property="og:image" content="https://wangyuynao.github.io/2022/05/17/BRDF%E5%8F%8C%E5%90%91%E5%8F%8D%E5%B0%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0/bf148ad85915e647cdb50762999da037_b.jpg">
-<meta property="article:published_time" content="2022-05-17T03:50:16.000Z">
-<meta property="article:modified_time" content="2024-01-25T15:36:13.000Z">
-<meta property="article:author" content="Wang Yu">
-<meta property="article:tag" content="BRDF">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://wangyuynao.github.io/2022/05/17/BRDF%E5%8F%8C%E5%90%91%E5%8F%8D%E5%B0%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0/fce81f9d4ba4619ef44ee1dfd4915eab_b-16527545278573.jpg">
-
-<link rel="canonical" href="https://wangyuynao.github.io/2022/05/17/BRDF%E5%8F%8C%E5%90%91%E5%8F%8D%E5%B0%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0/">
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : true,
-    lang   : 'zh-CN'
-  };
-</script>
-
-  <title>BRDF双向反射分布函数 | W.Yu's BLOG</title>
-  
-
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
-
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">W.Yu's BLOG</h1>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-    </div>
-  </div>
-</div>
-
-
-
-
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
-
-  </li>
-  </ul>
-</nav>
-
-
-
-
-</div>
-    </header>
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
 
     
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
+</div>
 
 
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
 
-          <div class="content post posts-expand">
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
             
+<header class="header-wrapper">
 
-    
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wangyuynao.github.io/2022/05/17/BRDF%E5%8F%8C%E5%90%91%E5%8F%8D%E5%B0%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0/">
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Yu&#39;s Blog
+            </a>
+        </div>
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Wang Yu">
-      <meta itemprop="description" content="">
-    </span>
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                首页
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                归档
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                
+                                标签
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                
+                                分类
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="W.Yu's BLOG">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          BRDF双向反射分布函数
-        </h1>
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >首页</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >归档</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags"
+                    >标签</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories"
+                    >分类</a>
+                </li>
+            
+        </ul>
+    </div>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
+    <div class="window-mask"></div>
 
-              <time title="创建时间：2022-05-17 11:50:16" itemprop="dateCreated datePublished" datetime="2022-05-17T11:50:16+08:00">2022-05-17</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-01-25 23:36:13" itemprop="dateModified" datetime="2024-01-25T23:36:13+08:00">2024-01-25</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/LED/" itemprop="url" rel="index"><span itemprop="name">LED</span></a>
-                </span>
-            </span>
+</header>
 
-          
 
         </div>
-      </header>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        BRDF双向反射分布函数
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/avatar.svg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">YuWang</span>
+                                
+                                    <span class="author-badge">Lv4</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2022-05-17 11:50:16</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Thu Jan 25 2024 23:36:13 GMT+0800">2024-01-25 23:36:13</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/LED/">LED</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/BRDF/">BRDF</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
 
     
-    
-    
-    <div class="post-body" itemprop="articleBody">
+</div>
 
-      
-        <h1 id="BRDF（双向反射分布函数）"><a href="#BRDF（双向反射分布函数）" class="headerlink" title="BRDF（双向反射分布函数）"></a>BRDF（双向反射分布函数）</h1><p>在计算机图形学领域，着色（Shading）是指根据表面或者多边形相对光源和相机的角度和距离来计算它的颜色的过程。不同的用途可以使用不同的着色算法，CAD等追求响应速度的交互式图形领域可以使用简单快速的着色算法，卡通油画等艺术效果可以使用非真实感（Nonphotorealistic）着色算法，而追求真实感的CG电影或游戏则可以使用基于物理建模的着色算法。</p>
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body">
+                    
+
+                    <h1 id="BRDF（双向反射分布函数）"><a href="#BRDF（双向反射分布函数）" class="headerlink" title="BRDF（双向反射分布函数）"></a>BRDF（双向反射分布函数）</h1><p>在计算机图形学领域，着色（Shading）是指根据表面或者多边形相对光源和相机的角度和距离来计算它的颜色的过程。不同的用途可以使用不同的着色算法，CAD等追求响应速度的交互式图形领域可以使用简单快速的着色算法，卡通油画等艺术效果可以使用非真实感（Nonphotorealistic）着色算法，而追求真实感的CG电影或游戏则可以使用基于物理建模的着色算法。</p>
 <p>本文关注基于物理着色的BRDF模型，希望能将BRDF的来龙去脉讲清楚，并分析Cook-Torrance BRDF公式的推导过程。本人水平有限，如有错误，请不吝指教。</p>
 <p>要模拟真实光照，我们先要弄清光照的现象。</p>
 <span id="more"></span>
@@ -257,10 +298,10 @@
 <p><img src="/2022/05/17/BRDF%E5%8F%8C%E5%90%91%E5%8F%8D%E5%B0%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0/41b6e086c47de7dc6b35e14e717487e8_b-165275459425124.jpg" alt="41b6e086c47de7dc6b35e14e717487e8_b-165275459425124"></p>
 <p>根据物质属性和观察尺度的不同，次表面散射会表现出不同的效果。</p>
 <p>如下面的左上图，如果光线在物质中传播距离小于观察尺度（绿色区域，可以认为是一个像素区域），我们看到情况如下面的右上图，入射点、反射点、次表面散射的出射点看起来是同一个点。其中反射部分（图中浅棕色出射光）就是我们常说的高光（Specular Light），常聚集在一个方向周围，向这个方向观察该点会看到明显的高光，从其他方向观察该点时高光则比较微弱；次表面散射部分（图中蓝色出射光）是漫射光（Diffuse Light），光线被散射到各个方向。双向反射分布函数BRDF就是用来模拟这种现象的，这也是本文关注的重点。</p>
-<p>如果光线在物质中的传播距离大于观察尺度，如下面的下图，就需要使用次表面散射算法来建模，<a target="_blank" rel="noopener" href="https://www.zhihu.com/people/59827f0a435d7b054c8339422dde6773">@文刀秋二</a> 写了一篇很好的<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/21247702?refer=graphics">关于次表面散射的文章</a>。</p>
+<p>如果光线在物质中的传播距离大于观察尺度，如下面的下图，就需要使用次表面散射算法来建模，<a class="link" target="_blank" rel="noopener" href="https://www.zhihu.com/people/59827f0a435d7b054c8339422dde6773">@文刀秋二<i class="fas fa-external-link-alt"></i></a> 写了一篇很好的<a class="link" target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/21247702?refer=graphics">关于次表面散射的文章<i class="fas fa-external-link-alt"></i></a>。</p>
 <p><img src="/2022/05/17/BRDF%E5%8F%8C%E5%90%91%E5%8F%8D%E5%B0%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0/74f9aeff347dc1ec6f943a61f7d5ddee_b-165275460222328.jpg" alt="74f9aeff347dc1ec6f943a61f7d5ddee_b-165275460222328"></p>
 <h2 id="光照模型"><a href="#光照模型" class="headerlink" title="光照模型"></a>光照模型</h2><p>为了模拟非光学平面的散射，人们建立了各种模型，大致可以分为以下几类：</p>
-<h3 id="1-测量模型"><a href="#1-测量模型" class="headerlink" title="1.测量模型"></a>1.测量模型</h3><p>MERL等实验室使用仪器测量了上百种真实材质表面在不同光照角度和观察角度下的反射数据，并记录在<a href="https://link.zhihu.com/?target=http%3A//www.merl.com/brdf/">MERL BRDF Database</a>等数据库中。这些数据由于采集自真实材质，所以使用它渲染出来的结果很真实，但缺点是没有可供调整效果的参数，无法基于这些数据修改成想要的效果，另外部分极端角度由于仪器限制，无法获取到数据，而且采样点密集，数据量非常庞大，所以并不适合游戏等实时领域，一般可用在电影等离线渲染领域，也可以用来做图形学研究，衡量其他模型的真实程度。</p>
+<h3 id="1-测量模型"><a href="#1-测量模型" class="headerlink" title="1.测量模型"></a>1.测量模型</h3><p>MERL等实验室使用仪器测量了上百种真实材质表面在不同光照角度和观察角度下的反射数据，并记录在<a class="link" href="https://link.zhihu.com/?target=http%3A//www.merl.com/brdf/">MERL BRDF Database<i class="fas fa-external-link-alt"></i></a>等数据库中。这些数据由于采集自真实材质，所以使用它渲染出来的结果很真实，但缺点是没有可供调整效果的参数，无法基于这些数据修改成想要的效果，另外部分极端角度由于仪器限制，无法获取到数据，而且采样点密集，数据量非常庞大，所以并不适合游戏等实时领域，一般可用在电影等离线渲染领域，也可以用来做图形学研究，衡量其他模型的真实程度。</p>
 <h3 id="2-经验模型"><a href="#2-经验模型" class="headerlink" title="2. 经验模型"></a>2. 经验模型</h3><p>经验模型并不是基于物理原理，而是提出经验公式，通过调整参数来模拟光照。</p>
 <p>1975年Phong提出Phong反射模型（Phong Reflection Model） ：</p>
 <script type="math/tex; mode=display">I_{Phong} = k_a I_a + k_d (n\cdot l) I_d + k_s (r \cdot v)^{\alpha} I_s</script><blockquote>
@@ -304,7 +345,7 @@
 <p>$\mathrm{d}E(l)$是表面上来自入射光方向$l$的微分辐照度。表面接收到的辐照度为$E$，来自上半球所有方向的入射光线的贡献，而微分辐照度$\mathrm{d}E(l)$特指来自于方向$l$的入射光。</p>
 </blockquote>
 <p>表面对不同频率的光反射率可能不一样，因此BRDF和光的频率有关。在图形学中，将BRDF表示为RGB向量，三个分量各有自己的$f$函数。</p>
-<p>BRDF需要处理表面上半球的各个方向，如下图使用<a href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Spherical_coordinate_system">球坐标系</a>定义方向更加方便。球坐标系使用两个角度来确定一个方向：</p>
+<p>BRDF需要处理表面上半球的各个方向，如下图使用<a class="link" href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Spherical_coordinate_system">球坐标系<i class="fas fa-external-link-alt"></i></a>定义方向更加方便。球坐标系使用两个角度来确定一个方向：</p>
 <ol>
 <li>方向相对法线的角度$\theta$，称为极角（Polar Angle）或天顶角（Zenith Angle）</li>
 <li>方向在平面上的投影相对于平面上一个坐标轴的角度$\phi$，称为方位角（Azimuthal Angle）。</li>
@@ -312,7 +353,7 @@
 <p>所以BRDF也可以表示成$f(\theta_i,\phi_i,\theta_o,\phi_o)$。对于各向同性材质，当$l$和$v$同时绕法线$n$旋转时，$f$值保持不变，此时可以用$l$和$v$在平面投影的夹角$\phi$来代替$\phi_i$和$\phi_o$ : $f(\theta_i,\theta_o,\phi)$。</p>
 <p><img src="/2022/05/17/BRDF%E5%8F%8C%E5%90%91%E5%8F%8D%E5%B0%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0/a65ae4967cfab6e5a8fff7ba3e9824ed_b-165275483653748.jpg" alt="a65ae4967cfab6e5a8fff7ba3e9824ed_b-165275483653748"></p>
 <p>至于<strong>为什么BRDF要定义成辐射率和辐照度的比值，而不是直接定义为辐射率和辐射率比值</strong>，有两种解释。</p>
-<p><strong><em>第一种解释</em></strong>可以参看<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/28476602/answer/41003204">brdf为什么要定义为一个单位是sr-1的量？</a></p>
+<p><strong><em>第一种解释</em></strong>可以参看<a class="link" target="_blank" rel="noopener" href="https://www.zhihu.com/question/28476602/answer/41003204">brdf为什么要定义为一个单位是sr-1的量？<i class="fas fa-external-link-alt"></i></a></p>
 <p>我们结合下面辐照度（A）和辐射率（B）测量仪的示意图来看看。辐照度测量仪（A）接受平面上半球的所有光线，可以测量一个较小面积来自于四面八方的所有光通量，光通量$\Phi$除以传感器面积$A$就可以得到辐照度$E$。辐射度测量仪（B）则有一个长筒控制光线只能从一个很小的立体角进入测量仪，光通量$\Phi$除以传感器面积$A$和立体角$\omega$就可以得到辐射率$L$。</p>
 <p>测平面上一点在某一个方向的出射辐射率很简单，只需要用仪器（B）从该方向对准该点就可以了。而测平面一点入射的辐射率则没有那么简单，必须保证光源正好覆盖测量仪开口立体角，大了该点会接受到比测量值更多的光照，导致测量值比实际值小，小了则与仪器的设计立体角不一致，可在实际中是基本做不到光源大小正好覆盖测量仪开口立体角的。而测表面的辐照度则简单得多，只要保证光源很小，而且没有来自其他方向的光干扰，这时候测到的辐照度就是平面上来自光源方向的微分辐照度$\mathrm{d}E$。</p>
 <p><img src="/2022/05/17/BRDF%E5%8F%8C%E5%90%91%E5%8F%8D%E5%B0%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0/77aa9a3b3302d240ed5093bbf4d46625_b-165275484532052.jpg" alt="77aa9a3b3302d240ed5093bbf4d46625_b-165275484532052"></p>
@@ -355,264 +396,339 @@
 <p>由上两式可得：</p>
 <script type="math/tex; mode=display">\mathrm{d}\Phi_h = L_i(\omega_i)\mathrm{d}\omega_i \cos \theta_h D(\omega_h)\mathrm{d}\omega_h\mathrm{d}A</script><p>设定微表面反射光线遵循菲涅尔定理，则反射通量</p>
 <script type="math/tex; mode=display">\mathrm{d}\Phi_o = F_r(\omega_o)\mathrm{d}\Phi_h</script>
-    </div>
+                </div>
+                
 
-    
-    
-    
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/BRDF/">BRDF</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
 
-      <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/BRDF/" rel="tag"># BRDF</a>
-          </div>
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2022/05/17/%E8%BE%90%E5%B0%84%E5%BA%A6%E5%AD%A6/"
+                                   title="辐射度学"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">辐射度学</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2022/05/17/%E8%BE%90%E5%B0%84%E5%BA%A6%E9%87%8F%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E6%8D%A2/"
+                                   title="辐射度量之间的转换"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">辐射度量之间的转换</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
 
         
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2022/05/17/%E8%BE%90%E5%B0%84%E5%BA%A6%E9%87%8F%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E6%8D%A2/" rel="prev" title="辐射度量之间的转换">
-      <i class="fa fa-chevron-left"></i> 辐射度量之间的转换
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2022/05/17/%E8%BE%90%E5%B0%84%E5%BA%A6%E5%AD%A6/" rel="next" title="辐射度学">
-      辐射度学 <i class="fa fa-chevron-right"></i>
-    </a></div>
+            <div class="pc-post-toc left-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#BRDF%EF%BC%88%E5%8F%8C%E5%90%91%E5%8F%8D%E5%B0%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">BRDF（双向反射分布函数）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%89%E7%85%A7%E7%8E%B0%E8%B1%A1"><span class="nav-number">1.1.</span> <span class="nav-text">光照现象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%89%E5%AD%A6%E5%B9%B3%E9%9D%A2%E8%BE%B9%E7%95%8C%E4%B8%8A%E7%9A%84%E6%95%A3%E5%B0%84"><span class="nav-number">1.1.1.</span> <span class="nav-text">光学平面边界上的散射</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%9E%E5%85%89%E5%AD%A6%E5%B9%B3%E9%9D%A2%E4%B8%8A%E7%9A%84%E6%95%A3%E5%B0%84"><span class="nav-number">1.2.</span> <span class="nav-text">非光学平面上的散射</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.3.</span> <span class="nav-text">光照模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%B5%8B%E9%87%8F%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.3.1.</span> <span class="nav-text">1.测量模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E7%BB%8F%E9%AA%8C%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.3.2.</span> <span class="nav-text">2. 经验模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%9F%BA%E4%BA%8E%E7%89%A9%E7%90%86%E7%9A%84%E5%88%86%E6%9E%90%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.基于物理的分析模型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%90%E5%B0%84%E5%BA%A6%E5%AD%A6%E5%9F%BA%E6%9C%AC%E9%87%8F"><span class="nav-number">1.4.</span> <span class="nav-text">辐射度学基本量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E8%83%BD%E9%87%8F"><span class="nav-number">1.4.1.</span> <span class="nav-text">1.能量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%8A%9F%E7%8E%87"><span class="nav-number">1.4.2.</span> <span class="nav-text">2.功率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E8%BE%90%E7%85%A7%E5%BA%A6%E5%92%8C%E5%B9%85%E5%87%BA%E5%BA%A6"><span class="nav-number">1.4.3.</span> <span class="nav-text">3.辐照度和幅出度</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E8%BE%90%E5%B0%84%E5%BC%BA%E5%BA%A6"><span class="nav-number">1.4.3.1.</span> <span class="nav-text">4.辐射强度</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E8%BE%90%E5%B0%84%E7%8E%87"><span class="nav-number">1.4.4.</span> <span class="nav-text">5.辐射率</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BRDF"><span class="nav-number">1.5.</span> <span class="nav-text">BRDF</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BE%AE%E8%A1%A8%E9%9D%A2%E7%90%86%E8%AE%BA"><span class="nav-number">1.6.</span> <span class="nav-text">微表面理论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cook-Torrance%E6%A8%A1%E5%9E%8B%E5%85%AC%E5%BC%8F%E6%8E%A8%E5%AF%BC"><span class="nav-number">1.7.</span> <span class="nav-text">Cook-Torrance模型公式推导</span></a></li></ol></li></ol>
     </div>
-      </footer>
-    
-  </article>
-  
-  
-  
+</div>
+
+            </div>
+        
+    </div>
+</div>
 
 
+                
+            </div>
+        </div>
 
-          </div>
-          
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="border-box website-info-box default">
+        
+            <div class="copyright-info info-item default">
+                &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2024
+                
+                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">YuWang</a>
+                
+            </div>
 
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
+            <div class="theme-info info-item default">
+                由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+            </div>
+
+            
+
+            
+        
+
+        <div class="count-item info-item default">
+            
+
+            
+
+            
+        </div>
+    </div>
+</footer>
 
         </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
+    </div>
 
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#BRDF%EF%BC%88%E5%8F%8C%E5%90%91%E5%8F%8D%E5%B0%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">BRDF（双向反射分布函数）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%89%E7%85%A7%E7%8E%B0%E8%B1%A1"><span class="nav-number">1.1.</span> <span class="nav-text">光照现象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%89%E5%AD%A6%E5%B9%B3%E9%9D%A2%E8%BE%B9%E7%95%8C%E4%B8%8A%E7%9A%84%E6%95%A3%E5%B0%84"><span class="nav-number">1.1.1.</span> <span class="nav-text">光学平面边界上的散射</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%9E%E5%85%89%E5%AD%A6%E5%B9%B3%E9%9D%A2%E4%B8%8A%E7%9A%84%E6%95%A3%E5%B0%84"><span class="nav-number">1.2.</span> <span class="nav-text">非光学平面上的散射</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.3.</span> <span class="nav-text">光照模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%B5%8B%E9%87%8F%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.3.1.</span> <span class="nav-text">1.测量模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E7%BB%8F%E9%AA%8C%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.3.2.</span> <span class="nav-text">2. 经验模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%9F%BA%E4%BA%8E%E7%89%A9%E7%90%86%E7%9A%84%E5%88%86%E6%9E%90%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.基于物理的分析模型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%90%E5%B0%84%E5%BA%A6%E5%AD%A6%E5%9F%BA%E6%9C%AC%E9%87%8F"><span class="nav-number">1.4.</span> <span class="nav-text">辐射度学基本量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E8%83%BD%E9%87%8F"><span class="nav-number">1.4.1.</span> <span class="nav-text">1.能量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%8A%9F%E7%8E%87"><span class="nav-number">1.4.2.</span> <span class="nav-text">2.功率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E8%BE%90%E7%85%A7%E5%BA%A6%E5%92%8C%E5%B9%85%E5%87%BA%E5%BA%A6"><span class="nav-number">1.4.3.</span> <span class="nav-text">3.辐照度和幅出度</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E8%BE%90%E5%B0%84%E5%BC%BA%E5%BA%A6"><span class="nav-number">1.4.3.1.</span> <span class="nav-text">4.辐射强度</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E8%BE%90%E5%B0%84%E7%8E%87"><span class="nav-number">1.4.4.</span> <span class="nav-text">5.辐射率</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BRDF"><span class="nav-number">1.5.</span> <span class="nav-text">BRDF</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BE%AE%E8%A1%A8%E9%9D%A2%E7%90%86%E8%AE%BA"><span class="nav-number">1.6.</span> <span class="nav-text">微表面理论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cook-Torrance%E6%A8%A1%E5%9E%8B%E5%85%AC%E5%BC%8F%E6%8E%A8%E5%AF%BC"><span class="nav-number">1.7.</span> <span class="nav-text">Cook-Torrance模型公式推导</span></a></li></ol></li></ol></div>
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">Wang Yu</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
+    <!-- post tools -->
+    
+        <div class="post-tools left-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
         
-          <span class="site-state-item-count">38</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-          
-        <span class="site-state-item-count">13</span>
-        <span class="site-state-item-name">分类</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-          
-        <span class="site-state-item-count">23</span>
-        <span class="site-state-item-name">标签</span></a>
-      </div>
-  </nav>
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
 </div>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-        <a href="https://github.com/wangyuynao" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wangyuynao" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="mailto:yuwang@ynu.edu.cn" title="E-Mail → mailto:yuwang@ynu.edu.cn" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
-      </span>
-  </div>
 
+        </div>
+    
 
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
 
-      </div>
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
 
     </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
 
-
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-        
-
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2024</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Wang Yu</span>
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
-  </div>
-
-        
 
 
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#BRDF%EF%BC%88%E5%8F%8C%E5%90%91%E5%8F%8D%E5%B0%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">BRDF（双向反射分布函数）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%89%E7%85%A7%E7%8E%B0%E8%B1%A1"><span class="nav-number">1.1.</span> <span class="nav-text">光照现象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%89%E5%AD%A6%E5%B9%B3%E9%9D%A2%E8%BE%B9%E7%95%8C%E4%B8%8A%E7%9A%84%E6%95%A3%E5%B0%84"><span class="nav-number">1.1.1.</span> <span class="nav-text">光学平面边界上的散射</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%9E%E5%85%89%E5%AD%A6%E5%B9%B3%E9%9D%A2%E4%B8%8A%E7%9A%84%E6%95%A3%E5%B0%84"><span class="nav-number">1.2.</span> <span class="nav-text">非光学平面上的散射</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.3.</span> <span class="nav-text">光照模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%B5%8B%E9%87%8F%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.3.1.</span> <span class="nav-text">1.测量模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E7%BB%8F%E9%AA%8C%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.3.2.</span> <span class="nav-text">2. 经验模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%9F%BA%E4%BA%8E%E7%89%A9%E7%90%86%E7%9A%84%E5%88%86%E6%9E%90%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.基于物理的分析模型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%90%E5%B0%84%E5%BA%A6%E5%AD%A6%E5%9F%BA%E6%9C%AC%E9%87%8F"><span class="nav-number">1.4.</span> <span class="nav-text">辐射度学基本量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E8%83%BD%E9%87%8F"><span class="nav-number">1.4.1.</span> <span class="nav-text">1.能量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%8A%9F%E7%8E%87"><span class="nav-number">1.4.2.</span> <span class="nav-text">2.功率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E8%BE%90%E7%85%A7%E5%BA%A6%E5%92%8C%E5%B9%85%E5%87%BA%E5%BA%A6"><span class="nav-number">1.4.3.</span> <span class="nav-text">3.辐照度和幅出度</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E8%BE%90%E5%B0%84%E5%BC%BA%E5%BA%A6"><span class="nav-number">1.4.3.1.</span> <span class="nav-text">4.辐射强度</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E8%BE%90%E5%B0%84%E7%8E%87"><span class="nav-number">1.4.4.</span> <span class="nav-text">5.辐射率</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BRDF"><span class="nav-number">1.5.</span> <span class="nav-text">BRDF</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BE%AE%E8%A1%A8%E9%9D%A2%E7%90%86%E8%AE%BA"><span class="nav-number">1.6.</span> <span class="nav-text">微表面理论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cook-Torrance%E6%A8%A1%E5%9E%8B%E5%85%AC%E5%BC%8F%E6%8E%A8%E5%AF%BC"><span class="nav-number">1.7.</span> <span class="nav-text">Cook-Torrance模型公式推导</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
 
 
 
-
-
-
-      </div>
-    </footer>
-  </div>
-
-  
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<!-- common -->
 
 <script src="/js/utils.js"></script>
 
-<script src="/js/motion.js"></script>
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
 
 
-<script src="/js/schemes/pisces.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-      
-
-<script>
-  if (typeof MathJax === 'undefined') {
-    window.MathJax = {
-      loader: {
-        source: {
-          '[tex]/amsCd': '[tex]/amscd',
-          '[tex]/AMScd': '[tex]/amscd'
-        }
-      },
-      tex: {
-        inlineMath: {'[+]': [['$', '$']]},
-        tags: 'ams'
-      },
-      options: {
-        renderActions: {
-          findScript: [10, doc => {
-            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
-              const display = !!node.type.match(/; *mode=display/);
-              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
-              const text = document.createTextNode('');
-              node.parentNode.replaceChild(text, node);
-              math.start = {node: text, delim: '', n: 0};
-              math.end = {node: text, delim: '', n: 0};
-              doc.math.push(math);
-            });
-          }, '', false],
-          insertedScript: [200, () => {
-            document.querySelectorAll('mjx-container').forEach(node => {
-              let target = node.parentNode;
-              if (target.nodeName.toLowerCase() === 'li') {
-                target.parentNode.classList.add('has-jax');
-              }
-            });
-          }, '', false]
-        }
-      }
-    };
-    (function () {
-      var script = document.createElement('script');
-      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
-      script.defer = true;
-      document.head.appendChild(script);
-    })();
-  } else {
-    MathJax.startup.document.state(0);
-    MathJax.texReset();
-    MathJax.typeset();
-  }
-</script>
+<!-- local-search -->
 
     
+<script src="/js/local-search.js"></script>
 
-  
 
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>
