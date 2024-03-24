@@ -40,7 +40,119 @@
     KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
     KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
   </script>
-<meta name="generator" content="Hexo 6.3.0"></head>
+<meta name="generator" content="Hexo 6.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 
 <body>
@@ -285,23 +397,23 @@
 <h2 id="auto-存储类"><a href="#auto-存储类" class="headerlink" title="auto 存储类"></a>auto 存储类</h2><p>自 C++ 11 以来，<strong>auto</strong> 关键字用于两种情况：声明变量时根据初始化表达式自动推断该变量的类型、声明函数时函数返回值的占位符。</p>
 <p>C++98标准中auto关键字用于自动变量的声明，但由于使用极少且多余，在 C++17 中已删除这一用法。</p>
 <p>根据初始化表达式自动推断被声明的变量的类型，如：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> f=<span class="number">3.14</span>;      <span class="comment">//double</span></span><br><span class="line"><span class="function"><span class="keyword">auto</span> <span class="title">s</span><span class="params">(<span class="string">&quot;hello&quot;</span>)</span></span>;  <span class="comment">//const char*</span></span><br><span class="line"><span class="keyword">auto</span> z = <span class="keyword">new</span> <span class="built_in">auto</span>(<span class="number">9</span>); <span class="comment">// int*</span></span><br><span class="line"><span class="keyword">auto</span> x1 = <span class="number">5</span>, x2 = <span class="number">5.0</span>, x3=<span class="string">&#x27;r&#x27;</span>;<span class="comment">//错误，必须是初始化为同一类型</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> f=<span class="number">3.14</span>;      <span class="comment">//double</span></span><br><span class="line"><span class="function"><span class="keyword">auto</span> <span class="title">s</span><span class="params">(<span class="string">"hello"</span>)</span></span>;  <span class="comment">//const char*</span></span><br><span class="line"><span class="keyword">auto</span> z = <span class="keyword">new</span> <span class="built_in">auto</span>(<span class="number">9</span>); <span class="comment">// int*</span></span><br><span class="line"><span class="keyword">auto</span> x1 = <span class="number">5</span>, x2 = <span class="number">5.0</span>, x3=<span class="string">'r'</span>;<span class="comment">//错误，必须是初始化为同一类型</span></span><br></pre></td></tr></table></figure>
 <h2 id="register-存储类"><a href="#register-存储类" class="headerlink" title="register 存储类"></a>register 存储类</h2><p><strong>register</strong> 存储类用于定义存储在寄存器中而不是 RAM 中的局部变量。这意味着变量的最大尺寸等于寄存器的大小（通常是一个词），且不能对它应用一元的 ‘&amp;’ 运算符（因为它没有内存位置）。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   <span class="keyword">register</span> <span class="type">int</span>  miles;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">{</span><br><span class="line">   <span class="keyword">register</span> <span class="type">int</span>  miles;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 <p>寄存器只用于需要快速访问的变量，比如计数器。还应注意的是，定义 ‘register’ 并不意味着变量将被存储在寄存器中，它意味着变量可能存储在寄存器中，这取决于硬件和实现的限制。</p>
 <h2 id="static-存储类"><a href="#static-存储类" class="headerlink" title="static 存储类"></a>static 存储类</h2><p><strong>static</strong> 存储类指示编译器在程序的生命周期内保持局部变量的存在，而不需要在每次它进入和离开作用域时进行创建和销毁。因此，使用 static 修饰局部变量可以在函数调用之间保持局部变量的值。</p>
 <p>static 修饰符也可以应用于全局变量。当 static 修饰全局变量时，会使变量的作用域限制在声明它的文件内。</p>
 <p>在 C++ 中，当 static 用在类数据成员上时，会导致仅有一个该成员的副本被类的所有对象共享。</p>
-<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="comment">// 函数声明 </span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">(<span class="type">void</span>)</span></span>;</span><br><span class="line"> </span><br><span class="line"><span class="type">static</span> <span class="type">int</span> count = <span class="number">10</span>; <span class="comment">/* 全局变量 */</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(count--)</span><br><span class="line">    &#123;</span><br><span class="line">       <span class="built_in">func</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 函数定义</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">( <span class="type">void</span> )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">static</span> <span class="type">int</span> i = <span class="number">5</span>; <span class="comment">// 局部静态变量</span></span><br><span class="line">    i++;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;变量 i 为 &quot;</span> &lt;&lt; i ;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot; , 变量 count 为 &quot;</span> &lt;&lt; count &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="comment">// 函数声明 </span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">(<span class="type">void</span>)</span></span>;</span><br><span class="line"> </span><br><span class="line"><span class="type">static</span> <span class="type">int</span> count = <span class="number">10</span>; <span class="comment">/* 全局变量 */</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="keyword">while</span>(count--)</span><br><span class="line">    {</span><br><span class="line">       <span class="built_in">func</span>();</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br><span class="line"><span class="comment">// 函数定义</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">( <span class="type">void</span> )</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="type">static</span> <span class="type">int</span> i = <span class="number">5</span>; <span class="comment">// 局部静态变量</span></span><br><span class="line">    i++;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">"变量 i 为 "</span> &lt;&lt; i ;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">" , 变量 count 为 "</span> &lt;&lt; count &lt;&lt; std::endl;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 <p>当上面的代码被编译和执行时，它会产生下列结果：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">变量 i 为 <span class="number">6</span> , 变量 count 为 <span class="number">9</span></span><br><span class="line">变量 i 为 <span class="number">7</span> , 变量 count 为 <span class="number">8</span></span><br><span class="line">变量 i 为 <span class="number">8</span> , 变量 count 为 <span class="number">7</span></span><br><span class="line">变量 i 为 <span class="number">9</span> , 变量 count 为 <span class="number">6</span></span><br><span class="line">变量 i 为 <span class="number">10</span> , 变量 count 为 <span class="number">5</span></span><br><span class="line">变量 i 为 <span class="number">11</span> , 变量 count 为 <span class="number">4</span></span><br><span class="line">变量 i 为 <span class="number">12</span> , 变量 count 为 <span class="number">3</span></span><br><span class="line">变量 i 为 <span class="number">13</span> , 变量 count 为 <span class="number">2</span></span><br><span class="line">变量 i 为 <span class="number">14</span> , 变量 count 为 <span class="number">1</span></span><br><span class="line">变量 i 为 <span class="number">15</span> , 变量 count 为 <span class="number">0</span></span><br></pre></td></tr></table></figure>
 <h2 id="extern-存储类"><a href="#extern-存储类" class="headerlink" title="extern 存储类"></a>extern 存储类</h2><p><strong>extern</strong> 存储类用于提供一个全局变量的引用，全局变量对所有的程序文件都是可见的。当您使用 ‘extern’ 时，对于无法初始化的变量，会把变量名指向一个之前定义过的存储位置。</p>
 <p>当您有多个文件且定义了一个可以在其他文件中使用的全局变量或函数时，可以在其他文件中使用 <em>extern</em> 来得到已定义的变量或函数的引用。可以这么理解，<em>extern</em> 是用来在另一个文件中声明一个全局变量或函数。</p>
 <p>extern 修饰符通常用于当有两个或多个文件共享相同的全局变量或函数的时候，如下所示：</p>
 <p>第一个文件：main.cpp</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="type">int</span> count ;</span><br><span class="line"><span class="function"><span class="keyword">extern</span> <span class="type">void</span> <span class="title">write_extern</span><span class="params">()</span></span>;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   count = <span class="number">5</span>;</span><br><span class="line">   <span class="built_in">write_extern</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="type">int</span> count ;</span><br><span class="line"><span class="function"><span class="keyword">extern</span> <span class="type">void</span> <span class="title">write_extern</span><span class="params">()</span></span>;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">   count = <span class="number">5</span>;</span><br><span class="line">   <span class="built_in">write_extern</span>();</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 <p>第二个文件：support.cpp</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">extern</span> <span class="type">int</span> count;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">write_extern</span><span class="params">(<span class="type">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   std::cout &lt;&lt; <span class="string">&quot;Count is &quot;</span> &lt;&lt; count &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">extern</span> <span class="type">int</span> count;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">write_extern</span><span class="params">(<span class="type">void</span>)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">   std::cout &lt;&lt; <span class="string">"Count is "</span> &lt;&lt; count &lt;&lt; std::endl;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 <p>在这里，第二个文件中的 <em>extern</em> 关键字用于声明已经在第一个文件 main.cpp 中定义的 count。现在 ，编译这两个文件，如下所示：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ g++ main.cpp support.cpp -o write</span><br></pre></td></tr></table></figure>
 <p>这会产生 <strong>write</strong> 可执行程序，尝试执行 <strong>write</strong>，它会产生下列结果：</p>
@@ -311,7 +423,7 @@
 <p>thread_local 说明符可以与 static 或 extern 合并。</p>
 <p>可以将 thread_local 仅应用于数据声明和定义，thread_local 不能用于函数声明或定义。</p>
 <p>以下演示了可以被声明为 thread_local 的变量：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">thread_local</span> <span class="type">int</span> x;  <span class="comment">// 命名空间下的全局变量</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">X</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">static</span> <span class="keyword">thread_local</span> std::string s; <span class="comment">// 类的static成员变量</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="type">static</span> <span class="keyword">thread_local</span> std::string X::s;  <span class="comment">// X::s 是需要定义的</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">foo</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">thread_local</span> std::vector&lt;<span class="type">int</span>&gt; v;  <span class="comment">// 本地变量</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">thread_local</span> <span class="type">int</span> x;  <span class="comment">// 命名空间下的全局变量</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">X</span></span><br><span class="line">{</span><br><span class="line">    <span class="type">static</span> <span class="keyword">thread_local</span> std::string s; <span class="comment">// 类的static成员变量</span></span><br><span class="line">};</span><br><span class="line"><span class="type">static</span> <span class="keyword">thread_local</span> std::string X::s;  <span class="comment">// X::s 是需要定义的</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">foo</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="keyword">thread_local</span> std::vector&lt;<span class="type">int</span>&gt; v;  <span class="comment">// 本地变量</span></span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 
                 </div>
                 
@@ -632,5 +744,20 @@
 
 
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>

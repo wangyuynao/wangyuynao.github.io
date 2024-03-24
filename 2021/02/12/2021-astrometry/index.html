@@ -40,7 +40,119 @@
     KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
     KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
   </script>
-<meta name="generator" content="Hexo 6.3.0"></head>
+<meta name="generator" content="Hexo 6.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 
 <body>
@@ -301,7 +413,7 @@
 <li>安装g++ gcc</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum -y install gcc gcc-c++ kernel-devel</span><br></pre></td></tr></table></figure>
-<h2 id="Building-astrometry-net"><a href="#Building-astrometry-net" class="headerlink" title="Building astrometry.net"></a>Building astrometry.net</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">wget http://astrometry.net/downloads/astrometry.net-0.80.tar.gz</span><br><span class="line">tar zxvf astrometry.net-0.80.tar.gz</span><br><span class="line">cd astrometry.net-0.80/util/</span><br><span class="line"># Edit &#x27;makefile.netpbm&#x27;</span><br><span class="line"># NETPBM_INC ?= -I/usr/include/netpbm</span><br><span class="line"># NETPBM_LIB ?= -L/usr/lib64 -lnetpbm</span><br><span class="line"></span><br><span class="line">cd ..</span><br><span class="line">make</span><br><span class="line">make py</span><br><span class="line">make extra</span><br><span class="line">sudo make install</span><br><span class="line"></span><br><span class="line">#配置环境变量</span><br><span class="line">export PATH=$&#123;PATH&#125;:/usr/local/astrometry/bin</span><br></pre></td></tr></table></figure>
+<h2 id="Building-astrometry-net"><a href="#Building-astrometry-net" class="headerlink" title="Building astrometry.net"></a>Building astrometry.net</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">wget http://astrometry.net/downloads/astrometry.net-0.80.tar.gz</span><br><span class="line">tar zxvf astrometry.net-0.80.tar.gz</span><br><span class="line">cd astrometry.net-0.80/util/</span><br><span class="line"># Edit 'makefile.netpbm'</span><br><span class="line"># NETPBM_INC ?= -I/usr/include/netpbm</span><br><span class="line"># NETPBM_LIB ?= -L/usr/lib64 -lnetpbm</span><br><span class="line"></span><br><span class="line">cd ..</span><br><span class="line">make</span><br><span class="line">make py</span><br><span class="line">make extra</span><br><span class="line">sudo make install</span><br><span class="line"></span><br><span class="line">#配置环境变量</span><br><span class="line">export PATH=${PATH}:/usr/local/astrometry/bin</span><br></pre></td></tr></table></figure>
 
                 </div>
                 
@@ -622,5 +734,20 @@
 
 
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>

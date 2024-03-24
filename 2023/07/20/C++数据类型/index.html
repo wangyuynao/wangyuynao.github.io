@@ -40,7 +40,119 @@
     KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
     KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
   </script>
-<meta name="generator" content="Hexo 6.3.0"></head>
+<meta name="generator" content="Hexo 6.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 
 <body>
@@ -426,7 +538,7 @@
 </blockquote>
 <p>从上表可得知，变量的大小会根据编译器和所使用的电脑而有所不同。</p>
 <p>下面实例会输出您电脑上各种数据类型的大小。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   cout &lt;&lt; <span class="string">&quot;Size of char : &quot;</span> &lt;&lt; <span class="built_in">sizeof</span>(<span class="type">char</span>) &lt;&lt; endl;</span><br><span class="line">   cout &lt;&lt; <span class="string">&quot;Size of int : &quot;</span> &lt;&lt; <span class="built_in">sizeof</span>(<span class="type">int</span>) &lt;&lt; endl;</span><br><span class="line">   cout &lt;&lt; <span class="string">&quot;Size of short int : &quot;</span> &lt;&lt; <span class="built_in">sizeof</span>(<span class="type">short</span> <span class="type">int</span>) &lt;&lt; endl;</span><br><span class="line">   cout &lt;&lt; <span class="string">&quot;Size of long int : &quot;</span> &lt;&lt; <span class="built_in">sizeof</span>(<span class="type">long</span> <span class="type">int</span>) &lt;&lt; endl;</span><br><span class="line">   cout &lt;&lt; <span class="string">&quot;Size of float : &quot;</span> &lt;&lt; <span class="built_in">sizeof</span>(<span class="type">float</span>) &lt;&lt; endl;</span><br><span class="line">   cout &lt;&lt; <span class="string">&quot;Size of double : &quot;</span> &lt;&lt; <span class="built_in">sizeof</span>(<span class="type">double</span>) &lt;&lt; endl;</span><br><span class="line">   cout &lt;&lt; <span class="string">&quot;Size of wchar_t : &quot;</span> &lt;&lt; <span class="built_in">sizeof</span>(<span class="type">wchar_t</span>) &lt;&lt; endl;</span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">   cout &lt;&lt; <span class="string">"Size of char : "</span> &lt;&lt; <span class="built_in">sizeof</span>(<span class="type">char</span>) &lt;&lt; endl;</span><br><span class="line">   cout &lt;&lt; <span class="string">"Size of int : "</span> &lt;&lt; <span class="built_in">sizeof</span>(<span class="type">int</span>) &lt;&lt; endl;</span><br><span class="line">   cout &lt;&lt; <span class="string">"Size of short int : "</span> &lt;&lt; <span class="built_in">sizeof</span>(<span class="type">short</span> <span class="type">int</span>) &lt;&lt; endl;</span><br><span class="line">   cout &lt;&lt; <span class="string">"Size of long int : "</span> &lt;&lt; <span class="built_in">sizeof</span>(<span class="type">long</span> <span class="type">int</span>) &lt;&lt; endl;</span><br><span class="line">   cout &lt;&lt; <span class="string">"Size of float : "</span> &lt;&lt; <span class="built_in">sizeof</span>(<span class="type">float</span>) &lt;&lt; endl;</span><br><span class="line">   cout &lt;&lt; <span class="string">"Size of double : "</span> &lt;&lt; <span class="built_in">sizeof</span>(<span class="type">double</span>) &lt;&lt; endl;</span><br><span class="line">   cout &lt;&lt; <span class="string">"Size of wchar_t : "</span> &lt;&lt; <span class="built_in">sizeof</span>(<span class="type">wchar_t</span>) &lt;&lt; endl;</span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 <p>本实例使用了 <strong>endl</strong>，这将在每一行后插入一个换行符，&lt;&lt; 运算符用于向屏幕传多个值。我们也使用 <strong>sizeof()</strong> 函数来获取各种数据类型的大小。</p>
 <p>当上面的代码被编译和执行时，它会产生以下的结果，结果会根据所使用的计算机而有所不同：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Size of char : 1</span><br><span class="line">Size of int : 4</span><br><span class="line">Size of short int : 2</span><br><span class="line">Size of long int : 4</span><br><span class="line">Size of float : 4</span><br><span class="line">Size of double : 8</span><br><span class="line">Size of wchar_t : 4</span><br></pre></td></tr></table></figure>
@@ -440,12 +552,12 @@
 <p>如果一个变量只有几种可能的值，可以定义为枚举(enumeration)类型。所谓”枚举”是指将变量的值一一列举出来，变量的值只能在列举出来的值的范围内。</p>
 <p>枚举类型声明一个可选的类型名称和一组标识符，用来作为该类型的值。其带有零个或多个标识符可以被用来作为该类型的值。每个枚举数是一个枚举类型的常数。</p>
 <p>创建枚举，需要使用关键字 <strong>enum</strong>。枚举类型的一般形式为：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="title class_">enum</span>-name &#123; list of names &#125; var-list; </span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="title class_">enum</span>-name { list of names } var-list; </span><br></pre></td></tr></table></figure>
 <p>在这里，enum-name 是枚举类型的名称。名称列表 { list of names } 是用逗号分隔的。</p>
 <p>例如，下面的代码定义了一个颜色枚举，变量 c 的类型为 color。最后，c 被赋值为 “blue”。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="title class_">color</span> &#123; red, green, blue &#125; c;</span><br><span class="line">c = blue;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="title class_">color</span> { red, green, blue } c;</span><br><span class="line">c = blue;</span><br></pre></td></tr></table></figure>
 <p>默认情况下，第一个名称的值为 0，第二个名称的值为 1，第三个名称的值为 2，以此类推。但是，您也可以给名称赋予一个特殊的值，只需要添加一个初始值即可。例如，在下面的枚举中，<strong>green</strong> 的值为 5。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">enum color &#123; red, green=5, blue &#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">enum color { red, green=5, blue };</span><br></pre></td></tr></table></figure>
 <p>在这里，<strong>blue</strong> 的值为 6，因为默认情况下，每个名称都会比它前面一个名称大 1。</p>
 <h2 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h2><p>类型转换是将一个数据类型的值转换为另一种数据类型的值。</p>
 <p>C++ 中有四种类型转换：静态转换、动态转换、常量转换和重新解释转换。</p>
@@ -454,7 +566,7 @@
 <p>静态转换不进行任何运行时类型检查，因此可能会导致运行时错误。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> i = <span class="number">10</span>;</span><br><span class="line"><span class="type">float</span> f = <span class="built_in">static_cast</span>&lt;<span class="type">float</span>&gt;(i); <span class="comment">// 静态将int类型转换为float类型</span></span><br></pre></td></tr></table></figure>
 <h3 id="动态转换（Dynamic-Cast）"><a href="#动态转换（Dynamic-Cast）" class="headerlink" title="动态转换（Dynamic Cast）"></a>动态转换（Dynamic Cast）</h3><p>动态转换通常用于将一个基类指针或引用转换为派生类指针或引用。动态转换在运行时进行类型检查，如果不能进行转换则返回空指针或引发异常。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Base</span> &#123;&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Derived</span> : <span class="keyword">public</span> Base &#123;&#125;;</span><br><span class="line">Base* ptr_base = <span class="keyword">new</span> Derived;</span><br><span class="line">Derived* ptr_derived = <span class="built_in">dynamic_cast</span>&lt;Derived*&gt;(ptr_base); <span class="comment">// 将基类指针转换为派生类指针</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Base</span> {};</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Derived</span> : <span class="keyword">public</span> Base {};</span><br><span class="line">Base* ptr_base = <span class="keyword">new</span> Derived;</span><br><span class="line">Derived* ptr_derived = <span class="built_in">dynamic_cast</span>&lt;Derived*&gt;(ptr_base); <span class="comment">// 将基类指针转换为派生类指针</span></span><br></pre></td></tr></table></figure>
 <h3 id="常量转换（Const-Cast）"><a href="#常量转换（Const-Cast）" class="headerlink" title="常量转换（Const Cast）"></a>常量转换（Const Cast）</h3><p>常量转换用于将 const 类型的对象转换为非 const 类型的对象。</p>
 <p>常量转换只能用于转换掉 const 属性，不能改变对象的类型。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> i = <span class="number">10</span>;</span><br><span class="line"><span class="type">int</span>&amp; r = <span class="built_in">const_cast</span>&lt;<span class="type">int</span>&amp;&gt;(i); <span class="comment">// 常量转换，将const int转换为int</span></span><br></pre></td></tr></table></figure>
@@ -781,5 +893,20 @@
 
 
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>

@@ -40,7 +40,119 @@
     KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
     KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
   </script>
-<meta name="generator" content="Hexo 6.3.0"></head>
+<meta name="generator" content="Hexo 6.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 
 <body>
@@ -289,9 +401,9 @@
 <p>这些修饰符也可以组合使用，修饰符 <strong>signed</strong> 和 <strong>unsigned</strong> 也可以作为 <strong>long</strong> 或 <strong>short</strong> 修饰符的前缀。例如：<strong>unsigned long int</strong>。</p>
 <p>C++ 允许使用速记符号来声明<strong>无符号短整数</strong>或<strong>无符号长整数</strong>。您可以不写 int，只写单词 <strong>unsigned、short</strong> 或 <strong>long</strong>，<strong>int</strong> 是隐含的。</p>
 <p>例如，下面的两个语句都声明了无符号整型变量。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">signed</span> <span class="type">int</span> num1 = <span class="number">-10</span>; <span class="comment">// 定义有符号整型变量 num1，初始值为 -10</span></span><br><span class="line"><span class="type">unsigned</span> <span class="type">int</span> num2 = <span class="number">20</span>; <span class="comment">// 定义无符号整型变量 num2，初始值为 20</span></span><br><span class="line"></span><br><span class="line"><span class="type">short</span> <span class="type">int</span> num1 = <span class="number">10</span>; <span class="comment">// 定义短整型变量 num1，初始值为 10</span></span><br><span class="line"><span class="type">long</span> <span class="type">int</span> num2 = <span class="number">100000</span>; <span class="comment">// 定义长整型变量 num2，初始值为 100000</span></span><br><span class="line"></span><br><span class="line"><span class="type">long</span> <span class="type">long</span> <span class="type">int</span> num1 = <span class="number">10000000000</span>; <span class="comment">// 定义长长整型变量 num1，初始值为 10000000000</span></span><br><span class="line"></span><br><span class="line"><span class="type">float</span> num1 = <span class="number">3.14f</span>; <span class="comment">// 定义单精度浮点数变量 num1，初始值为 3.14</span></span><br><span class="line"><span class="type">double</span> num2 = <span class="number">2.71828</span>; <span class="comment">// 定义双精度浮点数变量 num2，初始值为 2.71828</span></span><br><span class="line"></span><br><span class="line"><span class="type">bool</span> flag = <span class="literal">true</span>; <span class="comment">// 定义布尔类型变量 flag，初始值为 true</span></span><br><span class="line"></span><br><span class="line"><span class="type">char</span> ch1 = <span class="string">&#x27;a&#x27;</span>; <span class="comment">// 定义字符类型变量 ch1，初始值为 &#x27;a&#x27;</span></span><br><span class="line"><span class="type">wchar_t</span> ch2 = <span class="string">L&#x27;你&#x27;</span>; <span class="comment">// 定义宽字符类型变量 ch2，初始值为 &#x27;你&#x27;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">signed</span> <span class="type">int</span> num1 = <span class="number">-10</span>; <span class="comment">// 定义有符号整型变量 num1，初始值为 -10</span></span><br><span class="line"><span class="type">unsigned</span> <span class="type">int</span> num2 = <span class="number">20</span>; <span class="comment">// 定义无符号整型变量 num2，初始值为 20</span></span><br><span class="line"></span><br><span class="line"><span class="type">short</span> <span class="type">int</span> num1 = <span class="number">10</span>; <span class="comment">// 定义短整型变量 num1，初始值为 10</span></span><br><span class="line"><span class="type">long</span> <span class="type">int</span> num2 = <span class="number">100000</span>; <span class="comment">// 定义长整型变量 num2，初始值为 100000</span></span><br><span class="line"></span><br><span class="line"><span class="type">long</span> <span class="type">long</span> <span class="type">int</span> num1 = <span class="number">10000000000</span>; <span class="comment">// 定义长长整型变量 num1，初始值为 10000000000</span></span><br><span class="line"></span><br><span class="line"><span class="type">float</span> num1 = <span class="number">3.14f</span>; <span class="comment">// 定义单精度浮点数变量 num1，初始值为 3.14</span></span><br><span class="line"><span class="type">double</span> num2 = <span class="number">2.71828</span>; <span class="comment">// 定义双精度浮点数变量 num2，初始值为 2.71828</span></span><br><span class="line"></span><br><span class="line"><span class="type">bool</span> flag = <span class="literal">true</span>; <span class="comment">// 定义布尔类型变量 flag，初始值为 true</span></span><br><span class="line"></span><br><span class="line"><span class="type">char</span> ch1 = <span class="string">'a'</span>; <span class="comment">// 定义字符类型变量 ch1，初始值为 'a'</span></span><br><span class="line"><span class="type">wchar_t</span> ch2 = <span class="string">L'你'</span>; <span class="comment">// 定义宽字符类型变量 ch2，初始值为 '你'</span></span><br></pre></td></tr></table></figure>
 <p>为了理解 C++ 解释有符号整数和无符号整数修饰符之间的差别，我们来运行一下下面这个短程序：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"> </span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment"> * 这个程序演示了有符号整数和无符号整数之间的差别</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="type">short</span> <span class="type">int</span> i;           <span class="comment">// 有符号短整数</span></span><br><span class="line">   <span class="type">short</span> <span class="type">unsigned</span> <span class="type">int</span> j;  <span class="comment">// 无符号短整数</span></span><br><span class="line"> </span><br><span class="line">   j = <span class="number">50000</span>;</span><br><span class="line"> </span><br><span class="line">   i = j;</span><br><span class="line">   cout &lt;&lt; i &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; j;</span><br><span class="line"> </span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"> </span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment"> * 这个程序演示了有符号整数和无符号整数之间的差别</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">   <span class="type">short</span> <span class="type">int</span> i;           <span class="comment">// 有符号短整数</span></span><br><span class="line">   <span class="type">short</span> <span class="type">unsigned</span> <span class="type">int</span> j;  <span class="comment">// 无符号短整数</span></span><br><span class="line"> </span><br><span class="line">   j = <span class="number">50000</span>;</span><br><span class="line"> </span><br><span class="line">   i = j;</span><br><span class="line">   cout &lt;&lt; i &lt;&lt; <span class="string">" "</span> &lt;&lt; j;</span><br><span class="line"> </span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 <p>当上面的程序运行时，会输出下列结果：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-15536 50000</span><br></pre></td></tr></table></figure>
 <p>上述结果中，无符号短整数 50,000 的位模式被解释为有符号短整数 -15,536。</p>
@@ -334,9 +446,9 @@
 </div>
 <h3 id="const-实例"><a href="#const-实例" class="headerlink" title="const 实例"></a>const 实例</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> NUM = <span class="number">10</span>; <span class="comment">// 定义常量 NUM，其值不可修改</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span>* ptr = &amp;NUM; <span class="comment">// 定义指向常量的指针，指针所指的值不可修改</span></span><br><span class="line"><span class="type">int</span> <span class="type">const</span>* ptr2 = &amp;NUM; <span class="comment">// 和上面一行等价</span></span><br></pre></td></tr></table></figure>
 <h3 id="volatile-实例"><a href="#volatile-实例" class="headerlink" title="volatile 实例"></a>volatile 实例</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">volatile</span> <span class="type">int</span> num = <span class="number">20</span>; <span class="comment">// 定义变量 num，其值可能会在未知的时间被改变</span></span><br></pre></td></tr></table></figure>
-<h3 id="mutable-实例"><a href="#mutable-实例" class="headerlink" title="mutable 实例"></a>mutable 实例</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Example</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">get_value</span><span class="params">()</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> value_; <span class="comment">// const 关键字表示该成员函数不会修改对象中的数据成员</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">set_value</span><span class="params">(<span class="type">int</span> value)</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">        value_ = value; <span class="comment">// mutable 关键字允许在 const 成员函数中修改成员变量</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">mutable</span> <span class="type">int</span> value_;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="static-实例"><a href="#static-实例" class="headerlink" title="static 实例"></a>static 实例</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">example_function</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">static</span> <span class="type">int</span> count = <span class="number">0</span>; <span class="comment">// static 关键字使变量 count 存储在程序生命周期内都存在</span></span><br><span class="line">    count++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="register-实例"><a href="#register-实例" class="headerlink" title="register 实例"></a>register 实例</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">example_function</span><span class="params">(<span class="keyword">register</span> <span class="type">int</span> num)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// register 关键字建议编译器将变量 num 存储在寄存器中</span></span><br><span class="line">    <span class="comment">// 以提高程序执行速度</span></span><br><span class="line">    <span class="comment">// 但是实际上是否会存储在寄存器中由编译器决定</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="mutable-实例"><a href="#mutable-实例" class="headerlink" title="mutable 实例"></a>mutable 实例</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Example</span> {</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">get_value</span><span class="params">()</span> <span class="type">const</span> </span>{</span><br><span class="line">        <span class="keyword">return</span> value_; <span class="comment">// const 关键字表示该成员函数不会修改对象中的数据成员</span></span><br><span class="line">    }</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">set_value</span><span class="params">(<span class="type">int</span> value)</span> <span class="type">const</span> </span>{</span><br><span class="line">        value_ = value; <span class="comment">// mutable 关键字允许在 const 成员函数中修改成员变量</span></span><br><span class="line">    }</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">mutable</span> <span class="type">int</span> value_;</span><br><span class="line">};</span><br></pre></td></tr></table></figure>
+<h3 id="static-实例"><a href="#static-实例" class="headerlink" title="static 实例"></a>static 实例</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">example_function</span><span class="params">()</span> </span>{</span><br><span class="line">    <span class="type">static</span> <span class="type">int</span> count = <span class="number">0</span>; <span class="comment">// static 关键字使变量 count 存储在程序生命周期内都存在</span></span><br><span class="line">    count++;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<h3 id="register-实例"><a href="#register-实例" class="headerlink" title="register 实例"></a>register 实例</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">example_function</span><span class="params">(<span class="keyword">register</span> <span class="type">int</span> num)</span> </span>{</span><br><span class="line">    <span class="comment">// register 关键字建议编译器将变量 num 存储在寄存器中</span></span><br><span class="line">    <span class="comment">// 以提高程序执行速度</span></span><br><span class="line">    <span class="comment">// 但是实际上是否会存储在寄存器中由编译器决定</span></span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 
                 </div>
                 
@@ -657,5 +769,20 @@
 
 
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>

@@ -40,7 +40,119 @@
     KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
     KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
   </script>
-<meta name="generator" content="Hexo 6.3.0"></head>
+<meta name="generator" content="Hexo 6.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 
 <body>
@@ -275,14 +387,14 @@
 <p>假设你在一个名为my_module的模块中有以下代码：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># This is my_module.py:</span><br><span class="line"></span><br><span class="line">def external_func():</span><br><span class="line">   return 23</span><br><span class="line"></span><br><span class="line">def _internal_func():</span><br><span class="line">   return 42</span><br></pre></td></tr></table></figure>
 <p>现在，如果使用通配符从模块中导入所有名称，则Python不会导入带有前导下划线的名称（除非模块定义了覆盖此行为的<strong>all</strong>列表）：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; from my_module import *</span><br><span class="line">&gt;&gt;&gt; external_func()</span><br><span class="line">23</span><br><span class="line">&gt;&gt;&gt; _internal_func()</span><br><span class="line">NameError: &quot;name &#x27;_internal_func&#x27; is not defined&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; from my_module import *</span><br><span class="line">&gt;&gt;&gt; external_func()</span><br><span class="line">23</span><br><span class="line">&gt;&gt;&gt; _internal_func()</span><br><span class="line">NameError: "name '_internal_func' is not defined"</span><br></pre></td></tr></table></figure>
 <p>顺便说一下，应该避免通配符导入，因为它们使名称空间中存在哪些名称不清楚。 为了清楚起见，坚持常规导入更好。</p>
 <p>与通配符导入不同，常规导入不受前导单个下划线命名约定的影响：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import my_module</span><br><span class="line">&gt;&gt;&gt; my_module.external_func()</span><br><span class="line">23</span><br><span class="line">&gt;&gt;&gt; my_module._internal_func()</span><br><span class="line">42</span><br></pre></td></tr></table></figure>
 <p>我知道这一点可能有点令人困惑。 如果你遵循PEP 8推荐，避免通配符导入，那么你真正需要记住的只有这个：</p>
 <p>单个下划线是一个Python命名约定，表示这个名称是供内部使用的。 它通常不由Python解释器强制执行，仅仅作为一种对程序员的提示。</p>
 <h3 id="2-单末尾下划线-var"><a href="#2-单末尾下划线-var" class="headerlink" title="2. 单末尾下划线 var_"></a>2. 单末尾下划线 var_</h3><p>有时候，一个变量的最合适的名称已经被一个关键字所占用。 因此，像class或def这样的名称不能用作Python中的变量名称。 在这种情况下，你可以附加一个下划线来解决命名冲突：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; def make_object(name, class):</span><br><span class="line">SyntaxError: &quot;invalid syntax&quot;</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; def make_object(name, class_):</span><br><span class="line">...    pass</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; def make_object(name, class):</span><br><span class="line">SyntaxError: "invalid syntax"</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; def make_object(name, class_):</span><br><span class="line">...    pass</span><br></pre></td></tr></table></figure>
 <p>总之，单个末尾下划线（后缀）是一个约定，用来避免与Python关键字产生命名冲突。 PEP 8解释了这个约定。</p>
 <h3 id="3-双前导下划线-var"><a href="#3-双前导下划线-var" class="headerlink" title="3. 双前导下划线 __var"></a>3. 双前导下划线 __var</h3><p>到目前为止，我们所涉及的所有命名模式的含义，来自于已达成共识的约定。 而对于以双下划线开头的Python类的属性（包括变量和方法），情况就有点不同了。</p>
 <p>双下划线前缀会导致Python解释器重写属性名称，以避免子类中的命名冲突。</p>
@@ -290,26 +402,26 @@
 <p>我知道这听起来很抽象。 因此，我组合了一个小小的代码示例来予以说明：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class Test:</span><br><span class="line">   def __init__(self):</span><br><span class="line">       self.foo = 11</span><br><span class="line">       self._bar = 23</span><br><span class="line">       self.__baz = 23</span><br></pre></td></tr></table></figure>
 <p>让我们用内置的dir()函数来看看这个对象的属性：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; t = Test()</span><br><span class="line">&gt;&gt;&gt; dir(t)</span><br><span class="line">[&#x27;_Test__baz&#x27;, &#x27;__class__&#x27;, &#x27;__delattr__&#x27;, &#x27;__dict__&#x27;, &#x27;__dir__&#x27;,</span><br><span class="line">&#x27;__doc__&#x27;, &#x27;__eq__&#x27;, &#x27;__format__&#x27;, &#x27;__ge__&#x27;, &#x27;__getattribute__&#x27;,</span><br><span class="line">&#x27;__gt__&#x27;, &#x27;__hash__&#x27;, &#x27;__init__&#x27;, &#x27;__le__&#x27;, &#x27;__lt__&#x27;, &#x27;__module__&#x27;,</span><br><span class="line">&#x27;__ne__&#x27;, &#x27;__new__&#x27;, &#x27;__reduce__&#x27;, &#x27;__reduce_ex__&#x27;, &#x27;__repr__&#x27;,</span><br><span class="line">&#x27;__setattr__&#x27;, &#x27;__sizeof__&#x27;, &#x27;__str__&#x27;, &#x27;__subclasshook__&#x27;,</span><br><span class="line">&#x27;__weakref__&#x27;, &#x27;_bar&#x27;, &#x27;foo&#x27;]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; t = Test()</span><br><span class="line">&gt;&gt;&gt; dir(t)</span><br><span class="line">['_Test__baz', '__class__', '__delattr__', '__dict__', '__dir__',</span><br><span class="line">'__doc__', '__eq__', '__format__', '__ge__', '__getattribute__',</span><br><span class="line">'__gt__', '__hash__', '__init__', '__le__', '__lt__', '__module__',</span><br><span class="line">'__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__',</span><br><span class="line">'__setattr__', '__sizeof__', '__str__', '__subclasshook__',</span><br><span class="line">'__weakref__', '_bar', 'foo']</span><br></pre></td></tr></table></figure>
 <p>以上是这个对象属性的列表。 让我们来看看这个列表，并寻找我们的原始变量名称foo，_bar和__baz - 我保证你会注意到一些有趣的变化。</p>
 <p>self.foo变量在属性列表中显示为未修改为foo。</p>
 <p>self._bar的行为方式相同 - 它以_bar的形式显示在类上。 就像我之前说过的，在这种情况下，前导下划线仅仅是一个约定。 给程序员一个提示而已。 然而，对于self.<strong>baz而言，情况看起来有点不同。 当你在该列表中搜索</strong>baz时，你会看不到有这个名字的变量。</p>
 <p>__baz出什么情况了？</p>
 <p>如果你仔细观察，你会看到此对象上有一个名为_Test__baz的属性。 这就是Python解释器所做的名称修饰。 它这样做是为了防止变量在子类中被重写。</p>
 <p>让我们创建另一个扩展Test类的类，并尝试重写构造函数中添加的现有属性：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class ExtendedTest(Test):</span><br><span class="line">   def __init__(self):</span><br><span class="line">       super().__init__()</span><br><span class="line">       self.foo = &#x27;overridden&#x27;</span><br><span class="line">       self._bar = &#x27;overridden&#x27;</span><br><span class="line">       self.__baz = &#x27;overridden&#x27;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class ExtendedTest(Test):</span><br><span class="line">   def __init__(self):</span><br><span class="line">       super().__init__()</span><br><span class="line">       self.foo = 'overridden'</span><br><span class="line">       self._bar = 'overridden'</span><br><span class="line">       self.__baz = 'overridden'</span><br></pre></td></tr></table></figure>
 <p>现在，你认为foo，_bar和__baz的值会出现在这个ExtendedTest类的实例上吗？ 我们来看一看：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; t2 = ExtendedTest()</span><br><span class="line">&gt;&gt;&gt; t2.foo</span><br><span class="line">&#x27;overridden&#x27;</span><br><span class="line">&gt;&gt;&gt; t2._bar</span><br><span class="line">&#x27;overridden&#x27;</span><br><span class="line">&gt;&gt;&gt; t2.__baz</span><br><span class="line">AttributeError: &quot;&#x27;ExtendedTest&#x27; object has no attribute &#x27;__baz&#x27;&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; t2 = ExtendedTest()</span><br><span class="line">&gt;&gt;&gt; t2.foo</span><br><span class="line">'overridden'</span><br><span class="line">&gt;&gt;&gt; t2._bar</span><br><span class="line">'overridden'</span><br><span class="line">&gt;&gt;&gt; t2.__baz</span><br><span class="line">AttributeError: "'ExtendedTest' object has no attribute '__baz'"</span><br></pre></td></tr></table></figure>
 <p>等一下，当我们尝试查看t2 .<strong> baz的值时，为什么我们会得到AttributeError？ 名称修饰被再次触发了！ 事实证明，这个对象甚至没有</strong>baz属性：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; dir(t2)</span><br><span class="line">[&#x27;_ExtendedTest__baz&#x27;, &#x27;_Test__baz&#x27;, &#x27;__class__&#x27;, &#x27;__delattr__&#x27;,</span><br><span class="line">&#x27;__dict__&#x27;, &#x27;__dir__&#x27;, &#x27;__doc__&#x27;, &#x27;__eq__&#x27;, &#x27;__format__&#x27;, &#x27;__ge__&#x27;,</span><br><span class="line">&#x27;__getattribute__&#x27;, &#x27;__gt__&#x27;, &#x27;__hash__&#x27;, &#x27;__init__&#x27;, &#x27;__le__&#x27;,</span><br><span class="line">&#x27;__lt__&#x27;, &#x27;__module__&#x27;, &#x27;__ne__&#x27;, &#x27;__new__&#x27;, &#x27;__reduce__&#x27;,</span><br><span class="line">&#x27;__reduce_ex__&#x27;, &#x27;__repr__&#x27;, &#x27;__setattr__&#x27;, &#x27;__sizeof__&#x27;, &#x27;__str__&#x27;,</span><br><span class="line">&#x27;__subclasshook__&#x27;, &#x27;__weakref__&#x27;, &#x27;_bar&#x27;, &#x27;foo&#x27;, &#x27;get_vars&#x27;]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; dir(t2)</span><br><span class="line">['_ExtendedTest__baz', '_Test__baz', '__class__', '__delattr__',</span><br><span class="line">'__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__',</span><br><span class="line">'__getattribute__', '__gt__', '__hash__', '__init__', '__le__',</span><br><span class="line">'__lt__', '__module__', '__ne__', '__new__', '__reduce__',</span><br><span class="line">'__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__',</span><br><span class="line">'__subclasshook__', '__weakref__', '_bar', 'foo', 'get_vars']</span><br></pre></td></tr></table></figure>
 <p>正如你可以看到<strong>baz变成_ExtendedTest</strong>baz以防止意外修改：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; t2._ExtendedTest__baz</span><br><span class="line">&#x27;overridden&#x27;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; t2._ExtendedTest__baz</span><br><span class="line">'overridden'</span><br></pre></td></tr></table></figure>
 <p>但原来的_Test__baz还在：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; t2._Test__baz</span><br><span class="line">42</span><br></pre></td></tr></table></figure>
 <p>双下划线名称修饰对程序员是完全透明的。 下面的例子证实了这一点：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class ManglingTest:</span><br><span class="line">   def __init__(self):</span><br><span class="line">       self.__mangled = &#x27;hello&#x27;</span><br><span class="line"></span><br><span class="line">   def get_mangled(self):</span><br><span class="line">       return self.__mangled</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; ManglingTest().get_mangled()</span><br><span class="line">&#x27;hello&#x27;</span><br><span class="line">&gt;&gt;&gt; ManglingTest().__mangled</span><br><span class="line">AttributeError: &quot;&#x27;ManglingTest&#x27; object has no attribute &#x27;__mangled&#x27;&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class ManglingTest:</span><br><span class="line">   def __init__(self):</span><br><span class="line">       self.__mangled = 'hello'</span><br><span class="line"></span><br><span class="line">   def get_mangled(self):</span><br><span class="line">       return self.__mangled</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; ManglingTest().get_mangled()</span><br><span class="line">'hello'</span><br><span class="line">&gt;&gt;&gt; ManglingTest().__mangled</span><br><span class="line">AttributeError: "'ManglingTest' object has no attribute '__mangled'"</span><br></pre></td></tr></table></figure>
 <p>名称修饰是否也适用于方法名称？ 是的，也适用。名称修饰会影响在一个类的上下文中，以两个下划线字符（”dunders”）开头的所有名称：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class MangledMethod:</span><br><span class="line">   def __method(self):</span><br><span class="line">       return 42</span><br><span class="line"></span><br><span class="line">   def call_it(self):</span><br><span class="line">       return self.__method()</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; MangledMethod().__method()</span><br><span class="line">AttributeError: &quot;&#x27;MangledMethod&#x27; object has no attribute &#x27;__method&#x27;&quot;</span><br><span class="line">&gt;&gt;&gt; MangledMethod().call_it()</span><br><span class="line">42</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class MangledMethod:</span><br><span class="line">   def __method(self):</span><br><span class="line">       return 42</span><br><span class="line"></span><br><span class="line">   def call_it(self):</span><br><span class="line">       return self.__method()</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; MangledMethod().__method()</span><br><span class="line">AttributeError: "'MangledMethod' object has no attribute '__method'"</span><br><span class="line">&gt;&gt;&gt; MangledMethod().call_it()</span><br><span class="line">42</span><br></pre></td></tr></table></figure>
 <p>这是另一个也许令人惊讶的运用名称修饰的例子：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">_MangledGlobal__mangled = 23</span><br><span class="line"></span><br><span class="line">class MangledGlobal:</span><br><span class="line">   def test(self):</span><br><span class="line">       return __mangled</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; MangledGlobal().test()</span><br><span class="line">23</span><br></pre></td></tr></table></figure>
 <p>在这个例子中，我声明了一个名为_MangledGlobal<strong>mangled的全局变量。然后我在名为MangledGlobal的类的上下文中访问变量。由于名称修饰，我能够在类的test()方法内，以</strong>mangled来引用_MangledGlobal__mangled全局变量。</p>
@@ -325,10 +437,10 @@
 <p>最好避免在自己的程序中使用以双下划线（”dunders”）开头和结尾的名称，以避免与将来Python语言的变化产生冲突。</p>
 <h3 id="5-单下划线"><a href="#5-单下划线" class="headerlink" title="5.单下划线 _"></a>5.单下划线 _</h3><p>按照习惯，有时候单个独立下划线是用作一个名字，来表示某个变量是临时的或无关紧要的。</p>
 <p>例如，在下面的循环中，我们不需要访问正在运行的索引，我们可以使用”_”来表示它只是一个临时值：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; for _ in range(32):</span><br><span class="line">...    print(&#x27;Hello, World.&#x27;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; for _ in range(32):</span><br><span class="line">...    print('Hello, World.')</span><br></pre></td></tr></table></figure>
 <p>你也可以在拆分(unpacking)表达式中将单个下划线用作”不关心的”变量，以忽略特定的值。 同样，这个含义只是”依照约定”，并不会在Python解释器中触发特殊的行为。 单个下划线仅仅是一个有效的变量名称，会有这个用途而已。</p>
 <p>在下面的代码示例中，我将汽车元组拆分为单独的变量，但我只对颜色和里程值感兴趣。 但是，为了使拆分表达式成功运行，我需要将包含在元组中的所有值分配给变量。 在这种情况下，”_”作为占位符变量可以派上用场：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; car = (&#x27;red&#x27;, &#x27;auto&#x27;, 12, 3812.4)</span><br><span class="line">&gt;&gt;&gt; color, _, _, mileage = car</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; color</span><br><span class="line">&#x27;red&#x27;</span><br><span class="line">&gt;&gt;&gt; mileage</span><br><span class="line">3812.4</span><br><span class="line">&gt;&gt;&gt; _</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; car = ('red', 'auto', 12, 3812.4)</span><br><span class="line">&gt;&gt;&gt; color, _, _, mileage = car</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; color</span><br><span class="line">'red'</span><br><span class="line">&gt;&gt;&gt; mileage</span><br><span class="line">3812.4</span><br><span class="line">&gt;&gt;&gt; _</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
 <p>除了用作临时变量之外，”_”是大多数Python REPL中的一个特殊变量，它表示由解释器评估的最近一个表达式的结果。</p>
 <p>这样就很方便了，比如你可以在一个解释器会话中访问先前计算的结果，或者，你是在动态构建多个对象并与它们交互，无需事先给这些对象分配名字：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; 20 + 3</span><br><span class="line">23</span><br><span class="line">&gt;&gt;&gt; _</span><br><span class="line">23</span><br><span class="line">&gt;&gt;&gt; print(_)</span><br><span class="line">23</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; list()</span><br><span class="line">[]</span><br><span class="line">&gt;&gt;&gt; _.append(1)</span><br><span class="line">&gt;&gt;&gt; _.append(2)</span><br><span class="line">&gt;&gt;&gt; _.append(3)</span><br><span class="line">&gt;&gt;&gt; _</span><br><span class="line">[1, 2, 3]</span><br></pre></td></tr></table></figure>
@@ -646,5 +758,20 @@
 
 
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>
