@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Python,Astronomy">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="YuWang">
+    
+    <title>
+        
+            2 顺序表 |
+        
+        Yu&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"wangyuynao.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Yu's Blog","author":"YuWang","avatar":"/images/avatar.jpg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":"https://github.com/wangyuynao || fab fa-github","weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":true,"percent":true,"hide_header":true},"home":{"announcement":null,"category":true,"tag":true,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true,"layout":"left"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":true,"preload":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"icp":{"enable":false,"record_code":null,"url":"https://beian.miit.gov.cn"},"site_deploy":{"enable":false,"provider":"github","url":null},"shields_style":{"enable":false,"custom":[{"link_url":null,"img_url":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.0"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Yu&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                首页
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                归档
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                
+                                标签
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                
+                                分类
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >首页</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >归档</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags"
+                    >标签</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories"
+                    >分类</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        2 顺序表
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/avatar.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">YuWang</span>
+                                
+                                    <span class="author-badge">Lv4</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2023-07-21 17:46:37</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Thu Jan 25 2024 23:36:13 GMT+0800">2024-01-25 23:36:13</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/Data-Structure-Algorithm/">Data Structure &amp; Algorithm</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Python/">Python</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Data-Structure/">Data Structure</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body">
+                    
+
+                    <h1 id="顺序表"><a href="#顺序表" class="headerlink" title="顺序表"></a>顺序表</h1><p>在程序中，经常需要将一组（通常是同为某个类型的）数据元素作为整体管理和使用，需要创建这种元素组，用变量记录它们，传进传出函数等。一组数据中包含的元素个数可能发生变化（可以增加或删除元素）。</p>
+<p>对于这种需求，最简单的解决方案便是将这样一组元素看成一个序列，用元素在序列里的位置和顺序，表示实际应用中的某种有意义的信息，或者表示数据之间的某种关系。</p>
+<span id="more"></span>
+<p>这样的一组序列元素的组织形式，我们可以将其抽象为<strong>线性表</strong>。一个线性表是某类元素的一个集合，还记录着元素之间的一种顺序关系。线性表是最基本的数据结构之一，在实际程序中应用非常广泛，它还经常被用作更复杂的数据结构的实现基础。</p>
+<p>根据线性表的实际存储方式，分为两种实现模型：</p>
+<ul>
+<li><strong>顺序表</strong>，将元素顺序地存放在一块连续的存储区里，元素间的顺序关系由它们的存储顺序自然表示。</li>
+<li><strong>链表</strong>，将元素存放在通过链接构造起来的一系列存储块中。</li>
+</ul>
+<h2 id="顺序表的基本形式"><a href="#顺序表的基本形式" class="headerlink" title="顺序表的基本形式"></a>顺序表的基本形式</h2><p><img src="/2023/07/21/2%20%E9%A1%BA%E5%BA%8F%E8%A1%A8/顺序表的两种基本形式.png" alt="顺序表的形式" style="zoom:80%;"></p>
+<p>图a表示的是顺序表的基本形式，数据元素本身连续存储，每个元素所占的存储单元大小固定相同，元素的下标是其逻辑地址，而元素存储的物理地址（实际内存地址）可以通过存储区的起始地址Loc (e0)加上逻辑地址（第i个元素）与存储单元大小（c）的乘积计算而得，即：</p>
+<p><strong>Loc(ei) = Loc(e0) + c*i</strong></p>
+<p>故，访问指定元素时无需从头遍历，通过计算便可获得对应地址，其时间复杂度为O(1)。</p>
+<p>如果元素的大小不统一，则须采用图b的元素外置的形式，将实际数据元素另行存储，而顺序表中各单元位置保存对应元素的地址信息（即链接）。由于每个链接所需的存储量相同，通过上述公式，可以计算出元素链接的存储位置，而后顺着链接找到实际存储的数据元素。<strong>注意，图b中的c不再是数据元素的大小，而是存储一个链接地址所需的存储量，这个量通常很小。</strong></p>
+<p>图b这样的顺序表也被称为对实际数据的索引，这是最简单的索引结构。</p>
+<h2 id="顺序表的结构与实现"><a href="#顺序表的结构与实现" class="headerlink" title="顺序表的结构与实现"></a>顺序表的结构与实现</h2><h3 id="顺序表的结构"><a href="#顺序表的结构" class="headerlink" title="顺序表的结构"></a>顺序表的结构</h3><p><img src="/2023/07/21/2%20%E9%A1%BA%E5%BA%8F%E8%A1%A8/顺序表的结构.png" alt="img" style="zoom:50%;"></p>
+<p>一个顺序表的完整信息包括两部分，一部分是表中的元素集合，另一部分是为实现正确操作而需记录的信息，即有关表的整体情况的信息，这部分信息主要包括元素存储区的<strong>容量</strong>和当前表中已有的<strong>元素个数</strong>两项。</p>
+<h3 id="顺序表的两种基本实现方式"><a href="#顺序表的两种基本实现方式" class="headerlink" title="顺序表的两种基本实现方式"></a>顺序表的两种基本实现方式</h3><p><img src="/2023/07/21/2%20%E9%A1%BA%E5%BA%8F%E8%A1%A8/顺序表的实现方式.png" alt="顺序表的实现方式" style="zoom:80%;"></p>
+<p>图a为一体式结构，存储表信息的单元与元素存储区以连续的方式安排在一块存储区里，两部分数据的整体形成一个完整的顺序表对象。</p>
+<p>一体式结构整体性强，易于管理。但是由于数据元素存储区域是表对象的一部分，顺序表创建后，元素存储区就固定了。</p>
+<p>图b为分离式结构，表对象里只保存与整个表有关的信息（即容量和元素个数），实际数据元素存放在另一个独立的元素存储区里，通过链接与基本表对象关联。</p>
+<h3 id="元素存储区替换"><a href="#元素存储区替换" class="headerlink" title="元素存储区替换"></a>元素存储区替换</h3><p>一体式结构由于顺序表信息区与数据区连续存储在一起，所以若想更换数据区，则只能整体搬迁，即整个顺序表对象（指存储顺序表的结构信息的区域）改变了。</p>
+<p>分离式结构若想更换数据区，只需将表信息区中的数据区链接地址更新即可，而该顺序表对象不变。</p>
+<h3 id="元素存储区扩充"><a href="#元素存储区扩充" class="headerlink" title="元素存储区扩充"></a>元素存储区扩充</h3><p>采用分离式结构的顺序表，若将数据区更换为存储空间更大的区域，则可以在不改变表对象的前提下对其数据存储区进行了扩充，所有使用这个表的地方都不必修改。只要程序的运行环境（计算机系统）还有空闲存储，这种表结构就不会因为满了而导致操作无法进行。人们把采用这种技术实现的顺序表称为动态顺序表，因为其容量可以在使用中动态变化。</p>
+<p><strong>扩充的两种策略</strong></p>
+<ul>
+<li><p>每次扩充增加固定数目的存储位置，如每次扩充增加10个元素位置，这种策略可称为线性增长。</p>
+<p>特点：节省空间，但是扩充操作频繁，操作次数多。</p>
+</li>
+<li><p>每次扩充容量加倍，如每次扩充增加一倍存储空间。</p>
+<p>特点：减少了扩充操作的执行次数，但可能会浪费空间资源。以空间换时间，推荐的方式。</p>
+</li>
+</ul>
+<h2 id="顺序表的操作"><a href="#顺序表的操作" class="headerlink" title="顺序表的操作"></a>顺序表的操作</h2><h3 id="增加元素"><a href="#增加元素" class="headerlink" title="增加元素"></a>增加元素</h3><p>如图所示，为顺序表增加新元素111的三种方式</p>
+<p><img src="/2023/07/21/2%20%E9%A1%BA%E5%BA%8F%E8%A1%A8/顺序表增加元素.png" alt="顺序表增加元素" style="zoom: 50%;"></p>
+<p>a. 尾端加入元素，时间复杂度为O(1)</p>
+<p>b. 非保序的加入元素（不常见），时间复杂度为O(1)</p>
+<p>c. 保序的元素加入，时间复杂度为O(n)</p>
+<h3 id="删除元素"><a href="#删除元素" class="headerlink" title="删除元素"></a>删除元素</h3><p><img src="/2023/07/21/2%20%E9%A1%BA%E5%BA%8F%E8%A1%A8/顺序表删除元素.png" alt="顺序表删除元素" style="zoom:50%;"></p>
+<p>a. 删除表尾元素，时间复杂度为O(1)</p>
+<p>b. 非保序的元素删除（不常见），时间复杂度为O(1)</p>
+<p>c. 保序的元素删除，时间复杂度为O(n)</p>
+<h2 id="Python中的顺序表"><a href="#Python中的顺序表" class="headerlink" title="Python中的顺序表"></a>Python中的顺序表</h2><p>Python中的list和tuple两种类型采用了顺序表的实现技术，具有前面讨论的顺序表的所有性质。</p>
+<p>tuple是不可变类型，即不变的顺序表，因此不支持改变其内部状态的任何操作，而其他方面，则与list的性质类似。</p>
+<h3 id="list的基本实现技术"><a href="#list的基本实现技术" class="headerlink" title="list的基本实现技术"></a>list的基本实现技术</h3><p>Python标准类型list就是一种元素个数可变的线性表，可以加入和删除元素，并在各种操作中维持已有元素的顺序（即保序），而且还具有以下行为特征：</p>
+<ul>
+<li><p>基于下标（位置）的高效元素访问和更新，时间复杂度应该是O(1)；</p>
+<p>为满足该特征，应该采用顺序表技术，表中元素保存在一块连续的存储区中。</p>
+</li>
+<li><p>允许任意加入元素，而且在不断加入元素的过程中，表对象的标识（函数id得到的值）不变。</p>
+<p>为满足该特征，就必须能更换元素存储区，并且为保证更换存储区时list对象的标识id不变，只能采用分离式实现技术。</p>
+</li>
+</ul>
+<p>在Python的官方实现中，<strong>list就是一种采用分离式技术实现的动态顺序表</strong>。这就是为什么用list.append(x) （或 list.insert(len(list), x)，即尾部插入）比在指定位置插入元素效率高的原因。</p>
+<p>在Python的官方实现中，list实现采用了如下的策略：在建立空表（或者很小的表）时，系统分配一块能容纳8个元素的存储区；在执行插入操作（insert或append）时，如果元素存储区满就换一块4倍大的存储区。但如果此时的表已经很大（目前的阀值为50000），则改变策略，采用加一倍的方法。引入这种改变策略的方式，是为了避免出现过多空闲的存储位置。</p>
+
+                </div>
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Python/">Python</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Data-Structure/">Data Structure</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2023/07/21/3.1%20%E5%8D%95%E5%90%91%E9%93%BE%E8%A1%A8/"
+                                   title="单向链表"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">单向链表</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2023/07/21/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/"
+                                   title="程序设计基础"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">程序设计基础</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc left-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A1%BA%E5%BA%8F%E8%A1%A8"><span class="nav-number">1.</span> <span class="nav-text">顺序表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%BA%E5%BA%8F%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%BD%A2%E5%BC%8F"><span class="nav-number">1.1.</span> <span class="nav-text">顺序表的基本形式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%BA%E5%BA%8F%E8%A1%A8%E7%9A%84%E7%BB%93%E6%9E%84%E4%B8%8E%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.2.</span> <span class="nav-text">顺序表的结构与实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%BA%E5%BA%8F%E8%A1%A8%E7%9A%84%E7%BB%93%E6%9E%84"><span class="nav-number">1.2.1.</span> <span class="nav-text">顺序表的结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%BA%E5%BA%8F%E8%A1%A8%E7%9A%84%E4%B8%A4%E7%A7%8D%E5%9F%BA%E6%9C%AC%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F"><span class="nav-number">1.2.2.</span> <span class="nav-text">顺序表的两种基本实现方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%83%E7%B4%A0%E5%AD%98%E5%82%A8%E5%8C%BA%E6%9B%BF%E6%8D%A2"><span class="nav-number">1.2.3.</span> <span class="nav-text">元素存储区替换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%83%E7%B4%A0%E5%AD%98%E5%82%A8%E5%8C%BA%E6%89%A9%E5%85%85"><span class="nav-number">1.2.4.</span> <span class="nav-text">元素存储区扩充</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%BA%E5%BA%8F%E8%A1%A8%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="nav-number">1.3.</span> <span class="nav-text">顺序表的操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A2%9E%E5%8A%A0%E5%85%83%E7%B4%A0"><span class="nav-number">1.3.1.</span> <span class="nav-text">增加元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E5%85%83%E7%B4%A0"><span class="nav-number">1.3.2.</span> <span class="nav-text">删除元素</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python%E4%B8%AD%E7%9A%84%E9%A1%BA%E5%BA%8F%E8%A1%A8"><span class="nav-number">1.4.</span> <span class="nav-text">Python中的顺序表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#list%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%AE%9E%E7%8E%B0%E6%8A%80%E6%9C%AF"><span class="nav-number">1.4.1.</span> <span class="nav-text">list的基本实现技术</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="border-box website-info-box default">
+        
+            <div class="copyright-info info-item default">
+                &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2024
+                
+                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">YuWang</a>
+                
+            </div>
+
+            <div class="theme-info info-item default">
+                由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+            </div>
+
+            
+
+            
+        
+
+        <div class="count-item info-item default">
+            
+
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools left-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A1%BA%E5%BA%8F%E8%A1%A8"><span class="nav-number">1.</span> <span class="nav-text">顺序表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%BA%E5%BA%8F%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%BD%A2%E5%BC%8F"><span class="nav-number">1.1.</span> <span class="nav-text">顺序表的基本形式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%BA%E5%BA%8F%E8%A1%A8%E7%9A%84%E7%BB%93%E6%9E%84%E4%B8%8E%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.2.</span> <span class="nav-text">顺序表的结构与实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%BA%E5%BA%8F%E8%A1%A8%E7%9A%84%E7%BB%93%E6%9E%84"><span class="nav-number">1.2.1.</span> <span class="nav-text">顺序表的结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%BA%E5%BA%8F%E8%A1%A8%E7%9A%84%E4%B8%A4%E7%A7%8D%E5%9F%BA%E6%9C%AC%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F"><span class="nav-number">1.2.2.</span> <span class="nav-text">顺序表的两种基本实现方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%83%E7%B4%A0%E5%AD%98%E5%82%A8%E5%8C%BA%E6%9B%BF%E6%8D%A2"><span class="nav-number">1.2.3.</span> <span class="nav-text">元素存储区替换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%83%E7%B4%A0%E5%AD%98%E5%82%A8%E5%8C%BA%E6%89%A9%E5%85%85"><span class="nav-number">1.2.4.</span> <span class="nav-text">元素存储区扩充</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%BA%E5%BA%8F%E8%A1%A8%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="nav-number">1.3.</span> <span class="nav-text">顺序表的操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A2%9E%E5%8A%A0%E5%85%83%E7%B4%A0"><span class="nav-number">1.3.1.</span> <span class="nav-text">增加元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E5%85%83%E7%B4%A0"><span class="nav-number">1.3.2.</span> <span class="nav-text">删除元素</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python%E4%B8%AD%E7%9A%84%E9%A1%BA%E5%BA%8F%E8%A1%A8"><span class="nav-number">1.4.</span> <span class="nav-text">Python中的顺序表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#list%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%AE%9E%E7%8E%B0%E6%8A%80%E6%9C%AF"><span class="nav-number">1.4.1.</span> <span class="nav-text">list的基本实现技术</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>

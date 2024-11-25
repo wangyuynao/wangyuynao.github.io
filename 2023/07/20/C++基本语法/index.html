@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Python,Astronomy">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="YuWang">
+    
+    <title>
+        
+            C++基本语法 |
+        
+        Yu&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"wangyuynao.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Yu's Blog","author":"YuWang","avatar":"/images/avatar.jpg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":"https://github.com/wangyuynao || fab fa-github","weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":true,"percent":true,"hide_header":true},"home":{"announcement":null,"category":true,"tag":true,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true,"layout":"left"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":true,"preload":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"icp":{"enable":false,"record_code":null,"url":"https://beian.miit.gov.cn"},"site_deploy":{"enable":false,"provider":"github","url":null},"shields_style":{"enable":false,"custom":[{"link_url":null,"img_url":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.0"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Yu&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                首页
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                归档
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                
+                                标签
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                
+                                分类
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >首页</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >归档</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags"
+                    >标签</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories"
+                    >分类</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        C++基本语法
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/avatar.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">YuWang</span>
+                                
+                                    <span class="author-badge">Lv4</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2023-07-20 22:38:50</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Thu Jan 25 2024 23:36:13 GMT+0800">2024-01-25 23:36:13</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/C/">C++</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/C/">C++</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body">
+                    
+
+                    <h1 id="C-基本语法"><a href="#C-基本语法" class="headerlink" title="C++基本语法"></a>C++基本语法</h1><p>C++ 程序可以定义为对象的集合，这些对象通过调用彼此的方法进行交互。现在让我们简要地看一下什么是类、对象，方法、即时变量。</p>
+<ul>
+<li><strong>对象 -</strong> 对象具有状态和行为。例如：一只狗的状态 - 颜色、名称、品种，行为 - 摇动、叫唤、吃。对象是类的实例。</li>
+<li><strong>类 -</strong> 类可以定义为描述对象行为/状态的模板/蓝图。</li>
+<li><strong>方法 -</strong> 从基本上说，一个方法表示一种行为。一个类可以包含多个方法。可以在方法中写入逻辑、操作数据以及执行所有的动作。</li>
+<li><strong>即时变量 -</strong> 每个对象都有其独特的即时变量。对象的状态是由这些即时变量的值创建的。</li>
+</ul>
+<span id="more"></span>
+<h2 id="C-程序结构"><a href="#C-程序结构" class="headerlink" title="C++ 程序结构"></a>C++ 程序结构</h2><p>让我们看一段简单的代码，可以输出单词 Hello World。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">// main() 是程序开始执行的地方</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line">    cout &lt;&lt; <span class="string">"Hello World"</span>; <span class="comment">// 输出 Hello World</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">} </span><br></pre></td></tr></table></figure>
+<p>接下来我们讲解一下上面这段程序：</p>
+<ul>
+<li>C++ 定义了一些头文件，这些头文件包含了程序中必需的或有用的信息。上面这段程序中，包含了 <strong><iostream></iostream></strong>头文件。</li>
+<li>行 <strong>using namespace std;</strong> 告诉编译器使用 std 命名空间。命名空间是 C++ 中一个相对新的概念。</li>
+<li>下一行 <strong>// main() 是程序开始执行的地方</strong> 是一个单行注释。单行注释以 // 开头，在行末结束。</li>
+<li>下一行 <strong>int main()</strong> 是主函数，程序从这里开始执行。</li>
+<li>下一行 <strong>cout &lt;&lt; “Hello World”;</strong> 会在屏幕上显示消息 “Hello World”。</li>
+<li>下一行 <strong>return 0;</strong> 终止 main( )函数，并向调用进程返回值 0。</li>
+</ul>
+<blockquote>
+<p> <iostream>是一个输入输出流相关的头文件。里面包含了一些对输入输出流操作的方法。</iostream></p>
+</blockquote>
+<h2 id="编译-amp-执行-C-程序"><a href="#编译-amp-执行-C-程序" class="headerlink" title="编译 & 执行 C++ 程序"></a>编译 &amp; 执行 C++ 程序</h2><p>接下来让我们看看如何把源代码保存在一个文件中，以及如何编译并运行它。下面是简单的步骤：</p>
+<ul>
+<li>打开一个文本编辑器，添加上述代码。</li>
+<li>保存文件为 hello.cpp。</li>
+<li>打开命令提示符，进入到保存文件所在的目录。</li>
+<li>键入 ‘g++ hello.cpp ‘，输入回车，编译代码。如果代码中没有错误，命令提示符会跳到下一行，并生成 a.out 可执行文件。</li>
+<li>现在，键入 ‘ a.out’ 来运行程序。</li>
+<li>您可以看到屏幕上显示 ‘ Hello World ‘。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ g++ hello.cpp</span><br><span class="line">$ ./a.out</span><br><span class="line">Hello World</span><br></pre></td></tr></table></figure>
+<p>请确保您的路径中已包含 g++ 编译器，并确保在包含源文件 hello.cpp 的目录中运行它。</p>
+<p>您也可以使用 makefile 来编译 C/C++ 程序。</p>
+<h2 id="C-中的分号-amp-块"><a href="#C-中的分号-amp-块" class="headerlink" title="C++ 中的分号 & 块"></a>C++ 中的分号 &amp; 块</h2><p>在 C++ 中，分号是语句结束符。也就是说，每个语句必须以分号结束。它表明一个逻辑实体的结束。</p>
+<p>例如，下面是三个不同的语句：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = y;</span><br><span class="line">y = y+1;</span><br><span class="line">add(x, y);</span><br></pre></td></tr></table></figure>
+<p>块是一组使用大括号括起来的按逻辑连接的语句。例如：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">{</span><br><span class="line">    cout &lt;&lt; <span class="string">"Hello World"</span>; <span class="comment">// 输出 Hello World</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">} </span><br></pre></td></tr></table></figure>
+<p>C++ 不以行末作为结束符的标识，因此，您可以在一行上放置多个语句。例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = y;</span><br><span class="line">y = y+1;</span><br><span class="line">add(x, y);</span><br></pre></td></tr></table></figure>
+<p>等同于</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x = y; y = y+1; add(x, y);</span><br></pre></td></tr></table></figure>
+<h2 id="C-标识符"><a href="#C-标识符" class="headerlink" title="C++ 标识符"></a>C++ 标识符</h2><p>C++ 标识符是用来标识变量、函数、类、模块，或任何其他用户自定义项目的名称。一个标识符以字母 A-Z 或 a-z 或下划线 _ 开始，后跟零个或多个字母、下划线和数字（0-9）。</p>
+<p>C++ 标识符内不允许出现标点字符，比如 @、$ 和 %。C++ 是区分大小写的编程语言。因此，在 C++ 中，<strong>Manpower</strong> 和 <strong>manpower</strong> 是两个不同的标识符。</p>
+<p>下面列出几个有效的标识符：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mohd       zara    abc   move_name  a_123</span><br><span class="line">myname50   _temp   j     a23b9      retVal</span><br></pre></td></tr></table></figure>
+<h2 id="C-关键字"><a href="#C-关键字" class="headerlink" title="C++ 关键字"></a>C++ 关键字</h2><p>下表列出了 C++ 中的保留字。这些保留字不能作为常量名、变量名或其他标识符名称。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>asm</th>
+<th>else</th>
+<th>new</th>
+<th>this</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>auto</td>
+<td>enum</td>
+<td>operator</td>
+<td>throw</td>
+</tr>
+<tr>
+<td>bool</td>
+<td>explicit</td>
+<td>private</td>
+<td>true</td>
+</tr>
+<tr>
+<td>break</td>
+<td>export</td>
+<td>protected</td>
+<td>try</td>
+</tr>
+<tr>
+<td>case</td>
+<td>extern</td>
+<td>public</td>
+<td>typedef</td>
+</tr>
+<tr>
+<td>catch</td>
+<td>false</td>
+<td>register</td>
+<td>typeid</td>
+</tr>
+<tr>
+<td>char</td>
+<td>float</td>
+<td>reinterpret_cast</td>
+<td>typename</td>
+</tr>
+<tr>
+<td>class</td>
+<td>for</td>
+<td>return</td>
+<td>union</td>
+</tr>
+<tr>
+<td>const</td>
+<td>friend</td>
+<td>short</td>
+<td>unsigned</td>
+</tr>
+<tr>
+<td>const_cast</td>
+<td>goto</td>
+<td>signed</td>
+<td>using</td>
+</tr>
+<tr>
+<td>continue</td>
+<td>if</td>
+<td>sizeof</td>
+<td>virtual</td>
+</tr>
+<tr>
+<td>default</td>
+<td>inline</td>
+<td>static</td>
+<td>void</td>
+</tr>
+<tr>
+<td>delete</td>
+<td>int</td>
+<td>static_cast</td>
+<td>volatile</td>
+</tr>
+<tr>
+<td>do</td>
+<td>long</td>
+<td>struct</td>
+<td>wchar_t</td>
+</tr>
+<tr>
+<td>double</td>
+<td>mutable</td>
+<td>switch</td>
+<td>while</td>
+</tr>
+<tr>
+<td>dynamic_cast</td>
+<td>namespace</td>
+<td>template</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="三字符组"><a href="#三字符组" class="headerlink" title="三字符组"></a>三字符组</h2><p>三字符组就是用于表示另一个字符的三个字符序列，又称为三字符序列。三字符序列总是以两个问号开头。</p>
+<p>三字符序列不太常见，但 C++ 标准允许把某些字符指定为三字符序列。以前为了表示键盘上没有的字符，这是必不可少的一种方法。</p>
+<p>三字符序列可以出现在任何地方，包括字符串、字符序列、注释和预处理指令。</p>
+<p>下面列出了最常用的三字符序列：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">三字符组</th>
+<th style="text-align:left">替换</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">??=</td>
+<td style="text-align:left">#</td>
+</tr>
+<tr>
+<td style="text-align:left">??/</td>
+<td style="text-align:left">\</td>
+</tr>
+<tr>
+<td style="text-align:left">??’</td>
+<td style="text-align:left">^</td>
+</tr>
+<tr>
+<td style="text-align:left">??(</td>
+<td style="text-align:left">[</td>
+</tr>
+<tr>
+<td style="text-align:left">??)</td>
+<td style="text-align:left">]</td>
+</tr>
+<tr>
+<td style="text-align:left">??!</td>
+<td style="text-align:left">\</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">??&lt;</td>
+<td style="text-align:left">{</td>
+</tr>
+<tr>
+<td style="text-align:left">??&gt;</td>
+<td style="text-align:left">}</td>
+</tr>
+<tr>
+<td style="text-align:left">??-</td>
+<td style="text-align:left">~</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>所有的编译器都不支持三字符组，为避免造成混乱，不建议使用三字符组。</p>
+<h2 id="C-中的空格"><a href="#C-中的空格" class="headerlink" title="C++ 中的空格"></a>C++ 中的空格</h2><p>只包含空格的行，被称为空白行，可能带有注释，C++ 编译器会完全忽略它。</p>
+<p>在 C++ 中，空格用于描述空白符、制表符、换行符和注释。空格分隔语句的各个部分，让编译器能识别语句中的某个元素（比如 int）在哪里结束，下一个元素在哪里开始。因此，在下面的语句中：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int age;</span><br></pre></td></tr></table></figure>
+<p>在这里，int 和 age 之间必须至少有一个空格字符（通常是一个空白符），这样编译器才能够区分它们。另一方面，在下面的语句中：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fruit = apples + oranges;   // 获取水果的总数</span><br></pre></td></tr></table></figure>
+<p>fruit 和 =，或者 = 和 apples 之间的空格字符不是必需的，但是为了增强可读性，您可以根据需要适当增加一些空格。</p>
+<h2 id="C-注释"><a href="#C-注释" class="headerlink" title="C++ 注释"></a>C++ 注释</h2><p>程序的注释是解释性语句，您可以在 C++ 代码中包含注释，这将提高源代码的可读性。所有的编程语言都允许某种形式的注释。</p>
+<p>C++ 支持单行注释和多行注释。注释中的所有字符会被 C++ 编译器忽略。</p>
+<p>C++ 注释以 /<em> 开始，以 </em>/ 终止。例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/* 这是注释 */</span><br><span class="line"></span><br><span class="line">/* C++ 注释也可以</span><br><span class="line"> * 跨行</span><br><span class="line"> */</span><br></pre></td></tr></table></figure>
+<p>注释也能以 // 开始，直到行末为止。例如：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">   cout &lt;&lt; <span class="string">"Hello World!"</span>; <span class="comment">// 输出 Hello World!</span></span><br><span class="line"> </span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>尝试一下</p>
+<p>当上面的代码被编译时，编译器会忽略 <strong>// prints Hello World</strong>，最后会产生以下结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hello World</span><br></pre></td></tr></table></figure>
+<p>在 /<em> 和 </em>/ 注释内部，// 字符没有特殊的含义。在 // 注释内，/<em> 和 </em>/ 字符也没有特殊的含义。因此，您可以在一种注释内嵌套另一种注释。例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/* 用于输出 Hello World 的注释</span><br><span class="line"></span><br><span class="line">cout &lt;&lt; "Hello World"; // 输出 Hello World  */ </span><br></pre></td></tr></table></figure>
+
+                </div>
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/C/">C++</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2023/07/20/C++%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/"
+                                   title="C++数据类型"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">C++数据类型</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2023/07/20/C++%E7%AE%80%E4%BB%8B/"
+                                   title="C++简介"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">C++简介</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc left-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#C-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">C++基本语法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#C-%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84"><span class="nav-number">1.1.</span> <span class="nav-text">C++ 程序结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E8%AF%91-amp-%E6%89%A7%E8%A1%8C-C-%E7%A8%8B%E5%BA%8F"><span class="nav-number">1.2.</span> <span class="nav-text">编译 &amp; 执行 C++ 程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-%E4%B8%AD%E7%9A%84%E5%88%86%E5%8F%B7-amp-%E5%9D%97"><span class="nav-number">1.3.</span> <span class="nav-text">C++ 中的分号 &amp; 块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-%E6%A0%87%E8%AF%86%E7%AC%A6"><span class="nav-number">1.4.</span> <span class="nav-text">C++ 标识符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">1.5.</span> <span class="nav-text">C++ 关键字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E5%AD%97%E7%AC%A6%E7%BB%84"><span class="nav-number">1.6.</span> <span class="nav-text">三字符组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-%E4%B8%AD%E7%9A%84%E7%A9%BA%E6%A0%BC"><span class="nav-number">1.7.</span> <span class="nav-text">C++ 中的空格</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-%E6%B3%A8%E9%87%8A"><span class="nav-number">1.8.</span> <span class="nav-text">C++ 注释</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="border-box website-info-box default">
+        
+            <div class="copyright-info info-item default">
+                &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2024
+                
+                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">YuWang</a>
+                
+            </div>
+
+            <div class="theme-info info-item default">
+                由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+            </div>
+
+            
+
+            
+        
+
+        <div class="count-item info-item default">
+            
+
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools left-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#C-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">C++基本语法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#C-%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84"><span class="nav-number">1.1.</span> <span class="nav-text">C++ 程序结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E8%AF%91-amp-%E6%89%A7%E8%A1%8C-C-%E7%A8%8B%E5%BA%8F"><span class="nav-number">1.2.</span> <span class="nav-text">编译 &amp; 执行 C++ 程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-%E4%B8%AD%E7%9A%84%E5%88%86%E5%8F%B7-amp-%E5%9D%97"><span class="nav-number">1.3.</span> <span class="nav-text">C++ 中的分号 &amp; 块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-%E6%A0%87%E8%AF%86%E7%AC%A6"><span class="nav-number">1.4.</span> <span class="nav-text">C++ 标识符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">1.5.</span> <span class="nav-text">C++ 关键字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E5%AD%97%E7%AC%A6%E7%BB%84"><span class="nav-number">1.6.</span> <span class="nav-text">三字符组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-%E4%B8%AD%E7%9A%84%E7%A9%BA%E6%A0%BC"><span class="nav-number">1.7.</span> <span class="nav-text">C++ 中的空格</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-%E6%B3%A8%E9%87%8A"><span class="nav-number">1.8.</span> <span class="nav-text">C++ 注释</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>
