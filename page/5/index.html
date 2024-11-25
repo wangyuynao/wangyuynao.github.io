@@ -526,6 +526,74 @@ mjx-container[display="true"] + br {
                 <div class="home-post-item-bottom border-box">
                     
                     <h3 class="home-post-title border-box">
+                        <a href="/2020/05/19/2021-Pandas-%E4%BD%BF%E7%94%A8/">
+                            Pandas 使用
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            <h1 id="Pandas-使用"><a href="#Pandas-使用" class="headerlink" title="Pandas 使用"></a>Pandas 使用</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd </span><br><span class="line"></span><br><span class="line">csv_file = <span class="string">&#x27;data.csv&#x27;</span></span><br><span class="line">csv_data = pd.read_csv(csv_file,low_memory = <span class="literal">False</span>) <span class="comment">#防止弹出警告</span></span><br><span class="line"></span><br><span class="line">df = pd.DataFrame()</span><br><span class="line"><span class="built_in">print</span>(df.shape) <span class="comment"># 查看数据维度</span></span><br><span class="line"><span class="built_in">print</span>(df.duplicated()) <span class="comment">#查看重复值</span></span><br><span class="line"><span class="built_in">print</span>(pd.isnull(df)) <span class="comment">#查看缺失值</span></span><br><span class="line"><span class="comment">#将NAN值替换为0 pd.fillna 填补缺失值 df.where()</span></span><br><span class="line">df.where(df.notnull(),<span class="number">0</span>) </span><br></pre></td></tr></table></figure>
+                        
+                    </div>
+
+                    
+
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Thu Jan 25 2024 23:36:13 GMT+0800"
+                >2024-01-25 23:36:13</span>
+            </span>
+        
+
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/Python/">Python</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Pandas/">Pandas</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/2020/05/19/2021-Pandas-%E4%BD%BF%E7%94%A8/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-post-item">
+
+                
+
+                <div class="home-post-item-bottom border-box">
+                    
+                    <h3 class="home-post-title border-box">
                         <a href="/2020/05/19/2021-Matplotlib/">
                             Matplotlib
                         </a>
@@ -596,74 +664,6 @@ mjx-container[display="true"] + br {
 
     
         <a class="home-read-more" href="/2020/05/19/2021-Matplotlib/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
-    
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-post-item">
-
-                
-
-                <div class="home-post-item-bottom border-box">
-                    
-                    <h3 class="home-post-title border-box">
-                        <a href="/2020/05/19/2021-Pandas-%E4%BD%BF%E7%94%A8/">
-                            Pandas 使用
-                        </a>
-                    </h3>
-
-                    <div class="home-post-content keep-markdown-body">
-                        
-                            <h1 id="Pandas-使用"><a href="#Pandas-使用" class="headerlink" title="Pandas 使用"></a>Pandas 使用</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd </span><br><span class="line"></span><br><span class="line">csv_file = <span class="string">&#x27;data.csv&#x27;</span></span><br><span class="line">csv_data = pd.read_csv(csv_file,low_memory = <span class="literal">False</span>) <span class="comment">#防止弹出警告</span></span><br><span class="line"></span><br><span class="line">df = pd.DataFrame()</span><br><span class="line"><span class="built_in">print</span>(df.shape) <span class="comment"># 查看数据维度</span></span><br><span class="line"><span class="built_in">print</span>(df.duplicated()) <span class="comment">#查看重复值</span></span><br><span class="line"><span class="built_in">print</span>(pd.isnull(df)) <span class="comment">#查看缺失值</span></span><br><span class="line"><span class="comment">#将NAN值替换为0 pd.fillna 填补缺失值 df.where()</span></span><br><span class="line">df.where(df.notnull(),<span class="number">0</span>) </span><br></pre></td></tr></table></figure>
-                        
-                    </div>
-
-                    
-
-<div class="post-meta-info-container border-box home">
-    <div class="post-meta-info border-box">
-        
-            <span class="meta-info-item border-box">
-                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Thu Jan 25 2024 23:36:13 GMT+0800"
-                >2024-01-25 23:36:13</span>
-            </span>
-        
-
-        
-
-        
-            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul class="post-category-ul">
-                    
-                            <li class="category-item"><a href="/categories/Python/">Python</a></li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-            <span class="post-tag meta-info-item border-box">
-                <ul class="post-tag-ul">
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Pandas/">Pandas</a></li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-        
-        
-        
-    </div>
-
-    
-        <a class="home-read-more" href="/2020/05/19/2021-Pandas-%E4%BD%BF%E7%94%A8/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
     
 </div>
 
